@@ -1,0 +1,83 @@
+/* Blog Posts */
+.blog-posts {
+    flex: 3;
+}
+
+.post {
+    background: linear-gradient(135deg, #748aea, #7c54a4);
+    margin-bottom: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.post img {
+    width: 100%;
+    height: auto;
+}
+
+.post-content {
+    padding: 16px;
+}
+
+.post h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+}
+
+.post-meta {
+    font-size: 14px;
+    color: #d9d9d9;
+    margin: 10px 0;
+}
+
+.post-meta span {
+    color: #000;
+}
+
+.post p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 16px 0;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-actions button {
+    background: linear-gradient(135deg, #000, #333);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.post-actions button:hover {
+    background: linear-gradient(135deg, #333, #000);
+}
+
+.post-actions p {
+    font-size: 14px;
+    color: #ffffff;
+    margin: 0;
+}
+
+.post-actions span {
+    background-color: #000;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 50%;
+}

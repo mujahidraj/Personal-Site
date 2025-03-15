@@ -1,0 +1,19 @@
+/* Main Content */
+.main-content {
+    display: flex;
+    gap: 16px;
+    padding: 0 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        order: -1;
+    }
+}

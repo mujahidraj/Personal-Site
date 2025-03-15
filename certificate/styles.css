@@ -1,0 +1,88 @@
+
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, #ffffff,#dcf3ff ,#cccccc);
+    color: #333;
+}
+
+
+
+header {
+    background: linear-gradient(270deg, #748aea,#7186e6 ,#7c54a4);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.certificate-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.certificate {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(270deg, #748aea,#7186e6 ,#7c54a4);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.certificate:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.certificate-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+.certificate-details {
+    padding: 20px;
+}
+
+.certificate-details h2 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.certificate-details p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #ededed;
+}
+
+@media (min-width: 768px) {
+    .certificate {
+        flex-direction: row;
+    }
+
+    .certificate-image {
+        flex: 1;
+    }
+
+    .certificate-details {
+        flex: 2;
+        padding: 20px;
+    }
+}

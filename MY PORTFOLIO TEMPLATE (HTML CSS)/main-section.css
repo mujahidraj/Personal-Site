@@ -1,0 +1,90 @@
+.main-div{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    
+
+}
+
+body{
+    padding-left: 220px;
+}
+
+
+
+.main-section{
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.main-heading{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+
+.heading p{
+    font-family: "Raleway",sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-left: 10px;
+
+}
+
+.filter-option{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items:center;
+
+}
+
+.all-option p{
+margin: 0;
+}
+
+.all-option,.design-option ,.photos-option,.art-option{
+   padding-top: 10px;
+   padding-left: 30px;
+   padding-right: 30px;
+   padding-bottom: 10px;
+   background-color:rgb(0, 83, 134);
+   color: white;
+    margin-left: 3px;
+    margin-right: 2px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.filter-text{
+    font-size: 20px;
+    font-family: "Raleway" ,sans-serif;
+    margin-left: 10px;
+    font-weight: 700;
+}
+
+.border{
+    margin-top: 20px;
+    margin-left:10px ;
+    margin-right: 10px;
+    border-top-style:solid ;
+    border-top-width:7px ;
+    border-top-color:lightgray ;
+}
+
+
+.all-option:hover,.design-option:hover ,.photos-option:hover,.art-option:hover{
+background-color: lightgray;
+color: black;
+ }
+
+
+
+
+

@@ -1,0 +1,115 @@
+.contact-me{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.contact-me-text{
+    font-family: "Raleway",sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: darkslategray;
+
+}
+.contact-me-division{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+}
+
+.contact-me-mail,.contact-me-location,.contact-me-number{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    border: solid;
+    border-width: 1px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color:rgb(0, 83, 134); 
+    color: white;
+    font-family: "Raleway";
+    font-size: 15px;
+    font-weight: 500;
+
+}
+
+.contact-me-location{
+    background-color:rgb(134, 22, 0); 
+}
+
+.contact-me-text-field,.Mail-text-field,.message-text-field{
+
+    width: 100%;
+}
+
+.name-field,.email-field,.message-text{
+    font-family: "Raleway",sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.input{
+    width: 95%;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.input-message{
+    width: 95%;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px; 
+    transition: padding-top ,padding-bottom 0.3s;
+}
+
+.input-message:hover{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+
+
+.send-button{
+    font-family: "Raleway",sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color:rgb(0, 83, 134); 
+    color: white;
+    transition: background-color ,color 0.3s;
+    cursor: pointer;
+    
+
+}
+
+.send-button:hover{
+    background-color:rgb(115, 137, 158);
+    color: black;
+}
