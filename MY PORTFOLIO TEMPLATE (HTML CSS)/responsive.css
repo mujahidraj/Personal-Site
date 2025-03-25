@@ -202,7 +202,19 @@
         font-size: 12px;
         padding: 4px 0;
     }
+
+    .tag:hover {
+        width: calc(33.33% - 6px);
+        min-width: 70px;
+        font-size: 12px;
+        padding: 4px 0;
+    }
     .popular-text {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .popular-text:hover {
         font-size: 16px;
         margin-bottom: 8px;
     }
