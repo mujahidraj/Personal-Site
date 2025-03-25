@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(-45deg,#2f23d5,#6e8ae8, #667eea, #667eea,  #4d66d4,  #23d5ab,#d5d223,#d52323 ,#d52323);
+    background: linear-gradient(-45deg,#2f23d5, #8e66ea, #667eea,  #4d66d4,  #23d5ab,#d5d223,#d52323 );
     background-size: 400% 400%;
     display: flex;
     justify-content: center;
@@ -51,74 +51,4 @@ body {
   }
   
 
-    @media (min-width: 768px) {
-        .profile-card {
-            flex-direction: row;
-            width: 600px;
-        }
-        .left-side {
-            margin-right: 20px;
-            margin-bottom: 0;
-        }
-        .profile-content {
-            flex: 1;
-        }
-    }
-
-    @media (max-width: 767px) {
-        .profile-card {
-            width: 100%;
-            max-width: 400px;
-        }
-        .button-container {
-            flex-wrap: wrap;
-        }
-        .follow-button, 
-        .portfolio-button, 
-        .cv-button, 
-        .blogs-button {
-            flex: 1 0 40%;
-            margin-bottom: 10px;
-        }
-        .dropdown {
-            width: 100%;
-        }
-        .dropbtn {
-            width: 100%;
-            padding-left: 0;
-            padding-right: 0;
-            text-align: center;
-        }
-        .dropdown-content {
-            width: 100%;
-            padding-left: 0;
-            padding-right: 0;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .profile-image {
-            width: 100px;
-            height: 100px;
-        }
-        .company-logo {
-            width: 70px;
-            height: 70px;
-        }
-        .profile-content h1 {
-            font-size: 20px;
-        }
-        .profile-stats {
-            flex-wrap: wrap;
-        }
-        .profile-stats div {
-            flex: 1 0 33%;
-            margin-bottom: 10px;
-        }
-        .follow-button, 
-        .portfolio-button, 
-        .cv-button, 
-        .blogs-button {
-            flex: 1 0 100%;
-        }
-    }
+    

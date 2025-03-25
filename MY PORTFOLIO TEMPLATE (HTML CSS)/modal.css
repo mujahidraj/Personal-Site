@@ -10,6 +10,10 @@
     overflow-y: auto;
 }
 
+.dark-mode .modal-description{
+    color: black;
+}
+
 .modal-content {
     background: white;
     margin: 5% auto;

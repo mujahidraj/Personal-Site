@@ -44,12 +44,14 @@
     
     .content {
         flex-direction: column;
+        color: black;
     }
     
     .content-1, .content-2, .content-3, 
     .content-4, .content-5, .content-6 {
         width: 95%;
         margin: 10px auto;
+        color: black;
     }
     .filter-option {
         flex-wrap: wrap;
@@ -155,6 +157,8 @@
         align-items: center;
         text-align: center;
     }
+
+
     
     .footer-description, .blog-post, .popular-tags {
         width: 100%;

@@ -34,6 +34,7 @@
 .dark-mode .content-20   {
     background: linear-gradient(270deg, #2a2a4a, #282842 , #3a2a4a);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: black;
 }
 
 .theme-toggle {
