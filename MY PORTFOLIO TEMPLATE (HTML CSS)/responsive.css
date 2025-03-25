@@ -76,6 +76,29 @@
         text-align: center;
         min-width: 120px;
     }
+    .popular-tags {
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    
+    .footer-tag {
+        justify-content: center;
+    }
+    
+    .tags {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+    
+    .tag {
+        width: calc(25% - 10px);
+        min-width: 80px;
+        margin: 0;
+    }
+
 }
 
 
@@ -164,5 +187,23 @@
     .art-option i {
         font-size: 12px;
         margin-right: 4px;
+    }
+    .popular-tags {
+        padding: 0 5px;
+    }
+    
+    .tags {
+        gap: 5px;
+    }
+    
+    .tag {
+        width: calc(33.33% - 6px);
+        min-width: 70px;
+        font-size: 12px;
+        padding: 4px 0;
+    }
+    .popular-text {
+        font-size: 16px;
+        margin-bottom: 8px;
     }
 }
