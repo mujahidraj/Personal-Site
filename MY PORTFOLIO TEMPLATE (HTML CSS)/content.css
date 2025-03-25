@@ -21,6 +21,8 @@
 
 }
 
+
+
 .content-1:hover, .content-2:hover, .content-3:hover, .content-4:hover, .content-5:hover, .content-6:hover {
     box-shadow: 0px 0px 20px rgba(83, 83, 84, 0.5);
 }
@@ -75,7 +77,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    gap: 10px; /* Adds spacing between buttons */
+    gap: 10px; 
 }
 
 .page-count a {
@@ -86,41 +88,40 @@
     font-weight: 600;
     padding: 10px 15px;
     border-radius: 5px;
-    background: linear-gradient(135deg, #3498db, #2980b9); /* Gradient background */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background: linear-gradient(135deg, #3498db, #2980b9); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
 .page-count a:hover {
-    background: linear-gradient(135deg, #2980b9, #3498db); /* Gradient hover effect */
-    transform: translateY(-2px); /* Slight lift on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    background: linear-gradient(135deg, #2980b9, #3498db); 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
 }
 
-/* Active page style */
+
 .page-count .page-1 a,
 .page-count .page-2 a,
 .page-count .page-3 a,
 .page-count .page-4 a {
-    background: linear-gradient(135deg, #2c3e50, #34495e); /* Darker gradient for active page */
+    background: linear-gradient(135deg, #2c3e50, #34495e); 
 }
 
 .page-count .page-1 a:hover,
 .page-count .page-2 a:hover,
 .page-count .page-3 a:hover,
 .page-count .page-4 a:hover {
-    background: linear-gradient(135deg, #34495e, #2c3e50); /* Darker hover for active page */
+    background: linear-gradient(135deg, #34495e, #2c3e50); 
 }
 
-/* Previous and Next buttons */
 .page-count .previous a,
 .page-count .next a {
-    background: linear-gradient(135deg, #e67e22, #d35400); /* Orange gradient for navigation */
+    background: linear-gradient(135deg, #e67e22, #d35400); 
 }
 
 .page-count .previous a:hover,
 .page-count .next a:hover {
-    background: linear-gradient(135deg, #d35400, #e67e22); /* Orange hover for navigation */
+    background: linear-gradient(135deg, #d35400, #e67e22); 
 }
 
 

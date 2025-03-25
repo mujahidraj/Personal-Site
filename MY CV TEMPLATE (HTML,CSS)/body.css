@@ -6,3 +6,108 @@ body {
     color: #000000;
     background: #f9f9f9;
 }
+
+
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+        margin: 0;
+        background: #f9f9f9; 
+    }
+
+    .container {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .sidebar {
+        width: 100% !important; 
+        margin: 0 !important;
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: none;
+        background: linear-gradient(270deg, #748aea, #7186e6, #7c54a4);
+    }
+
+    .main-content {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .profile img {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    header {
+        padding: 15px 10px;
+    }
+    header h1 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+    header p {
+        font-size: 1rem;
+    }
+
+    .dropdown {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .dropbtn {
+        width: 100%;
+        padding: 12px;
+    }
+    .dropdown-content {
+        width: 100%;
+    }
+
+    .social-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+    .social-button {
+        width: 45%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .section-reference {
+        flex-direction: column;
+    }
+    .reference-1, .reference-2 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    footer {
+        padding: 15px;
+    }
+    footer p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .profile img {
+        width: 120px;
+        height: 120px;
+    }
+    .social-button {
+        width: 100%;
+    }
+    header h1 {
+        font-size: 1.3rem;
+    }
+}

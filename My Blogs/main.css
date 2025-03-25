@@ -1,4 +1,4 @@
-/* Main Content */
+
 .main-content {
     display: flex;
     gap: 16px;
@@ -7,7 +7,7 @@
     margin: 0 auto;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .main-content {
         flex-direction: column;
@@ -17,3 +17,6 @@
         order: -1;
     }
 }
+
+
+

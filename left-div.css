@@ -48,18 +48,3 @@
     object-fit: contain;
 }
 
-.social-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.social-icons a {
-    color: #fff;
-    font-size: 24px;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.social-icons a:hover {
-    transform: scale(1.2);
-    color: #007bff;
-}
