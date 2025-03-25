@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="buttons.css">
     <link rel="stylesheet" href="left-div.css">
     <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="dark-mode.css">
     <script src="https://kit.fontawesome.com/a2c1bb72d8.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
     <div class="profile-card">
         <div class="left-side">
             <div class="profile-image">
-                <img src="3.jpg" alt="Bradley Steve">
+                <img src="3.jpg" alt="Mujahid Raj">
             </div>
             <div class="company-logo">
                 <img src="1.png" alt="Company Logo">
@@ -29,18 +29,18 @@
         <div class="profile-content">
             <h1>Moizuddin Mohammad Mujahid Rashid</h1>
             <p class="username">mujahidraj65@gmail.com</p>
-            <p class="description">I'm a Web Developer, Wordpress Deisgner, UI/UX Designer and AI driven web Application developer. Click to see my works, contact information, blogs and My Personal details.You can download my Resume .</p>
+            <p class="description">I'm a Web Developer, Wordpress Designer, UI/UX Designer and AI driven web Application developer. Click to see my works, contact information, blogs and My Personal details.You can download my Resume.</p>
             <div class="profile-stats">
                 <div>
-                    <span>24</span>
+                    <span id="designs-count">24</span>
                     <small>Designs</small>
                 </div>
                 <div>
-                    <span>18</span>
+                    <span id="projects-count">18</span>
                     <small>Projects</small>
                 </div>
                 <div>
-                    <span>04</span>
+                    <span id="blogs-count">04</span>
                     <small>Blogs</small>
                 </div>
             </div>
@@ -58,9 +58,76 @@
                     <a href="CV/Mujahid Raj CV Image.jpg" download>🖼️ Image File</a>
                 </div>
             </div>
-            <button class="hire-me-button">Hire Me</button>
-           
+            <button class="hire-me-button" id="hireMeBtn">Hire Me</button>
         </div>
     </div>
+
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.removeItem('darkMode');
+            }
+        });
+
+        function animateCounters() {
+            const counters = document.querySelectorAll('.profile-stats span');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = +counter.innerText;
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        const hireMeBtn = document.getElementById('hireMeBtn');
+        hireMeBtn.addEventListener('mouseenter', () => {
+            hireMeBtn.style.transform = 'scale(1.05)';
+            hireMeBtn.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)';
+        });
+        
+        hireMeBtn.addEventListener('mouseleave', () => {
+            hireMeBtn.style.transform = 'scale(1)';
+            hireMeBtn.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
+        });
+
+        window.addEventListener('load', () => {
+            animateCounters();
+            
+            const profileImage = document.querySelector('.profile-image');
+            setInterval(() => {
+                profileImage.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    profileImage.style.transform = 'scale(1)';
+                }, 1000);
+            }, 3000);
+        });
+        
+    </script>
 </body>
 </html>

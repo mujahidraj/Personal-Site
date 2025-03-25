@@ -1,14 +1,14 @@
 
 .dark-mode {
     background-color: #121212;
-    color: #000000;
+    color: #ffffff;
 }
 
 .dark-mode .main-section {
     background: linear-gradient(90deg, #1e1e1e, #2a2a2a, #333333);
 }
 
-.about-me-description{
+.dark-mode .about-me-description{
     color: aliceblue;
 }
 

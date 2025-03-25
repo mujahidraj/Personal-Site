@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="contact.css">
     <link rel="stylesheet" href="container.css">
     <link rel="stylesheet" href="form.css">
-
+    <link rel="stylesheet" href="dark-mode.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a2c1bb72d8.js" crossorigin="anonymous"></script>
 </head>
@@ -46,17 +46,66 @@
                     <img src="1.JPG" alt="Company Logo">
                 </div>
                 <h2>Contact Form</h2>
-                <form>
+                <form id="contactForm">
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Write your project details or the message through which i can help you !"></textarea>
+                        <textarea id="message" name="message" rows="5" placeholder="Write your project details or the message through which i can help you !" required></textarea>
                     </div>
                     <button type="submit">Send Message</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.removeItem('darkMode');
+            }
+        });
+
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            console.log('Form submitted:', { email, message });
+            
+            alert('Thank you for your message! I will get back to you soon.');
+            
+            contactForm.reset();
+        });
+
+        const contactContainer = document.querySelector('.contact-container');
+        
+        function floatAnimation() {
+            contactContainer.style.animation = 'float 6s ease-in-out infinite';
+        }
+        
+        window.addEventListener('load', floatAnimation);
+    </script>
 </body>
 </html>
