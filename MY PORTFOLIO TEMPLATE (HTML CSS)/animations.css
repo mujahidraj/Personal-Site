@@ -1,0 +1,139 @@
+/* animations.css */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.content-1, .content-2, .content-3, 
+.content-4, .content-5, .content-6 ,.content-7
+,.content-8
+,.content-9
+,.content-10
+,.content-11
+,.content-12
+,.content-13,.content-14
+,.content-15
+,.content-16
+,.content-17
+,.content-18
+,.content-19{
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.content-2 { animation-delay: 0.1s; }
+.content-3 { animation-delay: 0.2s; }
+.content-4 { animation-delay: 0.3s; }
+.content-5 { animation-delay: 0.4s; }
+.content-6 { animation-delay: 0.5s; }
+.content-7 { animation-delay: 0.6s; }
+.content-8 { animation-delay: 0.7s; }
+.content-9 { animation-delay: 0.8s; }
+.content-10 { animation-delay: 0.9s; }
+.content-11 { animation-delay: 0.10s; }
+.content-12 { animation-delay: 0.11s; }
+.content-13 { animation-delay: 0.12s; }
+.content-14 { animation-delay: 0.13s; }
+.content-15 { animation-delay: 0.14s; }
+.content-16 { animation-delay: 0.15s; }
+.content-17 { animation-delay: 0.16s; }
+.content-18 { animation-delay: 0.17s; }
+.content-19 { animation-delay: 0.18s; }
+.content-20 { animation-delay: 0.19s; }
+
+
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 83, 134, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 5px;
+}
+
+.content-photo-1, .content-photo-2, 
+.content-photo-3, .content-photo-4, 
+.content-photo-5, .content-photo-6,.content-photo-7
+,.content-photo-8,.content-photo-9,.content-photo-10,.content-photo-11,.content-photo-12
+,.content-photo-13,.content-photo-14,.content-photo-15
+,.content-photo-16,.content-photo-17,.content-photo-18,.content-photo-19,.content-photo-20 {
+    position: relative;
+}
+
+.content-photo-1:hover .project-overlay,
+.content-photo-2:hover .project-overlay,
+.content-photo-3:hover .project-overlay,
+.content-photo-4:hover .project-overlay,
+.content-photo-5:hover .project-overlay,
+.content-photo-6:hover .project-overlay,
+.content-photo-7:hover .project-overlay,
+.content-photo-8:hover .project-overlay,
+.content-photo-9:hover .project-overlay,
+.content-photo-10:hover .project-overlay,
+.content-photo-11:hover .project-overlay,
+.content-photo-12:hover .project-overlay,
+.content-photo-13:hover .project-overlay,
+.content-photo-14:hover .project-overlay,
+.content-photo-15:hover .project-overlay,
+.content-photo-16:hover .project-overlay,
+.content-photo-17:hover .project-overlay,
+.content-photo-18:hover .project-overlay,
+.content-photo-19:hover .project-overlay,
+.content-photo-20:hover .project-overlay {
+
+    opacity: 1;
+}
+
+.view-project {
+    background: white;
+    color: rgb(0, 83, 134);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.view-project:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.skill-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    margin: 10px 0;
+    height: 20px;
+    overflow: hidden;
+}
+
+.skill-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #748aea, #7c54a4);
+    border-radius: 20px;
+    position: relative;
+    transition: width 1.5s ease-out;
+}
+
+.skill-percentage {
+    position: absolute;
+    right: 10px;
+    color: white;
+    font-size: 12px;
+    line-height: 20px;
+}
