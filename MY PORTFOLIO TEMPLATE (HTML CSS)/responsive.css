@@ -1,0 +1,168 @@
+
+@media (max-width: 760px) {
+    body {
+        padding-left: 0;
+        
+    }
+    
+    .main-div {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px;
+    }
+    
+    .profile-picture {
+        margin: 10px;
+    }
+    
+    .profile-name {
+        width: 100%;
+        text-align: center;
+        padding-left: 0;
+    }
+    
+    .dropdown {
+        margin: 10px auto;
+    }
+    
+    .portfolio, .about, .contact {
+        margin: 5px;
+        padding: 8px;
+    }
+    
+    .main-section {
+        width: 100%;
+    }
+    
+    .content {
+        flex-direction: column;
+    }
+    
+    .content-1, .content-2, .content-3, 
+    .content-4, .content-5, .content-6 {
+        width: 95%;
+        margin: 10px auto;
+    }
+    .filter-option {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .filter-text {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 8px;
+        font-size: 18px;
+    }
+
+    .all-option,
+    .design-option,
+    .photos-option,
+    .art-option {
+        padding: 8px 16px;
+        margin: 0;
+        font-size: 14px;
+        flex: 1 0 calc(50% - 20px);
+        text-align: center;
+        min-width: 120px;
+    }
+}
+
+
+@media (max-width: 370px) {
+    .sidebar {
+        padding: 10px;
+    }
+    
+    .profile-picture img {
+        height: 100px;
+        width: 100px;
+    }
+    
+    .profile-name p {
+        font-size: 16px;
+    }
+    
+    .dropdown .dropbtn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .portfolio, .about, .contact {
+        padding: 5px;
+        margin: 3px;
+    }
+    
+    .portfolio-text, .about-text, .contact-text {
+        font-size: 12px;
+    }
+    
+    .main-heading .heading p {
+        font-size: 24px;
+    }
+    
+    .filter-option {
+        flex-wrap: wrap;
+    }
+    
+    .all-option, .design-option, 
+    .photos-option, .art-option {
+        padding: 5px 10px;
+        margin: 3px;
+    }
+    
+    .content-name-1, .content-name-2, 
+    .content-name-3, .content-name-4, 
+    .content-name-5, .content-name-6 {
+        font-size: 16px;
+    }
+    
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-description, .blog-post, .popular-tags {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .filter-option {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .filter-text {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+
+    .all-option,
+    .design-option,
+    .photos-option,
+    .art-option {
+        width: 90%;
+        padding: 6px 12px;
+        font-size: 13px;
+        margin: 2px 0;
+    }
+
+    .all-option i,
+    .design-option i,
+    .photos-option i,
+    .art-option i {
+        font-size: 12px;
+        margin-right: 4px;
+    }
+}
