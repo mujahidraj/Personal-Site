@@ -20,9 +20,17 @@
 
 <body>
 
-    <header class="header">
-        <h1>MY BLOG</h1>
-        <p>Welcome to the blog of <span>Moizuddin Mohammad Mujahid Rashid</span></p>
+    <header class="video-header">
+        <div class="video-background">
+            <video autoplay muted loop>
+                <source src="background.mp4" type="video/mp4">
+                <img src="headerb.jpg" alt="Header background">
+            </video>
+        </div>
+        <div class="header-content">
+            <h1>MY BLOG</h1>
+            <p>Welcome to the blog of <span>Moizuddin Mohammad Mujahid Rashid</span></p>
+        </div>
     </header>
 
 
@@ -319,7 +327,6 @@
         localStorage.setItem('pageViews', pageViews);
         document.getElementById('page-counter').textContent = `Page Views: ${pageViews}`;
 
-        // Dark Mode Toggle
         const darkModeToggle = document.createElement('button');
         darkModeToggle.className = 'dark-mode-toggle';
         darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
