@@ -1,0 +1,72 @@
+
+body:not(.dark-mode) {
+    --primary-color: #20c997;
+    --primary-dark: #0ca678;
+    --secondary-color: #f8f9fa;
+    --light-color: #ffffff;
+    --dark-color: #f1f3f5;
+    --text-color: #343a40;
+    --text-dark: #212529;
+    --bg-color: #e9ecef;
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    --accent-color: #12b886;
+    --highlight-color: #0ca678;
+}
+
+body:not(.dark-mode) .fullscreen-header {
+    background: linear-gradient(135deg, var(--primary-color), #e9ecef);
+}
+
+body:not(.dark-mode) .header-overlay {
+    background: radial-gradient(circle at 20% 50%, rgba(32, 201, 151, 0.2) 0%, rgba(241, 243, 245, 0.9) 70%);
+}
+
+body:not(.dark-mode) .header-titles h1,
+body:not(.dark-mode) .header-contacts i {
+    color: var(--text-color);
+}
+
+body:not(.dark-mode) .header-titles h2,
+body:not(.dark-mode) .header-contacts span {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+body:not(.dark-mode) .social-btn {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+}
+
+body:not(.dark-mode) .resume-left {
+    background: var(--light-color);
+}
+
+body:not(.dark-mode) .resume-section h3 {
+    color: var(--text-color);
+}
+
+body:not(.dark-mode) .circle-text,
+body:not(.dark-mode) .circle-progress p {
+    color: var(--text-color);
+}
+
+body:not(.dark-mode) .project-card,
+body:not(.dark-mode) .certification-item,
+body:not(.dark-mode) .reference-item {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark-mode) .resume-footer {
+    background: var(--light-color);
+}
+
+body:not(.dark-mode) .footer-copyright {
+    color: var(--text-dark);
+}
+
+body:not(.dark-mode) .theme-toggle {
+    background: var(--primary-color);
+    color: white;
+}
