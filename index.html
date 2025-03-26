@@ -21,6 +21,8 @@
             <div class="company-logo">
                 <img src="1.png" alt="Company Logo">
             </div>
+            <button class="self-coded-btn" id="selfCodedBtn"><a href="https://mujahidraj.github.io/Personal-Site/" style="text-decoration: none; color: white;">AI Coded Version</a></button>
+
             <div class="social-icons">
                 <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://www.github.com" target="_blank"><i class="fab fa-github"></i></a>
@@ -117,6 +119,10 @@
             hireMeBtn.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
         });
 
+         const selfCodedBtn = document.getElementById('selfCodedBtn');
+        selfCodedBtn.addEventListener('click', () => {
+            alert("This is coded with use of AI tools. Click okay to view.");
+        });
         window.addEventListener('load', () => {
             animateCounters();
             
