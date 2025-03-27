@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const mobileMenu = document.querySelector('.mobile-menu');
     
@@ -9,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Close mobile menu when clicking on a link
     const mobileLinks = document.querySelectorAll('.mobile-nav-menu a');
     mobileLinks.forEach(link => {
         link.addEventListener('click', function() {
@@ -17,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Smooth scrolling for navigation
     const navLinks = document.querySelectorAll('.nav-item, .mobile-nav-menu a');
     
     navLinks.forEach(link => {
@@ -34,9 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    // Active nav link on scroll
-    const sections = document.querySelectorAll('.section');
+        const sections = document.querySelectorAll('.section');
     
     window.addEventListener('scroll', function() {
         let current = '';
@@ -59,15 +54,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Project filtering
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
     
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Remove active class from all buttons
             filterBtns.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
             this.classList.add('active');
             
             const filterValue = this.getAttribute('data-filter');
@@ -82,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Project data - using your existing projects from dynamic.js
     const projects = [
         {
             id: 1,
@@ -210,11 +201,8 @@ document.addEventListener('DOMContentLoaded', function() {
             link: "https://mujahidraj.github.io/Hotel-management-system-CSHARP/",
             tags: ["csharp", "desktop", "sql"]
         }
-        // Add all your other projects following the same format
-        // Make sure to update the category to match filter values (web, app, design)
     ];
     
-    // Render projects
     const projectsGrid = document.querySelector('.projects-grid');
     
     if (projectsGrid) {
@@ -246,7 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Project Modal
     const modal = document.querySelector('.project-modal');
     const closeModal = document.querySelector('.close-modal');
     
@@ -289,7 +276,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Form submission
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -299,18 +285,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = this.querySelector('input[type="email"]').value;
             const message = this.querySelector('textarea').value;
             
-            // Here you would typically send the form data to a server
             console.log('Form submitted:', { name, email, message });
             
-            // Show success message
             alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
             
-            // Reset form
             this.reset();
         });
     }
     
-    // Animate skills on scroll
     const skillBars = document.querySelectorAll('.skill-progress');
     
     function animateSkills() {
@@ -320,7 +302,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Initialize animations when skills section is in view
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -333,4 +314,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (skillsSection) {
         observer.observe(skillsSection);
     }
+const themeToggle = document.getElementById('themeToggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+const currentTheme = localStorage.getItem('theme') || 
+                    (prefersDarkScheme.matches ? 'dark' : 'light');
+if (currentTheme === 'dark') {
+    document.documentElement.classList.add('dark-mode');
+}
+
+themeToggle.addEventListener('click', function() {
+    document.documentElement.classList.toggle('dark-mode');
+    const theme = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+});
 });

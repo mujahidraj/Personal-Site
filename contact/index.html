@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me</title>
-    <link rel="stylesheet" href="body.css">
-    <link rel="stylesheet" href="contact.css">
-    <link rel="stylesheet" href="container.css">
-    <link rel="stylesheet" href="form.css">
-    <link rel="stylesheet" href="dark-mode.css">
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/container.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a2c1bb72d8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
     <div class="contact-container">
@@ -43,7 +45,7 @@
            
             <div class="contact-form">
                 <div class="form-logo">
-                    <img src="1.JPG" alt="Company Logo">
+                    <img src="images/1.JPG" alt="Company Logo">
                 </div>
                 <h2>Contact Form</h2>
                 <form id="contactForm">
@@ -58,54 +60,15 @@
             </div>
         </div>
     </div>
+    
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
 
     <button class="dark-mode-toggle" id="darkModeToggle">
         <i class="fas fa-moon"></i>
     </button>
-
-    <script>
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const icon = darkModeToggle.querySelector('i');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.removeItem('darkMode');
-            }
-        });
-
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            console.log('Form submitted:', { email, message });
-            
-            alert('Thank you for your message! I will get back to you soon.');
-            
-            contactForm.reset();
-        });
-
-        const contactContainer = document.querySelector('.contact-container');
-        
-        function floatAnimation() {
-            contactContainer.style.animation = 'float 6s ease-in-out infinite';
-        }
-        
-        window.addEventListener('load', floatAnimation);
-    </script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
