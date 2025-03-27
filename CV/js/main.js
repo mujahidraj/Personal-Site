@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
             labels: ['Open-Source', 'Coding Competitions', 'Volunteer Work', 'Tech Conferences', 'Sports'],
             datasets: [{
                 label: 'Participation Level',
-                data: [70, 30, 60, 50, 90],
+                data: [75, 30, 60, 40, 90],
                 backgroundColor: [
                     'rgba(52, 152, 219, 0.7)',
                     'rgba(155, 89, 182, 0.7)',

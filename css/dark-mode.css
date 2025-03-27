@@ -80,3 +80,7 @@
   .dark-mode-toggle i {
     font-size: 20px;
   }
+
+  .dark-mode #video-background {
+    filter: brightness(0.5);
+}
