@@ -241,6 +241,10 @@
     .ai-tools-grid {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     }
+    .video-background video{
+        object-fit: fill;
+        object-position: center;
+    }
 }
 
 @media (max-width: 768px) {
@@ -268,6 +272,10 @@
     .projects-grid, .references-grid {
         grid-template-columns: 1fr;
     }
+    .video-background video{
+        object-fit: fill;
+        object-position: center;
+    }
 }
 
 @media (max-width: 576px) {
@@ -288,5 +296,9 @@
         position: static;
         margin-bottom: 10px;
         display: inline-block;
+    }
+    .video-background video{
+        object-fit: fill;
+        object-position: center;
     }
 }

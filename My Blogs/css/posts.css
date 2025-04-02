@@ -3,7 +3,8 @@
 }
 
 .post {
-    background: linear-gradient(135deg, #748aea, #7c54a4);
+    background:#b7dcdb;
+    
     margin-bottom: 16px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
@@ -80,3 +81,5 @@
     padding: 2px 8px;
     border-radius: 50%;
 }
+
+

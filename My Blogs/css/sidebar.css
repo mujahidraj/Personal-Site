@@ -3,7 +3,8 @@
 }
 
 .sidebar-section {
-    background: linear-gradient(135deg, #748aea, #7c54a4);
+    background: #b7dcdb;
+    ;
     margin-bottom: 16px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
@@ -46,7 +47,8 @@
 }
 
 .popular-post:hover {
-    background: linear-gradient(135deg, #a2b3ff, #a882ce);
+    background: #b7dcdb;
+    ;
 }
 
 .popular-post:last-child {
@@ -72,7 +74,7 @@
 
 .popular-post-content p {
     font-size: 14px;
-    color: #e8e8e8;
+    color: gray;
     margin: 4px 0 0;
 }
 
