@@ -1,371 +1,831 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mujahid Raj | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/component.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/projects.css">
-    <link rel="stylesheet" href="css/sections.css">
+    <title>Mujahid Raj - Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/a2c1bb72d8.js" crossorigin="anonymous"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="shortcut icon" href="images/Mujahid Raj.png" type="image/x-icon">
+    <!-- Google Fonts - Hind Siliguri -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: linear-gradient(360deg, black 50%,   #302b63 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #e6e6e6;
+        }
+        
+        .glass-card {
+            background: rgba(15, 12, 41, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 195, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border: 1px solid rgba(0, 195, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+        }
+        
+        .nav-glass {
+            background: rgba(15, 12, 41, 0.7);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(0, 195, 255, 0.4);
+        }
+        
+        .hero-bg {
+            background: url('images/tech.webp') no-repeat center center;
+            background-size: cover;
+        }
+        
+        .skill-bar {
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 195, 255, 0.8);
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 5px rgba(0, 195, 255, 0.7),
+                         0 0 10px rgba(0, 195, 255, 0.5),
+                         0 0 15px rgba(0, 195, 255, 0.3);
+        }
+        
+        .neon-border {
+            border: 1px solid rgba(0, 195, 255, 0.4);
+            box-shadow: 0 0 10px rgba(0, 195, 255, 0.3);
+        }
+        
+        .btn-neon {
+            background: rgba(0, 195, 255, 0.1);
+            border: 1px solid rgba(0, 195, 255, 0.4);
+            color: #00c3ff;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-neon:hover {
+            background: rgba(0, 195, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+            color: #fff;
+        }
+        
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: rgba(15, 12, 41, 0.9);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 195, 255, 0.4);
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .filter-btn.active {
+            background: rgba(0, 195, 255, 0.2);
+            border: 1px solid rgba(0, 195, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+        }
+        
+        .testimonial-slider {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .testimonial-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card.popular {
+            transform: scale(1.05);
+            border: 2px solid rgba(0, 195, 255, 0.8);
+            box-shadow: 0 0 20px rgba(0, 195, 255, 0.4);
+        }
+        
+        .form-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 195, 255, 0.4);
+            border-radius: 8px;
+            padding: 12px 15px;
+            color: white;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 195, 255, 0.5);
+            border-color: rgba(0, 195, 255, 0.8);
+        }
+        
+        .skill-item {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
 </head>
-
-<body>
-    <div id="particles-js" class="particles-js"></div>
-    <div class="nav-container">
-        <ul class="nav-menu">
-            <li class="nav-item active" data-target="home">
-                <i class="fas fa-home"></i>
-            </li>
-            <li class="nav-item" data-target="about">
-                <i class="fas fa-user"></i>
-            </li>
-            <li class="nav-item" data-target="skills">
-                <i class="fas fa-cog"></i>
-            </li>
-            <li class="nav-item" data-target="projects">
-                <i class="fas fa-briefcase"></i>
-            </li>
-            <li class="nav-item" data-target="contact">
-                <i class="fas fa-envelope"></i>
-            </li>
-        </ul>
-    </div>
-
-    <div class="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
-    </div>
-    <div class="mobile-menu">
-        <ul class="mobile-nav-menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-
-    <header class="header" id="home">
-        <video autoplay muted loop class="header-video">
-            <source src="images/background.mp4" type="video/mp4">
-        </video>
-        <div class="header-content">
-            <img src="images/1.JPG" alt="">
-            <h1 class="header-title animate__animated animate__fadeInDown">Moizuddin Mohammad Mujahid Rashid</h1>
-            <p class="header-subtitle animate__animated animate__fadeInUp">Web Developer, wordpress Web Designer & UI/UX
-                Designer</p>
-            <div class="header-buttons">
-                <a href="#projects" class="btn btn-primary">View Portfolio</a>
-                <a href="#contact" class="btn btn-outline">Contact Me</a>
+<body class="text-white">
+    <!-- Header with Navigation -->
+    <header class="nav-glass fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3 neon-border">
+                        <span class="text-white font-bold  text-lg"><img class="rounded-[50px]" src="images/Mujahid Raj.png" alt=""></span>
+                    </div>
+                    <span class="text-xl font-bold neon-text">Mujahid Raj</span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="hover:text-blue-300 transition">Home</a>
+                    <a href="../Portfolio/index.html" class="hover:text-blue-300 transition">Portfolio</a>
+                    <a href="../index.html#skills" class="hover:text-blue-300 transition">Skills</a>
+                    <a href="../index.html#services" class="hover:text-blue-300 transition">Services</a>
+                    <a href="../index.html#features" class="hover:text-blue-300 transition">Features</a>
+                    <a href="../My Blogs/index.html" class="hover:text-blue-300 transition">Blogs</a>
+                    <a href="../contact/index.html" class="hover:text-blue-300 transition">Contact</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="btn-neon px-4 py-2 rounded-full font-semibold">Hire Me</button>
+                    <button class="p-2 rounded-full btn-neon" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="section" id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="images/5.jpg" alt="Mujahid Raj" class="profile-img">
-                    <div class="about-img-grid">
-                        <img src="images/3.jpg" alt="Work 1">
-                        <img src="images/4.jpg" alt="Work 2">
-                    </div>
-                </div>
-                <div class="about-text">
-                    <h3>Professional Web Developer & Designer</h3>
-                    <p>Dedicated and results-oriented Software Engineer and Data Science Student with expertise in web
-                        development, UI/UX design, and data science. Skilled in front-end and back-end technologies
-                        including HTML, CSS, JavaScript, TypeScript, PHP, React.js, Next.js, Node.js, Nest.js, Tailwind
-                        CSS, Bootstrap, MySQL, PostgreSQL, and more.</p>
-                    <p>Experienced in WordPress website design using Elementor, crafting responsive and visually
-                        appealing websites tailored for businesses and individuals.</p>
-                    <div class="about-info">
-                        <div class="info-item">
-                            <span>Name:</span>
-                            <p>Moizuddin Mohammad Mujahid Rashid (RAJ)</p>
-                        </div>
-                        <div class="info-item">
-                            <span>Email:</span>
-                            <p>mujahidraj65@gmail.com</p>
-                        </div>
-                        <div class="info-item">
-                            <span>From:</span>
-                            <p>Dhaka, Bangladesh</p>
-                        </div>
-                    </div>
-                    <a href="CV/Mujahid Raj CV Original.pdf" download class="btn btn-primary">
-                        <i class="fas fa-download"></i> Download CV
-                    </a>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16 pb-28 hero-bg">
+        <div class="container mx-auto px-4 text-center">
+            <div class="glass-card p-8 md:p-10 max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 neon-text">Mujahid Raj</h1>
+                <p class="text-xl mb-6">Web Developer & UI/UX Designer</p>
+                <p class="mb-8">I create beautiful, functional digital experiences with modern technologies and innovative design.</p>
+                <div class="flex justify-center space-x-4">
+                    <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a href="#portfolio">View My Work</a></button>
+                    <button class="btn-neon px-6 py-3 rounded-full font-semibold">Download CV</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section bg-light" id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skills-chart">
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Web Design</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
+    <!-- About Section -->
+    <section id="about" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 neon-text">About Me</h2>
+            
+            <div class="glass-card p-8 md:p-10 max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <img src="images/4.jpg" alt="Mujahid Raj" class="w-full h-auto rounded-lg">
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>UI/UX Design</span>
-                            <span>85%</span>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4">Hello! I'm Mujahid</h3>
+                        <p class="mb-4">I'm a passionate web developer and UI/UX designer based in Dhaka, Bangladesh. With expertise in modern web technologies, I create digital solutions that are both visually appealing and highly functional.</p>
+                        <p class="mb-6">I enjoy turning complex problems into simple, beautiful and intuitive designs. When I'm not coding or pushing pixels, you'll find me exploring new technologies or contributing to open source projects.</p>
+                        <div class="flex space-x-4">
+                            <div class="text-center">
+                                <p class="text-2xl font-bold neon-text">15+</p>
+                                <p>Projects</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold neon-text">2+</p>
+                                <p>Years Experience</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold neon-text">10+</p>
+                                <p>Happy Clients</p>
+                            </div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>WordPress</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>Data Analysis</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-info">
-                            <span>PERN & MERN Stack Development(Learning)</span>
-                            <span>50%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 50% "></div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="skills-text">
-                    <h3>My Expertise</h3>
-                    <p>With a strong foundation in both design and development, I create digital experiences that are
-                        not only visually appealing but also highly functional and user-friendly.</p>
-                    <p>My technical skills span across multiple disciplines allowing me to handle projects from concept
-                        to completion.</p>
-                    <div class="skills-tags">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>Tailwind</span>
-                        <span>NestJs</span>
-                        <span>NextJs</span>
-                        <span>TypeScript</span>
-                        <span>Postgres</span>
-                        <span>C#</span>
-                        <span>JavaScript</span>
-                        <span>Java</span>
-                        <span>C++</span>
-                        <span>C</span>
-                        <span>React</span>
-                        <span>Node.js</span>
-                        <span>UI/UX</span>
-                        <span>Canva</span>
-                        <span>Figmas</span>
-                        <span>WordPress</span>
-                        <span>Python</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="filter-options">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web Design</button>
-                <button class="filter-btn" data-filter="app">Web Application</button>
-                <button class="filter-btn" data-filter="design">UI/UX</button>
-            </div>
-            <div class="projects-grid">
-            </div>
-        </div>
-    </section>
-
-    <section class="section bg-light" id="pricing">
-        <div class="container">
-            <h2 class="section-title">My Pricing</h2>
-            <div class="pricing-plans">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Basic</h3>
-                        <div class="price">3000 <span>BDT/month</span></div>
+    <!-- Skills Section -->
+    <section id="skills" class="glass-card py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 neon-text">Technical Skills</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Technical Skills -->
+                <div class="glass-card p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-center">Technical Expertise</h3>
+                    <div class="space-y-4" id="technicalSkills">
+                        <!-- Skills will be populated by JavaScript -->
                     </div>
-                    <ul class="pricing-features">
-                        <li>WordPress Web Design</li>
-                        <li>UI/UX Design</li>
-                        <li>Basic Data analysis</li>
-                        <li>Mail support</li>
-                    </ul>
-                    <button class="btn btn-outline">Choose Plan</button>
                 </div>
-                <div class="pricing-card featured">
-                    <div class="pricing-header">
-                        <h3>Professional</h3>
-                        <div class="price">7000 <span>BDT/month</span></div>
+                
+                <!-- Tools & Technologies -->
+                <div class="glass-card p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-center">Tools & Technologies</h3>
+                    <div class="grid grid-cols-2 gap-4" id="toolsTechnologies">
+                        <!-- Tools will be populated by JavaScript -->
                     </div>
-                    <ul class="pricing-features">
-                        <li>Web Design</li>
-                        <li>UI/UX Design</li>
-                        <li>Primary Data Analysis</li>
-                        <li>Endless Mail Support</li>
-                    </ul>
-                    <button class="btn btn-primary">Choose Plan</button>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Premium</h3>
-                        <div class="price">12000 <span>BDT/month</span></div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Web Design</li>
-                        <li>UI/UX Design</li>
-                        <li>Data Analysis And Visualization</li>
-                        <li>AI Driven web Application</li>
-                    </ul>
-                    <button class="btn btn-outline">Choose Plan</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>mujahidraj65@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+8801796059406</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Kuratoli, Kuril, Dhaka, Bangladesh</p>
-                        </div>
-                    </div>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 neon-text">My Portfolio</h2>
+            
+            <div class="text-center mb-8">
+                <button class="filter-btn btn-neon px-4 py-2 rounded-full font-semibold mx-2 active" data-filter="all">All Projects</button>
+                <button class="filter-btn btn-neon px-4 py-2 rounded-full font-semibold mx-2" data-filter="web">Web Design</button>
+                <button class="filter-btn btn-neon px-4 py-2 rounded-full font-semibold mx-2" data-filter="app">Web Apps</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsContainer">
+                <!-- Projects will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="glass-card py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 neon-text">Pricing Plans</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto" id="pricingContainer">
+                <!-- Pricing cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 neon-text">Client Testimonials</h2>
+            
+            <div class="glass-card p-6 testimonial-slider">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <!-- Testimonials will be populated by JavaScript -->
                 </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Subject">
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Send Message
+                
+                <div class="flex justify-center mt-6">
+                    <button class="btn-neon p-2 rounded-full mr-2" id="testimonialPrev">
+                        <i class="fas fa-chevron-left"></i>
                     </button>
-                </form>
+                    <button class="btn-neon p-2 rounded-full" id="testimonialNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <h3>Mujahid Raj</h3>
-                    <p>Passionate about frontend and backend development, UI/UX design, software engineering, and
-                        WordPress. Let's create something amazing together!</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
+    <!-- Contact Section -->
+    <section id="contact" class="glass-card py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 neon-text">Get In Touch</h2>
+            
+            <div class="glass-card p-8 max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope mr-3 text-blue-300 text-xl"></i>
+                                <span>mujahidraj65@gmail.com</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-phone mr-3 text-blue-300 text-xl"></i>
+                                <span>+8801796059406</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-map-marker-alt mr-3 text-blue-300 text-xl"></i>
+                                <span>Kuratoli, Kuril, Dhaka, Bangladesh</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-xl font-semibold mb-4">Follow Me</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full btn-neon flex items-center justify-center">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full btn-neon flex items-center justify-center">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full btn-neon flex items-center justify-center">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full btn-neon flex items-center justify-center">
+                                    <i class="fab fa-dribbble"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-blog">
-                    <h3>Blog Posts</h3>
-                    <div class="blog-post">
-                        <h4>Web Design</h4>
-                        <p>Details About Web designing</p>
-                    </div>
-                    <div class="blog-post">
-                        <h4>UI/UX Design</h4>
-                        <p>Details About UI/UX Design</p>
+                    
+                    <div>
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <input type="text" placeholder="Your Name" class="form-input" required>
+                            </div>
+                            <div>
+                                <input type="email" placeholder="Your Email" class="form-input" required>
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Subject" class="form-input" required>
+                            </div>
+                            <div>
+                                <textarea placeholder="Your Message" rows="5" class="form-input" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-neon w-full py-3 rounded-full font-semibold">Send Message</button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Mujahid Raj. All Rights Reserved.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-blue-900 bg-opacity-30 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 neon-text">Mujahid Raj</h3>
+                    <p>Web Developer & UI/UX Designer creating beautiful, functional digital experiences.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-blue-300 transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-blue-300 transition">About</a></li>
+                        <li><a href="#skills" class="hover:text-blue-300 transition">Skills</a></li>
+                        <li><a href="#portfolio" class="text-blue-300 transition">Portfolio</a></li>
+                        <li><a href="#contact" class="hover:text-blue-300 transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-blue-300"></i>
+                            <span>mujahidraj65@gmail.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-blue-300"></i>
+                            <span>+8801796059406</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-300"></i>
+                            <span>Kuratoli, Kuril, Dhaka, Bangladesh</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white border-opacity-20 mt-10 pt-6 text-center">
+                <p>&copy; 2023 Mujahid Raj. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <div class="project-modal">
+    <!-- Project Modal -->
+    <div class="project-modal" id="projectModal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-image-container"></div>
-            <div class="modal-text-content">
-                <h2 class="modal-title"></h2>
-                <p class="modal-category"></p>
-                <p class="modal-description"></p>
-                <div class="modal-tags"></div>
-                <a class="btn btn-primary modal-link" href="#" target="_blank">Visit Project</a>
+            <span class="absolute top-4 right-4 text-2xl cursor-pointer text-white" id="closeModal">&times;</span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <img src="" alt="Project Image" class="w-full h-64 object-cover rounded-lg" id="modalImage">
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-2 neon-text" id="modalTitle"></h2>
+                    <p class="text-blue-300 mb-4" id="modalCategory"></p>
+                    <p class="mb-4" id="modalDescription"></p>
+                    <div class="flex flex-wrap gap-2 mb-6" id="modalTags"></div>
+                    <a href="#" target="_blank" class="btn-neon inline-block px-6 py-2 rounded-full font-semibold mr-4" id="modalLink">Visit Project</a>
+                    <button class="btn-neon px-6 py-2 rounded-full font-semibold" id="closeModalBtn">Close</button>
+                </div>
             </div>
         </div>
     </div>
-    <button class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon"></i>
-        <i class="fas fa-sun"></i>
-    </button>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="js/main.js"></script>
-</body>
 
+    <!-- JavaScript -->
+    <script>
+        // Data for the portfolio
+        const portfolioData = {
+            technicalSkills: [
+                { name: "HTML5", level: 90 },
+                { name: "CSS3", level: 85 },
+                { name: "JavaScript", level: 80 },
+                { name: "React.js", level: 75 },
+                { name: "Next.js", level: 70 },
+                { name: "Node.js", level: 75 },
+                { name: "Express.js", level: 70 },
+                { name: "MongoDB", level: 65 }
+            ],
+            
+            toolsTechnologies: [
+                { name: "Git", icon: "fab fa-git-alt" },
+                { name: "VS Code", icon: "fas fa-code" },
+                { name: "Figma", icon: "fab fa-figma" },
+                { name: "Photoshop", icon: "fas fa-paint-brush" },
+                { name: "Tailwind CSS", icon: "fas fa-paint-brush" },
+                { name: "Bootstrap", icon: "fas fa-paint-brush" },
+                { name: "SASS", icon: "fab fa-sass" },
+                { name: "NPM", icon: "fab fa-npm" }
+            ],
+            
+            projects: [
+                {
+                    id: 1,
+                    title: "Health Tracker",
+                    category: "app",
+                    description: "Web application for tracking health metrics with BMI, WHR, and TDEE calculators.",
+                    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    link: "https://mujahidraj.github.io/Health-Tracker/",
+                    tags: ["JavaScript", "HTML/CSS", "Health"]
+                },
+                {
+                    id: 2,
+                    title: "SpaceX Homepage Clone",
+                    category: "web",
+                    description: "Frontend clone of the SpaceX website homepage built with HTML and CSS.",
+                    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    link: "https://mujahidraj.github.io/SpaceX-HomePage-Clone/",
+                    tags: ["HTML", "CSS", "Responsive"]
+                },
+                {
+                    id: 3,
+                    title: "Netflix Bangladesh Clone",
+                    category: "web",
+                    description: "Clone of Netflix homepage tailored for Bangladesh with responsive design.",
+                    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    link: "https://mujahidraj.github.io/Netflix-Bangladesh-HomePage-Clone/",
+                    tags: ["HTML", "CSS", "UI Design"]
+                },
+                {
+                    id: 4,
+                    title: "Coming Soon Template",
+                    category: "web",
+                    description: "Minimalist 'Coming Soon' page template with engaging design.",
+                    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    link: "https://mujahidraj.github.io/Coming-Soon/",
+                    tags: ["HTML", "CSS", "Template"]
+                },
+                {
+                    id: 5,
+                    title: "Sign Up/In Template",
+                    category: "web",
+                    description: "Responsive authentication page template with modern design.",
+                    image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    link: "https://mujahidraj.github.io/Sign-UP-IN-Template/",
+                    tags: ["HTML", "CSS", "UI/UX"]
+                },
+                {
+                    id: 6,
+                    title: "TechWisdom Learning Platform",
+                    category: "app",
+                    description: "Advanced online learning platform with Next.js and modern technologies.",
+                    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    link: "#",
+                    tags: ["Next.js", "Fullstack", "Education"]
+                }
+            ],
+            
+            pricingPlans: [
+                {
+                    title: "Basic",
+                    price: "$199",
+                    popular: false,
+                    features: [
+                        "1 Page Website",
+                        "Responsive Design",
+                        "Contact Form",
+                        "1 Revision",
+                        "5 Days Delivery"
+                    ]
+                },
+                {
+                    title: "Standard",
+                    price: "$399",
+                    popular: true,
+                    features: [
+                        "5 Page Website",
+                        "Responsive Design",
+                        "CMS Integration",
+                        "Contact Form",
+                        "SEO Basic",
+                        "3 Revisions",
+                        "7 Days Delivery"
+                    ]
+                },
+                {
+                    title: "Premium",
+                    price: "$799",
+                    popular: false,
+                    features: [
+                        "10 Page Website",
+                        "E-Commerce Functionality",
+                        "Advanced SEO",
+                        "Custom Design",
+                        "Unlimited Revisions",
+                        "Maintenance 1 Month",
+                        "14 Days Delivery"
+                    ]
+                }
+            ],
+            
+            testimonials: [
+                {
+                    name: "Sarah Johnson",
+                    role: "Marketing Director",
+                    content: "Mujahid delivered an exceptional website for our company. His attention to detail and communication throughout the project was impressive. Would highly recommend!",
+                    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                },
+                {
+                    name: "Michael Chen",
+                    role: "Startup Founder",
+                    content: "Working with Mujahid was a great experience. He understood our vision and translated it into a beautiful, functional web application. Will definitely work with him again.",
+                    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                },
+                {
+                    name: "Emily Rodriguez",
+                    role: "E-commerce Manager",
+                    content: "The website Mujahid created for us has significantly improved our conversion rates. His technical skills and design sense are truly top-notch.",
+                    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                }
+            ]
+        };
+
+        // Initialize the portfolio when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTechnicalSkills();
+            renderToolsTechnologies();
+            renderProjects();
+            renderPricingPlans();
+            renderTestimonials();
+            initEventListeners();
+        });
+
+        // Render technical skills
+        function renderTechnicalSkills() {
+            const skillsContainer = document.getElementById('technicalSkills');
+            
+            portfolioData.technicalSkills.forEach(skill => {
+                const skillElement = document.createElement('div');
+                skillElement.className = 'skill-item glass-card p-4';
+                skillElement.innerHTML = `
+                    <div class="flex justify-between mb-2">
+                        <span>${skill.name}</span>
+                        <span>${skill.level}%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 bg-opacity-50 rounded-full h-2.5">
+                        <div class="skill-bar bg-blue-500 h-2.5 rounded-full" style="width: ${skill.level}%"></div>
+                    </div>
+                `;
+                
+                skillsContainer.appendChild(skillElement);
+            });
+        }
+
+        // Render tools and technologies
+        function renderToolsTechnologies() {
+            const toolsContainer = document.getElementById('toolsTechnologies');
+            
+            portfolioData.toolsTechnologies.forEach(tool => {
+                const toolElement = document.createElement('div');
+                toolElement.className = 'skill-item glass-card p-4 flex flex-col items-center justify-center text-center';
+                toolElement.innerHTML = `
+                    <i class="${tool.icon} text-2xl mb-2 text-blue-300"></i>
+                    <span>${tool.name}</span>
+                `;
+                
+                toolsContainer.appendChild(toolElement);
+            });
+        }
+
+        // Render projects
+        function renderProjects() {
+            const projectsContainer = document.getElementById('projectsContainer');
+            
+            portfolioData.projects.forEach(project => {
+                const projectElement = document.createElement('div');
+                projectElement.className = 'glass-card project-card p-6 transition duration-500';
+                projectElement.setAttribute('data-category', project.category);
+                projectElement.innerHTML = `
+                    <div class="mb-4 h-48 overflow-hidden rounded-lg">
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">${project.title}</h3>
+                    <p class="mb-4">${project.description}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${project.tags.map(tag => `<span class="px-3 py-1 bg-blue-900 bg-opacity-50 rounded-full text-sm">${tag}</span>`).join('')}
+                    </div>
+                    <button class="btn-neon w-full py-2 rounded-full font-semibold view-project" data-project="${project.id}">View Details</button>
+                `;
+                
+                projectsContainer.appendChild(projectElement);
+            });
+        }
+
+        // Render pricing plans
+        function renderPricingPlans() {
+            const pricingContainer = document.getElementById('pricingContainer');
+            
+            portfolioData.pricingPlans.forEach(plan => {
+                const planElement = document.createElement('div');
+                planElement.className = `pricing-card glass-card p-6 ${plan.popular ? 'popular' : ''}`;
+                planElement.innerHTML = `
+                    ${plan.popular ? '<div class="text-center mb-4"><span class="px-4 py-1 bg-blue-500 rounded-full text-sm">Most Popular</span></div>' : ''}
+                    <h3 class="text-2xl font-semibold text-center mb-4">${plan.title}</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold neon-text">${plan.price}</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        ${plan.features.map(feature => `<li class="flex items-center"><i class="fas fa-check text-blue-300 mr-2"></i> ${feature}</li>`).join('')}
+                    </ul>
+                    <button class="btn-neon w-full py-3 rounded-full font-semibold">Get Started</button>
+                `;
+                
+                pricingContainer.appendChild(planElement);
+            });
+        }
+
+        // Render testimonials
+        function renderTestimonials() {
+            const testimonialTrack = document.getElementById('testimonialTrack');
+            
+            portfolioData.testimonials.forEach(testimonial => {
+                const testimonialElement = document.createElement('div');
+                testimonialElement.className = 'testimonial-slide p-4';
+                testimonialElement.innerHTML = `
+                    <div class="text-center">
+                        <img src="${testimonial.avatar}" alt="${testimonial.name}" class="w-16 h-16 rounded-full mx-auto mb-4">
+                        <h3 class="text-xl font-semibold">${testimonial.name}</h3>
+                        <p class="text-blue-300 mb-4">${testimonial.role}</p>
+                        <p class="italic">"${testimonial.content}"</p>
+                    </div>
+                `;
+                
+                testimonialTrack.appendChild(testimonialElement);
+            });
+        }
+
+        // Initialize event listeners
+        function initEventListeners() {
+            // Filter buttons
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active state
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter projects
+                    const projects = document.querySelectorAll('.project-card');
+                    projects.forEach(project => {
+                        if (filter === 'all' || project.getAttribute('data-category') === filter) {
+                            project.style.display = 'block';
+                        } else {
+                            project.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Project modal
+            const viewButtons = document.querySelectorAll('.view-project');
+            const modal = document.getElementById('projectModal');
+            const closeModal = document.getElementById('closeModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-project');
+                    const project = portfolioData.projects.find(p => p.id == projectId);
+                    
+                    if (project) {
+                        document.getElementById('modalTitle').textContent = project.title;
+                        document.getElementById('modalCategory').textContent = project.category === 'web' ? 'Web Design' : 'Web Application';
+                        document.getElementById('modalDescription').textContent = project.description;
+                        document.getElementById('modalImage').src = project.image;
+                        document.getElementById('modalLink').href = project.link;
+                        
+                        const tagsContainer = document.getElementById('modalTags');
+                        tagsContainer.innerHTML = '';
+                        project.tags.forEach(tag => {
+                            const tagElement = document.createElement('span');
+                            tagElement.className = 'px-3 py-1 bg-blue-900 bg-opacity-50 rounded-full text-sm';
+                            tagElement.textContent = tag;
+                            tagsContainer.appendChild(tagElement);
+                        });
+                        
+                        modal.style.display = 'flex';
+                    }
+                });
+            });
+            
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            closeModalBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Testimonial slider
+            const testimonialTrack = document.getElementById('testimonialTrack');
+            const testimonialPrev = document.getElementById('testimonialPrev');
+            const testimonialNext = document.getElementById('testimonialNext');
+            let currentSlide = 0;
+            
+            testimonialNext.addEventListener('click', function() {
+                currentSlide = (currentSlide + 1) % portfolioData.testimonials.length;
+                updateTestimonialSlider();
+            });
+            
+            testimonialPrev.addEventListener('click', function() {
+                currentSlide = (currentSlide - 1 + portfolioData.testimonials.length) % portfolioData.testimonials.length;
+                updateTestimonialSlider();
+            });
+            
+            function updateTestimonialSlider() {
+                testimonialTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            
+            // Contact form
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // In a real application, you would handle form submission here
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+            
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('light-mode');
+                
+                if (document.body.classList.contains('light-mode')) {
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                    document.body.style.background = 'linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)';
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                    document.body.style.background = 'linear-gradient(135deg, #0f0c29 0%, #302b63 100%)';
+                }
+            });
+        }
+    </script>
+</body>
 </html>

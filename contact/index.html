@@ -3,37 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me</title>
-    <link rel="stylesheet" href="css/body.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/container.css">
-    <link rel="stylesheet" href="css/form.css">
-    <link rel="stylesheet" href="css/dark-mode.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Contact Me - Mujahid Raj</title>
+    <!-- Font Awesome CDN -->
     <script src="https://kit.fontawesome.com/a2c1bb72d8.js" crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'hind': ['Hind Siliguri', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 1s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            'from': { opacity: '0', transform: 'translateY(20px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: 'Hind Siliguri', sans-serif;
+                background: linear-gradient(135deg, #0f0c29 0%, #302b63 100%);
+                min-height: 100vh;
+                color: #e6e6e6;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+                overflow-x: hidden;
+            }
+            
+            /* Glassmorphism styles */
+            .glass-card {
+                background: rgba(15, 12, 41, 0.5);
+                backdrop-filter: blur(12px);
+                border-radius: 20px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(0, 195, 255, 0.4);
+                transition: all 0.3s ease;
+            }
+            
+            .glass-card:hover {
+                border: 1px solid rgba(0, 195, 255, 0.8);
+                box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+            }
+            
+            .neon-text {
+                text-shadow: 0 0 5px rgba(0, 195, 255, 0.7),
+                             0 0 10px rgba(0, 195, 255, 0.5),
+                             0 0 15px rgba(0, 195, 255, 0.3);
+            }
+            
+            .btn-neon {
+                background: rgba(0, 195, 255, 0.1);
+                border: 1px solid rgba(0, 195, 255, 0.4);
+                color: #00c3ff;
+                transition: all 0.3s ease;
+            }
+            
+            .btn-neon:hover {
+                background: rgba(0, 195, 255, 0.2);
+                box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+                color: #fff;
+            }
+            
+            .form-group input, 
+            .form-group textarea {
+                width: 100%;
+                padding: 12px 15px;
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                background: rgba(255, 255, 255, 0.1);
+                color: #fff;
+                font-family: 'Poppins', sans-serif;
+                transition: all 0.3s ease;
+            }
+            
+            .form-group input:focus, 
+            .form-group textarea:focus {
+                outline: none;
+                border-color: #00c3ff;
+                box-shadow: 0 0 10px rgba(0, 195, 255, 0.3);
+            }
+            
+            .form-group textarea {
+                resize: vertical;
+                min-height: 120px;
+            }
+            
+            .info-details i {
+                width: 20px;
+                color: #00c3ff;
+            }
+            
+            .social-icons a {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.1);
+                color: #fff;
+                transition: all 0.3s ease;
+            }
+            
+            .social-icons a:hover {
+                background: rgba(0, 195, 255, 0.3);
+                transform: translateY(-3px);
+            }
+            
+            .dark-mode-toggle {
+                background: rgba(0, 195, 255, 0.2);
+                border: 1px solid rgba(0, 195, 255, 0.4);
+                color: #00c3ff;
+                transition: all 0.3s ease;
+            }
+            
+            .dark-mode-toggle:hover {
+                background: rgba(0, 195, 255, 0.3);
+                box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="contact-container">
-        <div class="contact-content">
-           
-            <div class="contact-info">
-                
-                <p>LET'S GET TO KNOW EACH OTHER BEFORE WORK</p>
-                <div class="info-details">
-                    <p><i class="fa-solid fa-mobile-screen-button"></i> +880796059406</p>
-                    <p><i class="fa-solid fa-envelope"></i>mujahidraj65@gmail.com</p>
-                    <p><i class="fa-solid fa-envelope"></i>techwisdom@gmail.com</p>
-                    <p><i class="fa-solid fa-globe"></i> <a href="https://mujahidraj.github.io/Personal-Site/">Personal Site</a></p> 
-                    <p><i class="fas fa-map-marker-alt"></i>Kuratoli, Kuril Biswo Road, Kuril, Khilkhet, Dhaka, Bangladesh</p>
-                    <p><i class="fas fa-phone"></i></i>01796059406</p>
-                    <p><i class="fa-solid fa-building"></i></i>TechWisdom</p>
+    <!-- Header with Navigation -->
+    <header class="nav-glass fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3 neon-border">
+                        <span class="text-white font-bold text-lg">MR</span>
+                    </div>
+                    <span class="text-xl font-bold neon-text">Mujahid Raj</span>
                 </div>
-                <div class="social-icons">
-                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="hover:text-blue-300 transition">Home</a>
+                    <a href="../Portfolio/index.html" class="hover:text-blue-300 transition">Portfolio</a>
+                    <a href="../index.html#skills" class="hover:text-blue-300 transition">Skills</a>
+                    <a href="../index.html#services" class="hover:text-blue-300 transition">Services</a>
+                    <a href="../index.html#features" class="hover:text-blue-300 transition">Features</a>
+                    <a href="../My Blogs/index.html" class="hover:text-blue-300 transition">Blogs</a>
+                    <a href="../contact/index.html" class="hover:text-blue-300 transition">Contact</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="btn-neon px-4 py-2 rounded-full font-semibold">Hire Me</button>
+                    <button class="p-2 rounded-full btn-neon" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Container -->
+    <div class="glass-card w-full max-w-[1000px] mt-20 mb-10 animate-fadeIn">
+        <div class="flex flex-col md:flex-row gap-10 p-10">
+            <!-- Contact Info -->
+            <div class="flex-1">
+                <h1 class="neon-text text-[2.5rem] font-semibold mb-5">Get In Touch</h1>
+                <p class="text-[1.4rem] mb-10 text-[rgba(255,255,255,0.8)]">LET'S GET TO KNOW EACH OTHER BEFORE WORK</p>
+                
+                <div class="info-details">
+                    <p class="my-4 flex items-center gap-2.5"><i class="fa-solid fa-mobile-screen-button"></i> +880796059406</p>
+                    <p class="my-4 flex items-center gap-2.5"><i class="fa-solid fa-envelope"></i> mujahidraj65@gmail.com</p>
+                    <p class="my-4 flex items-center gap-2.5"><i class="fa-solid fa-envelope"></i> techwisdom@gmail.com</p>
+                    <p class="my-4 flex items-center gap-2.5"><i class="fa-solid fa-globe"></i> <a href="https://mujahidraj.github.io/Personal-Site/" class="text-[#00c3ff] no-underline">Personal Site</a></p> 
+                    <p class="my-4 flex items-center gap-2.5"><i class="fas fa-map-marker-alt"></i> Kuratoli, Kuril Biswo Road, Kuril, Khilkhet, Dhaka, Bangladesh</p>
+                    <p class="my-4 flex items-center gap-2.5"><i class="fas fa-phone"></i> 01796059406</p>
+                    <p class="my-4 flex items-center gap-2.5"><i class="fa-solid fa-building"></i> TechWisdom</p>
+                </div>
+                
+                <div class="social-icons flex gap-4 mt-8">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" target="_blank"><i class="fab fa-fonticons-fi"></i></a> 
                     <a href="#" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="#" target="_blank"><i class="fab fa-upwork"></i></a>
@@ -41,34 +217,134 @@
                     <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
                 </div>
             </div>
-
-           
-            <div class="contact-form">
-                <div class="form-logo">
-                    <img src="images/1.JPG" alt="Company Logo">
+            
+            <!-- Contact Form -->
+            <div class="flex-1 max-w-[400px]">
+                <div class="form-logo text-center mb-5">
+                    <img src="images/1.JPG" alt="Mujahid Raj" class="w-[100px] h-[100px] rounded-full object-cover border-2 border-[rgba(0,195,255,0.5)] mx-auto">
                 </div>
-                <h2>Contact Form</h2>
+                
+                <h2 class="neon-text text-[1.8rem] mb-5 text-center">Contact Form</h2>
+                
                 <form id="contactForm">
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <div class="form-group mb-5">
+                        <input type="text" placeholder="Your Name" required>
                     </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Write your project details or the message through which i can help you !" required></textarea>
+                    
+                    <div class="form-group mb-5">
+                        <input type="email" placeholder="Your Email" required>
                     </div>
-                    <button type="submit">Send Message</button>
+                    
+                    <div class="form-group mb-5">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    
+                    <div class="form-group mb-5">
+                        <textarea placeholder="Write your project details or the message through which I can help you!" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full py-3 rounded-lg border-none bg-gradient-to-r from-[#00c3ff] to-[#007bff] text-white font-medium cursor-pointer transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:shadow-[0_5px_15px_rgba(0,195,255,0.4)]">Send Message</button>
                 </form>
             </div>
         </div>
     </div>
     
-    <div class="map-container">
-        <div id="map"></div>
+    <!-- Map Container -->
+    <div class="glass-card w-full h-[400px] mt-8 rounded-2xl overflow-hidden">
+        <div id="map" class="w-full h-full"></div>
     </div>
 
-    <button class="dark-mode-toggle" id="darkModeToggle">
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle fixed bottom-5 right-5 w-[50px] h-[50px] rounded-full flex items-center justify-center cursor-pointer z-[100]" id="darkModeToggle">
         <i class="fas fa-moon"></i>
     </button>
+
+    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="js/script.js"></script>
+    
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([23.820827, 90.426547], 15);
+        
+        // Add tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // Add marker
+        const marker = L.marker([23.820827, 90.426547]).addTo(map)
+            .bindPopup('TechWisdom Office<br>Kuratoli, Dhaka')
+            .openPopup();
+        
+        // Dark mode functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            
+            // Change to dark map tiles
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            }).addTo(map);
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+                
+                // Change to dark map tiles
+                map.eachLayer(layer => {
+                    if (layer instanceof L.TileLayer) {
+                        map.removeLayer(layer);
+                    }
+                });
+                
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                }).addTo(map);
+                
+                marker.addTo(map);
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.removeItem('darkMode');
+                
+                // Change to light map tiles
+                map.eachLayer(layer => {
+                    if (layer instanceof L.TileLayer) {
+                        map.removeLayer(layer);
+                    }
+                });
+                
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+                
+                marker.addTo(map);
+            }
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+        
+        // Floating animation for contact container
+        const contactContainer = document.querySelector('.glass-card');
+        
+        function floatAnimation() {
+            contactContainer.style.animation = 'float 6s ease-in-out infinite';
+        }
+        
+        window.addEventListener('load', floatAnimation);
+    </script>
 </body>
 </html>

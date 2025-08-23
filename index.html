@@ -1,148 +1,651 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mujahid Raj's Profile card</title>
-    <link rel="stylesheet" href="css/body.css">
-    <link rel="stylesheet" href="css/buttons.css">
-    <link rel="stylesheet" href="css/left-div.css">
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/dark-mode.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <title>Mujahid Raj - Homepage</title>
+
+    <link rel="shortcut icon" href="images/Mujahid Raj.png" type="image/x-icon">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
     <script src="https://kit.fontawesome.com/a2c1bb72d8.js" crossorigin="anonymous"></script>
+    <!-- Google Fonts - Hind Siliguri -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: linear-gradient(360deg, black 50%,   #302b63 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #e6e6e6;
+        }
+
+        .glass-card {
+            background: rgba(15, 12, 41, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 195, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border: 1px solid rgba(0, 195, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+        }
+
+        .nav-glass {
+            background: rgba(15, 12, 41, 0.7);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(0, 195, 255, 0.4);
+        }
+
+        .hero-bg {
+            background: url('images/bg.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .skill-bar {
+            transition: width 1.5s ease-in-out;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 195, 255, 0.8);
+        }
+
+        .service-card {
+            min-width: 300px;
+            margin: 0 15px;
+        }
+
+        .services-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .services-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .neon-text {
+            text-shadow: 0 0 5px rgba(0, 195, 255, 0.7),
+                0 0 10px rgba(0, 195, 255, 0.5),
+                0 0 15px rgba(0, 195, 255, 0.3);
+        }
+
+        .neon-border {
+            border: 1px solid rgba(0, 195, 255, 0.4);
+            box-shadow: 0 0 10px rgba(0, 195, 255, 0.3);
+        }
+
+        .neon-border:hover {
+            border: 1px solid rgba(0, 195, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+        }
+
+        .btn-neon {
+            background: rgba(0, 195, 255, 0.1);
+            border: 1px solid rgba(0, 195, 255, 0.4);
+            color: #00c3ff;
+            transition: all 0.3s ease;
+        }
+
+        .btn-neon:hover {
+            background: rgba(0, 195, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+            color: #fff;
+        }
+    </style>
 </head>
-<body>
-    <video autoplay muted loop id="video-background">
-        <source src="images/background-card.mp4" type="video/mp4">
-    </video>
-    <div class="profile-card">
-        <div class="left-side">
-            <div class="profile-image">
-                <img src="images/3.jpg" alt="Mujahid Raj">
-            </div>
-            <div class="company-logo">
-                <img src="images/1.png" alt="Company Logo">
-            </div>
 
-            <div class="social-icons">
-                <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.github.com" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.fiverr.com" target="_blank"><i class="fab fa-fonticons-fi"></i></a>
+<body class="text-white">
+    <!-- Header with Navigation -->
+    <header class="nav-glass fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3 neon-border">
+                        <span class="text-white font-bold text-lg"><img class="rounded-[50px]"
+                                src="images/Mujahid Raj.png" alt=""></span>
+                    </div>
+                    <span class="text-xl font-bold neon-text">Mujahid Raj</span>
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="hover:text-blue-300 transition">Home</a>
+                    <a href="Portfolio/index.html" class="hover:text-blue-300 transition">Portfolio</a>
+                    <a href="#skills" class="hover:text-blue-300 transition">Skills</a>
+                    <a href="#services" class="hover:text-blue-300 transition">Services</a>
+                    <a href="#features" class="hover:text-blue-300 transition">Features</a>
+                    <a href="My Blogs/index.html" class="hover:text-blue-300 transition">Blogs</a>
+                    <a href="contact/index.html" class="hover:text-blue-300 transition">Contact</a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <button class="btn-neon px-4 py-2 rounded-full font-semibold">Hire Me</button>
+                    <button class="p-2 rounded-full btn-neon">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
             </div>
         </div>
-        <div class="profile-content">
-            <h1>Moizuddin Mohammad Mujahid Rashid</h1>
-            <p class="username">mujahidraj65@gmail.com</p>
-            <p class="description">I'm a Web Developer, Wordpress Designer, UI/UX Designer and AI driven web Application developer. Click to see my works, contact information, blogs and My Personal details.You can download my Resume.</p>
-            <div class="profile-stats">
-                <div>
-                    <span id="designs-count">24</span>
-                    <small>Designs</small>
-                </div>
-                <div>
-                    <span id="projects-count">18</span>
-                    <small>Projects</small>
-                </div>
-                <div>
-                    <span id="blogs-count">04</span>
-                    <small>Blogs</small>
-                </div>
-            </div>
-            <div class="button-container">
-                <button class="follow-button"><a style="color:white; text-decoration: solid;" href="contact/index.html">Contact</a></button>
-                <button class="portfolio-button"><a style="color:white; text-decoration: solid;" href="Portfolio/index.html">Portfolio</a></button>
-                <button class="cv-button"><a style="color:white; text-decoration: solid;" href="CV/index.html">P.Details</a></button>
-                <button class="blogs-button"><a style="color:white; text-decoration: solid;" href="My Blogs/index.html">Blogs</a></button>
-            </div>
-            <div class="dropdown">
-                <button class="dropbtn">Download Resume</button>
-                <div class="dropdown-content">
-<<<<<<< HEAD
-                    <a href="curicullum/Mujahid Raj CV Original.pdf" download>📄 PDF File</a>
-                    <a href="curicullum/Mujahid Raj CV Original.docx" download>📝 Word File</a>
-                    <a href="curicullum/Mujahid Raj CV Image.jpg" download>🖼️ Image File</a>
-=======
-                    <a href=CV/CV/Mujahid Raj CV Original.pdf" download>📄 PDF File</a>
-                    <a href="CV/CV/Mujahid Raj CV Original.docx" download>📝 Word File</a>
-                    <a href="CV/CV/Mujahid Raj CV Image.jpg" download>🖼️ Image File</a>
->>>>>>> 151a98fd13e92c8a7665e29525ab231a07437044
-                </div>
-            </div>
-            <button class="hire-me-button" id="hireMeBtn">Hire Me</button>
-        </div>
-    </div>
+        
+    </header>
 
-    <button class="dark-mode-toggle" id="darkModeToggle">
-        <i class="fas fa-moon"></i>
-    </button>
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-16 pb-28">
+        
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <div class="glass-card p-8 md:p-10 max-w-lg">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 neon-text">Web Developer & UI/UX Designer</h1>
+                    <p class="text-xl mb-8">I create beautiful, functional websites and applications with a focus on
+                        user experience and modern design.</p>
+                    <div class="flex space-x-4">
+                        <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a href="Portfolio/index.html">Portfolio</a></button>
+                        <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a href="contact/index.html">Contact</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="glass-card p-2 rounded-2xl max-w-md mt-6">
+                    <img src="images/Adobe Express - file.png" alt="Hero Image" class="rounded-2xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class=" py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 neon-text">My Skills</h2>
+            <p class="text-center text-xl mb-12 max-w-2xl mx-auto">I offer a wide range of Skills set to help you build
+                your digital presence.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">HTML</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">CSS3</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">JavaScript</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">ReactJs</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">NodeJs</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 88%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">UI/UX Design</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 92%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">WordPress</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">Python</span>
+                        <span>60%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 78%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">PHP</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">Postgres</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">Git/Github</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 90%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 glass-card bg-opacity-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 neon-text">Why Choose Me</h2>
+            <p class="text-center text-xl mb-12 max-w-2xl mx-auto">I deliver high-quality projects with a focus on
+                performance, aesthetics, and user experience.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-card p-6 feature-card transition duration-500">
+                    <div class="text-4xl text-blue-300 mb-4">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Fast Delivery</h3>
+                    <p>I respect deadlines and deliver projects on time without compromising quality.</p>
+                </div>
+
+                <div class="glass-card p-6 feature-card transition duration-500">
+                    <div class="text-4xl text-blue-300 mb-4">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Responsive Design</h3>
+                    <p>All my projects are fully responsive and work perfectly on any device.</p>
+                </div>
+
+                <div class="glass-card p-6 feature-card transition duration-500">
+                    <div class="text-4xl text-blue-300 mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Clean Code</h3>
+                    <p>I write clean, maintainable code following best practices and standards.</p>
+                </div>
+
+                <div class="glass-card p-6 feature-card transition duration-500">
+                    <div class="text-4xl text-blue-300 mb-4">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">24/7 Support</h3>
+                    <p>I provide round-the-clock support for all my clients and their projects.</p>
+                </div>
+
+                <div class="glass-card p-6 feature-card transition duration-500">
+                    <div class="text-4xl text-blue-300 mb-4">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Security Focused</h3>
+                    <p>All projects are built with security best practices in mind from the start.</p>
+                </div>
+
+                <div class="glass-card p-6 feature-card transition duration-500">
+                    <div class="text-4xl text-blue-300 mb-4">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Performance Optimized</h3>
+                    <p>Websites are optimized for speed and performance to enhance user experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="  py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 neon-text">My Services</h2>
+            <p class="text-center text-xl mb-12 max-w-2xl mx-auto">I offer a wide range of services to help you build
+                your digital presence.</p>
+
+            <div class="services-container relative">
+                <div class="services-slider" id="servicesSlider">
+                    <div class="service-card glass-card p-6">
+                        <div class="text-4xl text-blue-300 mb-4">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Web Development</h3>
+                        <p class="mb-4">Custom websites and web applications built with modern technologies.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>Frontend Development</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>Backend Development</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>E-commerce Solutions</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card glass-card p-6">
+                        <div class="text-4xl text-blue-300 mb-4">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">UI/UX Design</h3>
+                        <p class="mb-4">User-centered designs that enhance usability and engagement.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>User Interface Design</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>User Experience Research</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>Prototyping & Wireframing</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card glass-card p-6">
+                        <div class="text-4xl text-blue-300 mb-4">
+                            <i class="fab fa-wordpress"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">WordPress Development</h3>
+                        <p class="mb-4">Custom WordPress themes and plugins tailored to your needs.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>Custom Theme Development</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>Plugin Development</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>WordPress Optimization</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card glass-card p-6">
+                        <div class="text-4xl text-blue-300 mb-4">
+                            <i class="fas fa-mobile"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Mobile App Development</h3>
+                        <p class="mb-4">Cross-platform mobile applications for iOS and Android.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>React Native Development</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>UI/UX for Mobile</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>App Store Deployment</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card glass-card p-6">
+                        <div class="text-4xl text-blue-300 mb-4">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Digital Marketing</h3>
+                        <p class="mb-4">Comprehensive digital marketing strategies to grow your business.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>SEO Optimization</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>Social Media Marketing</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-300 mr-2"></i>
+                                <span>Content Strategy</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button id="prevService"
+                    class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-900 bg-opacity-50 text-white p-3 rounded-full ml-2">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="nextService"
+                    class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-900 bg-opacity-50 text-white p-3 rounded-full mr-2">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-16 glass-card bg-opacity-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 neon-text">Featured Work</h2>
+            <p class="text-center text-xl mb-12 max-w-2xl mx-auto">Check out some of my recent projects that showcase my
+                skills and expertise.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">E-commerce Website</h3>
+                        <p>Modern online store with seamless checkout experience.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Project 2" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">Finance Dashboard</h3>
+                        <p>Interactive dashboard for financial data visualization.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">Travel App</h3>
+                        <p>Mobile application for booking travel experiences.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a href="Portfolio/index.html#portfolio">View All Projects</a></button>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-12 bg-blue-900 bg-opacity-30">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 neon-text">Mujahid Raj</h3>
+                    <p>Web Developer & UI/UX Designer creating beautiful, functional digital experiences.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-300 transition">Home</a></li>
+                        <li><a href="#skills" class="hover:text-blue-300 transition">Skills</a></li>
+                        <li><a href="#services" class="hover:text-blue-300 transition">Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-blue-300 transition">Portfolio</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-300 transition">Web Development</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition">UI/UX Design</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition">WordPress</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition">Mobile Apps</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-blue-300"></i>
+                            <span>mujahidraj65@gmail.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-blue-300"></i>
+                            <span>+123 456 7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-300"></i>
+                            <span>Web Developer Street, Code City</span>
+                        </li>
+                    </ul>
+
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition neon-border">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition neon-border">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition neon-border">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition neon-border">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white border-opacity-20 mt-10 pt-6 text-center">
+                <p>&copy; 2023 Mujahid Raj. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function () {
+            // Dark mode toggle
+            const darkModeToggle = document.querySelector('.btn-neon');
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', function () {
+                    document.body.classList.toggle('bg-gray-900');
+                    const icon = darkModeToggle.querySelector('i');
+                    if (icon.classList.contains('fa-moon')) {
+                        icon.classList.replace('fa-moon', 'fa-sun');
+                    } else {
+                        icon.classList.replace('fa-sun', 'fa-moon');
+                    }
+                });
+            }
 
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const icon = darkModeToggle.querySelector('i');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.removeItem('darkMode');
+            // Animate skill bars on scroll
+            const skillBars = document.querySelectorAll('.skill-bar');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.style.width;
+                        entry.target.style.width = '0';
+                        setTimeout(() => {
+                            entry.target.style.width = width;
+                        }, 100);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            skillBars.forEach(bar => {
+                observer.observe(bar);
+            });
+
+            // Services slider functionality
+            const servicesSlider = document.getElementById('servicesSlider');
+            const prevService = document.getElementById('prevService');
+            const nextService = document.getElementById('nextService');
+            let currentService = 0;
+
+            // Auto slide services
+            setInterval(() => {
+                currentService = (currentService + 1) % 5;
+                updateServicesSlider();
+            }, 5000);
+
+            // Previous service button
+            prevService.addEventListener('click', () => {
+                currentService = (currentService - 1 + 5) % 5;
+                updateServicesSlider();
+            });
+
+            // Next service button
+            nextService.addEventListener('click', () => {
+                currentService = (currentService + 1) % 5;
+                updateServicesSlider();
+            });
+
+            function updateServicesSlider() {
+                const translateX = -currentService * 330; // 300px card width + 30px margin
+                servicesSlider.style.transform = `translateX(${translateX}px)`;
             }
         });
-
-        function animateCounters() {
-            const counters = document.querySelectorAll('.profile-stats span');
-            const speed = 200;
-            
-            counters.forEach(counter => {
-                const target = +counter.innerText;
-                const count = +counter.innerText;
-                const increment = target / speed;
-                
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
-
-        const hireMeBtn = document.getElementById('hireMeBtn');
-        hireMeBtn.addEventListener('mouseenter', () => {
-            hireMeBtn.style.transform = 'scale(1.05)';
-            hireMeBtn.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)';
-        });
-        
-        hireMeBtn.addEventListener('mouseleave', () => {
-            hireMeBtn.style.transform = 'scale(1)';
-            hireMeBtn.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
-        });
-
-         const selfCodedBtn = document.getElementById('selfCodedBtn');
-        selfCodedBtn.addEventListener('click', () => {
-            alert("This is coded with use of AI tools. Click okay to view.");
-        });
-        window.addEventListener('load', () => {
-            animateCounters();
-            
-            const profileImage = document.querySelector('.profile-image');
-            setInterval(() => {
-                profileImage.style.transform = 'scale(1.05)';
-                setTimeout(() => {
-                    profileImage.style.transform = 'scale(1)';
-                }, 1000);
-            }, 3000);
-        });
-        
     </script>
 </body>
+
 </html>

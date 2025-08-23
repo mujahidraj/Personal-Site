@@ -4,1355 +4,792 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
-    <link rel="stylesheet" href="css/body.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/posts.css">
-    <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/dark-mode.css">
-    <link rel="stylesheet" href="css/reaponsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>My Blog - Glassmorphism Design</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
     <script src="https://kit.fontawesome.com/a2c1bb72d8.js" crossorigin="anonymous"></script>
-
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00c3ff',
+                        darkBg: '#0f0c29',
+                        darkBgLight: '#302b63',
+                    },
+                    fontFamily: {
+                        'sans': ['Hind Siliguri', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeIn': 'fadeIn 0.5s ease-in-out',
+                        'slideDown': 'slideDown 0.5s ease-out',
+                        'slideUp': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: linear-gradient(360deg, black 50%,   #302b63 100%);
+            min-height: 100vh;
+            color: #e6e6e6;
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism styles */
+        .glass-card {
+            background: rgba(15, 12, 41, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 195, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border: 1px solid rgba(0, 195, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+        }
+        
+        .nav-glass {
+            background: rgba(15, 12, 41, 0.7);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(0, 195, 255, 0.4);
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 5px rgba(0, 195, 255, 0.7),
+                         0 0 10px rgba(0, 195, 255, 0.5),
+                         0 0 15px rgba(0, 195, 255, 0.3);
+        }
+        
+        .btn-neon {
+            background: rgba(0, 195, 255, 0.1);
+            border: 1px solid rgba(0, 195, 255, 0.4);
+            color: #00c3ff;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-neon:hover {
+            background: rgba(0, 195, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+            color: #fff;
+        }
+        
+        /* Video Header */
+        .video-header {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+        }
+        
+        .header-content {
+            max-width: 800px;
+            padding: 20px;
+            z-index: 1;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        .header-content span {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 5px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .mobile-image {
+            display: none;
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .desktop-video {
+                display: none;
+            }
+            
+            .mobile-image {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        
+        /* Comment section styles */
+        .comment {
+            border-left: 3px solid rgba(0, 195, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .comment:hover {
+            border-left: 3px solid rgba(0, 195, 255, 0.8);
+        }
+        
+        /* Like/Dislike button styles */
+        .reaction-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .reaction-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .reaction-btn.active {
+            color: #00c3ff;
+        }
+    </style>
 </head>
 
-<body>
-
-    <header class="video-header">
-        <div class="video-background">
-            <video autoplay muted loop class="desktop-video">
-                <source src="images/background-cv.mp4" type="video/mp4">
-            </video>
-            <img class="mobile-image" src="images/headera.jpg" alt="Header background">
-        </div>
-        <div class="header-content">
-            <img src="images/5.jpg" alt="">
-            <h1>MY BLOG</h1>
-            <p>Welcome to the blog of <span>Moizuddin Mohammad Mujahid Rashid</span></p>
+<body class="font-sans bg-gradient-to-br from-darkBg to-darkBgLight min-h-screen text-gray-200 overflow-x-hidden">
+    <!-- Navigation -->
+    <header class="nav-glass fixed top-0 left-0 w-full z-50 py-4">
+        <div class="container mx-auto px-4 md:px-6">
+            <nav class="flex justify-between items-center">
+                <div class="logo flex items-center">
+                    <div class="logo-icon w-10 h-10 rounded-full bg-opacity-30 bg-primary flex items-center justify-center mr-2 border border-opacity-50 border-primary">
+                        <span><img class="rounded-[50px]" src="images/Mujahid Raj.png" alt=""></span>
+                    </div>
+                    <span class="neon-text font-bold text-[20px]">Mujahid Raj</span>
+                </div>
+                
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="hover:text-blue-300 transition">Home</a>
+                    <a href="../Portfolio/index.html" class="hover:text-blue-300 transition">Portfolio</a>
+                    <a href="../index.html#skills" class="hover:text-blue-300 transition">Skills</a>
+                    <a href="../index.html#services" class="hover:text-blue-300 transition">Services</a>
+                    <a href="../index.html#features" class="hover:text-blue-300 transition">Features</a>
+                    <a href="../My Blogs/index.html" class="hover:text-blue-300 transition">Blogs</a>
+                    <a href="../contact/index.html" class="hover:text-blue-300 transition">Contact</a>
+                </nav>
+                
+                <button class="btn-neon px-4 py-2 rounded-full font-semibold">Subscribe</button>
+            </nav>
         </div>
     </header>
 
+    <!-- Video Header -->
+    <section class="video-header">
+        <div class="video-background">
+            <video autoplay muted loop class="desktop-video">
+                <source src="images/background.mp4" type="video/mp4">
+            </video>
+            <img class="mobile-image" src="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Header background">
+        </div>
+        <div class="header-content text-center">
+            <img src="images/3.jpg" alt="Mujahid Raj" class="w-36 h-36 rounded-full border-4 border-opacity-70 border-primary object-cover object-top mx-auto mb-6">
+            <h1 class="neon-text text-4xl md:text-6xl font-bold mb-4 animate-slideDown">MY BLOG</h1>
+            <p class="text-xl md:text-2xl animate-slideUp">Welcome to the blog of <span>Moizuddin Mohammad Mujahid Rashid</span></p>
+        </div>
+    </section>
 
-    <div class="main-content">
-
-        <div class="blog-posts">
-
-            <div class="post">
-                <img src="images/1_V-Jp13LvtVc2IiY2fp4qYw.jpg" alt="Web Development" class="post-image">
-                <div class="post-content">
-                    <h2>What is Web Development?</h2>
-                    <p>
-                        <strong>Web Development</strong> is the process of building and maintaining websites or web applications. It involves a wide range of tasks, from designing the structure of a website to coding its functionality and ensuring it works on various devices. Web development is typically divided into three key areas: <strong>front-end</strong>, <strong>back-end</strong>, and <strong>full-stack</strong> development.
-                    </p>
-            
-                    <h3>🔍 Key Areas of Web Development:</h3>
-                    <ul>
-                        <li><strong>Front-End Development</strong>: Focuses on the user-facing part of the website that visitors interact with. It includes HTML, CSS, and JavaScript to create the layout, design, and functionality of the webpage.</li>
-                        <li><strong>Back-End Development</strong>: Involves server-side development, databases, and application logic. The back-end is responsible for processing requests, managing databases, and ensuring data is sent correctly to the front-end.</li>
-                        <li><strong>Full-Stack Development</strong>: Combines both front-end and back-end skills, allowing developers to work on the entire web application. A full-stack developer is proficient in both client-side and server-side development.</li>
-                    </ul>
-            
-                    <h3>🛠 Essential Technologies in Web Development:</h3>
-                    <ul>
-                        <li><strong>Front-End Technologies:</strong> HTML, CSS, JavaScript, React.js, Angular, Vue.js, Bootstrap, and SASS.</li>
-                        <li><strong>Back-End Technologies:</strong> Node.js, Python (Django, Flask), Ruby on Rails, PHP, Java (Spring), and databases like MySQL, PostgreSQL, MongoDB.</li>
-                        <li><strong>Version Control:</strong> Git and platforms like GitHub, GitLab, and Bitbucket for collaborative development and version tracking.</li>
-                        <li><strong>Web Hosting and Servers:</strong> AWS, Heroku, Netlify, DigitalOcean, and traditional hosting services.</li>
-                    </ul>
-            
-                    <h3>🔑 Key Skills Required for Web Development:</h3>
-                    <ul>
-                        <li><strong>HTML/CSS:</strong> Markup and styling of web pages to create the structure and design of a site.</li>
-                        <li><strong>JavaScript:</strong> Client-side scripting for interactive and dynamic user interfaces.</li>
-                        <li><strong>Backend Programming:</strong> Knowledge of server-side programming languages (e.g., Node.js, Python, PHP) for building server logic.</li>
-                        <li><strong>Database Management:</strong> Understanding of relational and NoSQL databases for data storage and management.</li>
-                        <li><strong>Version Control (Git):</strong> Tracking code changes and collaborating with others using Git and platforms like GitHub.</li>
-                    </ul>
-            
-                    <h3>📍 Where Web Development is Used:</h3>
-                    <ul>
-                        <li>Business websites, blogs, e-commerce platforms, social media networks, content management systems (CMS), and more.</li>
-                        <li>Web applications such as online banking, cloud storage services, and software-as-a-service (SaaS) products.</li>
-                        <li>Online portfolios, educational websites, and government websites.</li>
-                    </ul>
-            
-                    <h3>🧠 Web Development Frameworks and Libraries:</h3>
-                    <ul>
-                        <li><strong>Front-End Libraries and Frameworks:</strong> React.js, Angular, Vue.js, and SASS (CSS preprocessor).</li>
-                        <li><strong>Back-End Frameworks:</strong> Express.js (Node.js), Django, Flask (Python), Ruby on Rails, Laravel (PHP).</li>
-                        <li><strong>Full-Stack Frameworks:</strong> MEAN (MongoDB, Express, Angular, Node.js), MERN (MongoDB, Express, React, Node.js).</li>
-                    </ul>
-            
-                    <h3>🔄 The Web Development Process:</h3>
-                    <ul>
-                        <li><strong>Planning:</strong> Defining the project’s scope, target audience, and requirements. This phase may involve wireframing and creating site maps.</li>
-                        <li><strong>Designing:</strong> Creating mockups, prototypes, and visual designs for the user interface (UI) using tools like Adobe XD, Figma, or Sketch.</li>
-                        <li><strong>Development:</strong> Writing the code for both the front-end and back-end components. This includes integrating APIs and databases.</li>
-                        <li><strong>Testing:</strong> Ensuring the website or web app works across all devices and browsers. This phase includes unit testing, user testing, and debugging.</li>
-                        <li><strong>Deployment:</strong> Launching the site on a server and making it publicly accessible. This involves choosing a web hosting platform and setting up domain names.</li>
-                        <li><strong>Maintenance:</strong> Regularly updating the site with new content, features, and security patches to ensure it remains functional and secure.</li>
-                    </ul>
-            
-                    <h3>🌍 The Future of Web Development:</h3>
-                    <p>
-                        As the internet continues to evolve, web development is becoming more complex and integrated with emerging technologies. Web developers will increasingly need to be familiar with:
-                    </p>
-                    <ul>
-                        <li><strong>Progressive Web Apps (PWAs):</strong> Websites that behave like mobile apps, with offline capabilities and faster loading times.</li>
-                        <li><strong>Serverless Computing:</strong> Developing apps that do not require dedicated servers, reducing overhead and scaling costs.</li>
-                        <li><strong>WebAssembly:</strong> Allowing code written in languages like C++ or Rust to run in the browser at near-native speed.</li>
-                        <li><strong>Single Page Applications (SPA):</strong> Using JavaScript frameworks to create faster, more interactive websites that load a single HTML page.</li>
-                    </ul>
-            
-                    <h3>🎯 Conclusion:</h3>
-                    <p>
-                        Web development is a constantly evolving field, and learning it opens up endless possibilities for creating innovative websites and web applications. Whether you're interested in front-end, back-end, or full-stack development, mastering web development will allow you to contribute to the digital world by creating functional and user-friendly websites.
-                    </p>
-                    <p>
-                        Want to know more about the latest trends in web development or where to start your learning journey? Feel free to reach out!
-                    </p>
-            
-                    <div class="post-actions">
-                        <button>READ MORE »</button>
-                        <p>Comments <span>0</span></p>
-                    </div>
-                </div>
-            </div>
-            
-
-            <div class="post">
-                <img src="images/mobile-app-design-fundamentals-the-difference-between-UI-and-UX-930x620.webp" alt="Difference Between UI and UX Design" class="post-image">
-                <div class="post-content">
-                    <h2>Difference Between UI and UX Design</h2>
-                    <p>
-                        While <strong>UI (User Interface)</strong> and <strong>UX (User Experience)</strong> design are often used interchangeably, they represent distinct aspects of the design process. Both are crucial for creating a successful digital product, but they focus on different areas of the user's interaction with the product.
-                    </p>
-            
-                    <h3>🔍 What is UI Design?</h3>
-                    <p>
-                        <strong>UI Design</strong> refers to the look and feel of the product. It involves designing the visual elements that users interact with, such as buttons, icons, color schemes, typography, spacing, and layout. UI design is about creating an aesthetically pleasing and cohesive experience that aligns with the brand and product goals.
-                    </p>
-                    
-                    <h3>🔍 What is UX Design?</h3>
-                    <p>
-                        <strong>UX Design</strong>, on the other hand, focuses on the overall experience a user has with the product. It includes understanding users' needs, behaviors, and challenges to ensure that the product is easy to use, efficient, and enjoyable. UX design is about solving problems and making sure that users can achieve their goals without friction.
-                    </p>
-            
-                    <h3>🔑 Key Differences Between UI and UX Design:</h3>
-                    <ul>
-                        <li><strong>Focus:</strong> UI is about the product's appearance and interface, while UX is about the overall user journey and experience.</li>
-                        <li><strong>Goal:</strong> UI aims to make the product visually attractive, while UX aims to make the product useful and intuitive.</li>
-                        <li><strong>Process:</strong> UI design focuses on creating visually engaging designs and layouts, while UX design involves research, user testing, and iteration to optimize usability.</li>
-                        <li><strong>Tools:</strong> UI designers often use tools like Sketch, Figma, and Adobe XD to create the look and feel, while UX designers might use tools like wireframes, personas, journey maps, and prototypes for user research and testing.</li>
-                        <li><strong>Outcome:</strong> The outcome of UI design is a visually appealing interface, while the outcome of UX design is a seamless, user-centered experience.</li>
-                    </ul>
-            
-                    <h3>💡 How UI and UX Work Together:</h3>
-                    <p>
-                        While UI and UX design serve different functions, they work closely together. Good UI design enhances the user experience by making interactions smooth and visually appealing, while good UX design ensures that the UI elements are placed logically and functionally to meet user needs. In short, UX design is about the journey, and UI design is about how the journey looks and feels.
-                    </p>
-            
-                    <h3>📌 Example of UI and UX Working Together:</h3>
-                    <p>
-                        Imagine an e-commerce website. The <strong>UI design</strong> would determine the layout of the product images, buttons, fonts, and colors, while the <strong>UX design</strong> would focus on the overall flow of the website, such as how easy it is for users to find products, add them to their cart, and check out without confusion or unnecessary steps. Together, they create a product that not only looks good but also provides an enjoyable and efficient shopping experience.
-                    </p>
-            
-                    <h3>📈 When to Focus on UI or UX?</h3>
-                    <ul>
-                        <li><strong>UI Focus:</strong> When you have a product that's already functional, but you need to enhance its visual appeal and usability.</li>
-                        <li><strong>UX Focus:</strong> When you're designing a new product or improving an existing one, and the goal is to make it more user-friendly and intuitive.</li>
-                    </ul>
-            
-                    <h3>🛠 Tools for UI and UX Designers:</h3>
-                    <ul>
-                        <li><strong>UI Tools:</strong> Sketch, Figma, Adobe XD, InVision, and Photoshop are popular tools used by UI designers to create pixel-perfect designs and interactive prototypes.</li>
-                        <li><strong>UX Tools:</strong> UX designers often use wireframing tools like Balsamiq, Figma (also for wireframing), Axure, and Marvel to create early-stage designs and conduct user testing.</li>
-                    </ul>
-            
-                    <h3>🎯 Conclusion:</h3>
-                    <p>
-                        Both UI and UX design are essential to creating a digital product that is both visually appealing and functional. UI is focused on the product’s appearance, while UX is focused on the user's interaction with the product. In the design process, one should never overshadow the other, as both contribute to creating an engaging, seamless, and effective user experience.
-                    </p>
-            
-                    <p>
-                        If you are still unclear about the differences or how to get started with UI/UX design, feel free to ask for more information!
-                    </p>
-            
-                    <div class="post-actions">
-                        <button>READ MORE »</button>
-                        <p>Comments <span>0</span></p>
-                    </div>
-                </div>
-            </div>
-            
-
-            <div class="post">
-                <img src="images/UI+and+UX+Design+Cover+Image.jpg" alt="UI/UX Design" class="post-image">
-                <div class="post-content">
-                    <h2>What is UI/UX Design?</h2>
-                    <p>
-                        <strong>UI/UX Design</strong> focuses on improving the user experience (UX) and user interface (UI) of digital products. While UI refers to the visual elements of an interface, such as buttons, icons, and layout, UX design involves optimizing the overall experience, including usability, functionality, and user satisfaction. UI/UX designers ensure that a product is both visually appealing and easy to use, creating intuitive designs that improve user engagement and satisfaction.
-                    </p>
-            
-                    <h3>🔍 Key Areas in UI/UX Design:</h3>
-                    <ul>
-                        <li><strong>User Interface (UI):</strong> Focuses on the design elements like colors, typography, icons, and layout to create an engaging visual experience.</li>
-                        <li><strong>User Experience (UX):</strong> Focuses on the overall experience, ensuring that the product is easy to use, intuitive, and provides a positive interaction.</li>
-                        <li><strong>Interaction Design (IxD):</strong> Focuses on how users interact with the product, ensuring that interactions are smooth, intuitive, and meet user expectations.</li>
-                        <li><strong>Information Architecture (IA):</strong> Organizes content and flow in a way that helps users easily navigate and find what they need.</li>
-                        <li><strong>Usability Testing:</strong> Conducting tests with users to identify pain points, improve usability, and ensure the design meets user needs.</li>
-                    </ul>
-            
-                    <h3>🧠 Key Concepts in UI/UX Design:</h3>
-                    <ul>
-                        <li><strong>Wireframes:</strong> Basic visual representations of a webpage or app layout, focusing on structure and functionality.</li>
-                        <li><strong>Prototypes:</strong> Interactive models of a design that allow stakeholders to experience the product before it’s developed.</li>
-                        <li><strong>User Personas:</strong> Representations of the target users, based on data and research, to help guide design decisions.</li>
-                        <li><strong>Responsive Design:</strong> Designing for multiple screen sizes and devices to ensure the user experience is consistent across platforms.</li>
-                        <li><strong>Visual Hierarchy:</strong> Organizing design elements to guide the user’s attention to the most important information.</li>
-                        <li><strong>Consistency:</strong> Ensuring that visual elements, terminology, and design patterns are consistent across the product to enhance usability.</li>
-                    </ul>
-            
-                    <h3>📍 Key Skills for UI/UX Designers:</h3>
-                    <ul>
-                        <li><strong>Design Tools:</strong> Proficiency with design tools such as Adobe XD, Figma, Sketch, and InVision for creating mockups and prototypes.</li>
-                        <li><strong>Wireframing and Prototyping:</strong> Ability to create wireframes, prototypes, and interactive designs to communicate ideas effectively.</li>
-                        <li><strong>User Research:</strong> Conducting surveys, interviews, and usability testing to gather insights and validate design decisions.</li>
-                        <li><strong>Interaction Design (IxD):</strong> Understanding how users interact with a product and designing intuitive interactions that enhance the user experience.</li>
-                        <li><strong>Visual Design:</strong> Strong understanding of color theory, typography, layout, and visual design principles.</li>
-                        <li><strong>Collaboration:</strong> Ability to work closely with developers, product managers, and other stakeholders to bring design ideas to life.</li>
-                    </ul>
-            
-                    <h3>🔧 Tools Used in UI/UX Design:</h3>
-                    <ul>
-                        <li><strong>Adobe XD:</strong> A design and prototyping tool for UI/UX designers that allows you to create interactive prototypes and wireframes.</li>
-                        <li><strong>Sketch:</strong> A vector-based design tool used primarily for UI design and prototyping, especially for mobile and web applications.</li>
-                        <li><strong>Figma:</strong> A cloud-based design tool that allows real-time collaboration on UI/UX design projects, making it ideal for team-based design work.</li>
-                        <li><strong>InVision:</strong> A digital product design tool for creating interactive prototypes and collaborating with teams throughout the design process.</li>
-                        <li><strong>Marvel:</strong> A design, prototyping, and collaboration tool used for building wireframes, prototypes, and testing designs with real users.</li>
-                        <li><strong>Axure RP:</strong> A powerful wireframing and prototyping tool that allows designers to create highly interactive prototypes for testing.</li>
-                    </ul>
-            
-                    <h3>🖥 UI/UX Design Process:</h3>
-                    <ul>
-                        <li><strong>Research:</strong> Conducting user research to understand the needs, behaviors, and pain points of the target audience.</li>
-                        <li><strong>Ideation:</strong> Brainstorming and creating ideas to solve user problems, often using techniques like mind mapping or sketching.</li>
-                        <li><strong>Wireframing:</strong> Creating low-fidelity wireframes that showcase the basic layout and structure of the product.</li>
-                        <li><strong>Prototyping:</strong> Developing interactive prototypes that allow users and stakeholders to experience the product.</li>
-                        <li><strong>Usability Testing:</strong> Testing the design with real users to identify pain points and areas for improvement.</li>
-                        <li><strong>Final Design:</strong> Creating high-fidelity designs that incorporate all feedback and finalize the visual and interaction elements.</li>
-                        <li><strong>Hand-off to Development:</strong> Providing developers with the final designs, assets, and specifications to bring the product to life.</li>
-                    </ul>
-            
-                    <h3>🔍 UI/UX Design Models:</h3>
-                    <ul>
-                        <li><strong>User-Centered Design (UCD):</strong> Focuses on designing with the end user in mind, ensuring that all decisions are based on user feedback and needs.</li>
-                        <li><strong>Design Thinking:</strong> A problem-solving framework that emphasizes empathy, ideation, and testing to come up with innovative solutions.</li>
-                        <li><strong>Agile UX Design:</strong> Combines Agile development practices with UX design, allowing for iterative design and feedback throughout the development process.</li>
-                        <li><strong>Lean UX:</strong> A design methodology that focuses on minimizing waste by continuously testing and iterating on design ideas based on user feedback.</li>
-                        <li><strong>Double Diamond Model:</strong> A visual representation of the design process, divided into four phases: Discover, Define, Develop, and Deliver.</li>
-                    </ul>
-            
-                    <h3>📈 Career Path of a UI/UX Designer:</h3>
-                    <ul>
-                        <li><strong>Junior UI/UX Designer:</strong> An entry-level role focused on assisting with design tasks, learning the tools, and developing an understanding of the design process.</li>
-                        <li><strong>UI/UX Designer:</strong> A mid-level role responsible for creating wireframes, prototypes, and high-fidelity designs, as well as conducting user research and usability testing.</li>
-                        <li><strong>Senior UI/UX Designer:</strong> An experienced designer who leads design projects, mentors junior designers, and contributes to the overall strategy of the product.</li>
-                        <li><strong>Lead Designer:</strong> A leadership position responsible for overseeing the design team, ensuring consistency across products, and setting design standards for the organization.</li>
-                        <li><strong>Product Designer:</strong> A hybrid role that combines both UI and UX design with a focus on the overall product strategy, user experience, and business goals.</li>
-                    </ul>
-            
-                    <h3>🔍 UI/UX Design in Different Industries:</h3>
-                    <ul>
-                        <li><strong>Technology:</strong> UI/UX designers in tech companies focus on developing software, mobile apps, and websites that are both functional and user-friendly.</li>
-                        <li><strong>Healthcare:</strong> Designers ensure that healthcare applications are easy to use, improving accessibility and the patient experience.</li>
-                        <li><strong>E-commerce:</strong> UI/UX designers optimize online shopping experiences, focusing on intuitive navigation, fast checkout processes, and engaging visuals.</li>
-                        <li><strong>Finance:</strong> Designers create secure and intuitive financial applications, ensuring that users can manage their finances with ease and confidence.</li>
-                        <li><strong>Education:</strong> UI/UX designers in education focus on creating accessible and engaging learning platforms for students and teachers.</li>
-                    </ul>
-            
-                    <p>
-                        UI/UX Design is a crucial element of any digital product, focusing on both the functionality and visual appeal of a product. It ensures that users have a positive experience and are able to use products intuitively. If you’re interested in learning more about UI/UX Design or how to become a UI/UX designer, feel free to ask!
-                    </p>
-            
-                    <div class="post-actions">
-                        <button>READ MORE »</button>
-                        <p>Comments <span>0</span></p>
-                    </div>
-                </div>
-            </div>
-            
-
-            <div class="post">
-                <img src="images/1_hnrlp3W6kfInWHtJd9Vvag.jpg" alt="DevOps" class="post-image">
-                <div class="post-content">
-                    <h2>What is DevOps?</h2>
-                    <p>
-                        <strong>DevOps</strong> is a set of practices and cultural philosophies that aim to improve the collaboration between software development (Dev) and IT operations (Ops). It emphasizes automation, continuous integration, continuous delivery, and the monitoring of software applications to deliver high-quality software faster and more efficiently. DevOps focuses on reducing the time it takes to go from code commit to production deployment, thereby improving the speed of delivery and operational efficiency.
-                    </p>
-            
-                    <h3>🔍 Key Areas in DevOps:</h3>
-                    <ul>
-                        <li><strong>Collaboration and Communication:</strong> Breaks down silos between developers, operations, and other teams, enabling better communication and collaboration.</li>
-                        <li><strong>Continuous Integration (CI):</strong> Automates the process of integrating new code into a shared repository, running tests to ensure stability.</li>
-                        <li><strong>Continuous Delivery (CD):</strong> Automates the deployment process, allowing for quick and reliable software releases to production.</li>
-                        <li><strong>Infrastructure as Code (IaC):</strong> Manages infrastructure using code rather than manual processes, allowing for versioned and consistent environments.</li>
-                        <li><strong>Automation:</strong> Automates repetitive tasks such as testing, integration, deployment, and environment provisioning to increase efficiency and reduce human error.</li>
-                        <li><strong>Monitoring and Feedback:</strong> Continuously monitors applications and infrastructure in production to ensure smooth performance and gain real-time feedback for continuous improvement.</li>
-                    </ul>
-            
-                    <h3>🧠 Key Concepts in DevOps:</h3>
-                    <ul>
-                        <li><strong>Automation:</strong> The backbone of DevOps, automating processes like building, testing, and deployment to improve speed and accuracy.</li>
-                        <li><strong>Microservices:</strong> A software architecture style where an application is composed of loosely coupled services that can be independently developed, deployed, and scaled.</li>
-                        <li><strong>Containers:</strong> A lightweight, portable environment to run applications consistently across different computing environments, often using Docker.</li>
-                        <li><strong>Continuous Monitoring:</strong> The practice of continuously monitoring applications and infrastructure to detect issues and ensure uptime.</li>
-                        <li><strong>Collaboration Tools:</strong> Tools like Slack, Jira, and GitHub, which help facilitate communication and collaboration among team members.</li>
-                    </ul>
-            
-                    <h3>📍 Key Practices in DevOps:</h3>
-                    <ul>
-                        <li><strong>Continuous Integration (CI):</strong> CI ensures that new code changes are automatically integrated into the codebase. Tools like Jenkins, Travis CI, and GitLab CI help automate the process.</li>
-                        <li><strong>Continuous Delivery (CD):</strong> Ensures that the code is always ready for deployment. Tools like Jenkins and CircleCI automate the build and deployment pipeline.</li>
-                        <li><strong>Infrastructure as Code (IaC):</strong> Tools like Terraform and Ansible enable DevOps teams to manage infrastructure through code, ensuring environments are reproducible and scalable.</li>
-                        <li><strong>Automated Testing:</strong> Automated tests ensure that new code does not break existing functionality. Unit tests, integration tests, and UI tests are automated to maintain quality.</li>
-                        <li><strong>Version Control:</strong> Version control tools like Git allow teams to track and manage code changes, which is fundamental to collaboration and CI/CD pipelines.</li>
-                    </ul>
-            
-                    <h3>💡 Key Skills for DevOps Engineers:</h3>
-                    <ul>
-                        <li><strong>Automation Skills:</strong> Proficiency with automation tools like Jenkins, Ansible, and Puppet.</li>
-                        <li><strong>Scripting:</strong> Writing scripts in languages like Bash, Python, or Ruby to automate tasks and manage configurations.</li>
-                        <li><strong>Cloud Computing:</strong> Experience with cloud platforms like AWS, Azure, or Google Cloud to deploy and manage infrastructure.</li>
-                        <li><strong>Containerization:</strong> Knowledge of Docker, Kubernetes, and container orchestration for efficient software deployment.</li>
-                        <li><strong>Monitoring Tools:</strong> Familiarity with monitoring tools like Nagios, Prometheus, or Datadog to ensure system performance and availability.</li>
-                        <li><strong>Version Control:</strong> Mastery of Git for managing source code and collaborating with teams.</li>
-                    </ul>
-            
-                    <h3>🔧 Tools Used in DevOps:</h3>
-                    <ul>
-                        <li><strong>Jenkins:</strong> A popular automation tool for continuous integration and continuous delivery (CI/CD).</li>
-                        <li><strong>Docker:</strong> A tool for containerizing applications and services to ensure consistent and reliable deployments.</li>
-                        <li><strong>Kubernetes:</strong> A container orchestration tool used to manage and scale containerized applications.</li>
-                        <li><strong>Ansible:</strong> A tool for automating IT infrastructure, software provisioning, and configuration management.</li>
-                        <li><strong>Terraform:</strong> A tool for managing infrastructure as code, enabling teams to provision, change, and version infrastructure.</li>
-                        <li><strong>GitHub/GitLab:</strong> Version control platforms that facilitate collaboration and code management in DevOps environments.</li>
-                        <li><strong>Prometheus:</strong> A monitoring and alerting toolkit for containerized environments, often paired with Grafana for visualization.</li>
-                        <li><strong>CircleCI:</strong> A CI/CD tool for automating testing, building, and deploying code in a DevOps pipeline.</li>
-                    </ul>
-            
-                    <h3>🔍 DevOps Models:</h3>
-                    <ul>
-                        <li><strong>Waterfall Model:</strong> In some cases, a more structured approach like Waterfall may still be used, but DevOps principles challenge this with a more iterative approach.</li>
-                        <li><strong>Agile Model:</strong> Agile focuses on iterative development and fast delivery, which aligns well with DevOps by enabling continuous feedback loops and shorter release cycles.</li>
-                        <li><strong>Spiral Model:</strong> This model focuses on iterative development with an emphasis on risk management, and it is often combined with DevOps for more complex projects.</li>
-                        <li><strong>Lean Model:</strong> The Lean model, focused on waste reduction and efficiency, is closely aligned with DevOps principles to optimize workflows and reduce overhead.</li>
-                        <li><strong>Kanban:</strong> Kanban boards are often used in DevOps environments to visualize and manage tasks, ensuring continuous flow of work and minimizing bottlenecks.</li>
-                        <li><strong>Continuous Delivery Model:</strong> Continuous Delivery (CD) is a central model in DevOps, focusing on automated deployment pipelines to ensure the software is always in a deployable state.</li>
-                    </ul>
-            
-                    <h3>📈 Career Path of a DevOps Engineer:</h3>
-                    <ul>
-                        <li><strong>Junior DevOps Engineer:</strong> An entry-level position focusing on learning DevOps principles and assisting with automation tasks.</li>
-                        <li><strong>DevOps Engineer:</strong> A mid-level role responsible for setting up CI/CD pipelines, automating infrastructure, and managing the development lifecycle.</li>
-                        <li><strong>Senior DevOps Engineer:</strong> An experienced engineer who leads complex DevOps initiatives, designs scalable systems, and integrates security into the pipeline.</li>
-                        <li><strong>DevOps Architect:</strong> A leadership role that designs and oversees the entire DevOps pipeline, defines strategy, and ensures best practices across teams.</li>
-                        <li><strong>Site Reliability Engineer (SRE):</strong> Focuses on ensuring the reliability, availability, and performance of production systems through automation and monitoring.</li>
-                    </ul>
-            
-                    <h3>🔍 DevOps in Different Industries:</h3>
-                    <ul>
-                        <li><strong>Technology:</strong> DevOps is widely used in tech companies to manage software development and delivery pipelines efficiently.</li>
-                        <li><strong>Finance:</strong> Ensures that financial institutions can deploy secure, scalable software quickly while maintaining compliance with regulations.</li>
-                        <li><strong>Healthcare:</strong> DevOps can streamline the development of medical software, ensuring faster updates and more reliable systems for patient care.</li>
-                        <li><strong>E-commerce:</strong> DevOps practices help e-commerce platforms deliver seamless user experiences and ensure quick response times during high-demand periods.</li>
-                        <li><strong>Government:</strong> DevOps helps government agencies adopt agile practices and accelerate the development of digital services and applications.</li>
-                    </ul>
-            
-                    <p>
-                        DevOps is not just about tools and automation; it’s about creating a culture that emphasizes collaboration, continuous improvement, and fast, reliable software delivery. If you’re interested in learning more about DevOps practices or how to get started with DevOps, feel free to ask!
-                    </p>
-            
-                    <div class="post-actions">
-                        <button>READ MORE »</button>
-                        <p>Comments <span>0</span></p>
-                    </div>
-                </div>
-            </div>
-            
-
-            <div class="post">
-                <img src="images/software-engineering-featured.webp" alt="Software Engineering" class="post-image">
-                <div class="post-content">
-                    <h2>What is Software Engineering?</h2>
-                    <p>
-                        <strong>Software Engineering</strong> is the application of engineering principles to software development in a methodical and disciplined approach. It involves designing, developing, maintaining, testing, and evaluating software systems to meet the needs of users. Software engineers apply both computer science and engineering concepts to build scalable, reliable, and efficient software solutions. The goal is to produce high-quality software that meets user requirements while being easy to maintain and scale.
-                    </p>
-            
-                    <h3>🔍 Key Areas in Software Engineering:</h3>
-                    <ul>
-                        <li><strong>Software Development Life Cycle (SDLC):</strong> Defines the stages involved in software development, from planning to deployment and maintenance.</li>
-                        <li><strong>Software Design:</strong> The process of translating requirements into a blueprint for building the software system.</li>
-                        <li><strong>Programming and Implementation:</strong> The phase where the software is written, tested, and debugged based on design specifications.</li>
-                        <li><strong>Software Testing:</strong> Ensures that the software functions as expected and meets the specified requirements.</li>
-                        <li><strong>Software Maintenance:</strong> Involves fixing defects and improving the software after deployment.</li>
-                        <li><strong>Software Architecture:</strong> Defines the high-level structure of the software system and its components.</li>
-                        <li><strong>Agile Software Development:</strong> A flexible methodology for iterative development and continuous improvement.</li>
-                        <strong>DevOps:</strong> A methodology that integrates development and IT operations to enable continuous integration and delivery (CI/CD).</li>
-                    </ul>
-            
-                    <h3>🧠 Key Concepts:</h3>
-                    <ul>
-                        <li><strong>Version Control:</strong> Using tools like Git to manage and track changes in the codebase.</li>
-                        <li><strong>Code Reviews:</strong> Peer reviews to identify issues in code quality and improve maintainability.</li>
-                        <li><strong>Refactoring:</strong> The process of restructuring existing code to improve readability and reduce complexity without altering its functionality.</li>
-                        <li><strong>Debugging:</strong> Identifying and fixing bugs or issues in the software to ensure smooth operation.</li>
-                    </ul>
-            
-                    <h3>📍 Key Practices in Software Engineering:</h3>
-                    <ul>
-                        <li><strong>Continuous Integration (CI):</strong> A practice where developers frequently integrate code into a shared repository with automated testing to ensure software quality.</li>
-                        <li><strong>Continuous Delivery (CD):</strong> Automating the deployment process so that code can be released quickly and safely.</li>
-                        <li><strong>Testing and Automation:</strong> Using tools like Selenium and JUnit for automated testing to ensure software correctness and reduce errors.</li>
-                        <li><strong>Agile Methodologies:</strong> Using frameworks like Scrum, Kanban, and Extreme Programming (XP) for iterative development and delivery.</li>
-                    </ul>
-            
-                    <h3>💡 Key Skills for Software Engineers:</h3>
-                    <ul>
-                        <li><strong>Programming Languages:</strong> Proficiency in languages like Java, Python, C++, JavaScript, and others.</li>
-                        <li><strong>Problem-Solving:</strong> Ability to approach complex problems and develop efficient solutions.</li>
-                        <li><strong>Collaboration:</strong> Working effectively with other developers, designers, and stakeholders in teams.</li>
-                        <li><strong>Communication:</strong> Ability to explain technical concepts to non-technical stakeholders.</li>
-                        <li><strong>Attention to Detail:</strong> Ensuring software meets functional and non-functional requirements accurately.</li>
-                    </ul>
-            
-                    <h3>🔧 Tools Used by Software Engineers:</h3>
-                    <ul>
-                        <li><strong>IDEs:</strong> Tools like Visual Studio Code, IntelliJ IDEA, and Eclipse that support coding, debugging, and version control.</li>
-                        <li><strong>Version Control Systems:</strong> Git and GitHub are essential tools for tracking and managing code changes.</li>
-                        <li><strong>CI/CD Tools:</strong> Jenkins, Travis CI, and CircleCI for automating integration and deployment processes.</li>
-                        <li><strong>Testing Frameworks:</strong> JUnit, pytest, Selenium for testing and ensuring code reliability.</li>
-                    </ul>
-            
-                    <h3>📈 Career Path of a Software Engineer:</h3>
-                    <ul>
-                        <li><strong>Junior Software Engineer:</strong> Entry-level position focused on learning and applying basic software development skills.</li>
-                        <li><strong>Software Engineer:</strong> Intermediate role responsible for implementing software solutions, debugging, and participating in design discussions.</li>
-                        <li><strong>Senior Software Engineer:</strong> Experienced engineer responsible for leading projects, mentoring junior engineers, and making high-level architectural decisions.</li>
-                        <li><strong>Software Architect:</strong> A strategic role focused on designing the architecture of software systems and making high-level decisions about technology stack and development practices.</li>
-                        <li><strong>Engineering Manager:</strong> A leadership position responsible for managing teams of software engineers, overseeing projects, and aligning engineering efforts with business objectives.</li>
-                        <li><strong>Technical Lead:</strong> Guides the development team on technical decisions and ensures the implementation of best practices in software development.</li>
-                    </ul>
-            
-                    <h3>🔄 Agile and DevOps Practices:</h3>
-                    <ul>
-                        <li><strong>Scrum:</strong> An Agile framework that promotes teamwork, accountability, and iterative progress toward well-defined goals.</li>
-                        <li><strong>Kanban:</strong> A visual system for managing and optimizing the flow of work in a software development process.</li>
-                        <li><strong>Extreme Programming (XP):</strong> A software development methodology that emphasizes customer satisfaction, continuous improvement, and high-quality software.</li>
-                        <li><strong>DevOps:</strong> Combines development and IT operations to improve collaboration and automate the software delivery pipeline, promoting faster and more reliable releases.</li>
-                    </ul>
-            
-                    <h3>🔍 Software Engineering Models:</h3>
-                    <ul>
-                        <li><strong>Waterfall Model:</strong> A linear and sequential approach where each phase must be completed before the next one starts. Best suited for well-defined projects.</li>
-                        <li><strong>V-Model:</strong> An extension of the Waterfall model, where testing is planned parallel to development. Emphasizes validation and verification stages.</li>
-                        <li><strong>Iterative Model:</strong> Focuses on repetition, where the software is developed in small iterations or cycles, allowing for flexibility and adaptation to changes.</li>
-                        <li><strong>Spiral Model:</strong> Combines iterative development with a focus on risk management. This model is ideal for large, complex, and high-risk projects.</li>
-                        <li><strong>Agile Model:</strong> A flexible, iterative approach that emphasizes customer collaboration, responsiveness to change, and delivering small, incremental improvements over time.</li>
-                        <li><strong>DevOps Model:</strong> Integrates development and operations teams to deliver high-quality software through continuous integration, testing, and delivery pipelines.</li>
-                        <li><strong>RAD (Rapid Application Development) Model:</strong> Focuses on rapid prototyping and user feedback to build software quickly and improve based on continuous iterations.</li>
-                    </ul>
-            
-                    <h3>🔍 Software Engineering in Different Industries:</h3>
-                    <ul>
-                        <li><strong>Technology Companies:</strong> Building software products, services, and tools for various use cases, such as SaaS platforms, e-commerce sites, and mobile apps.</li>
-                        <li><strong>Healthcare:</strong> Developing software solutions for medical devices, patient management, and healthcare analytics.</li>
-                        <li><strong>Finance:</strong> Building financial software solutions, such as online banking, trading platforms, and financial analysis tools.</li>
-                        <li><strong>Automotive:</strong> Developing software for self-driving cars, in-car infotainment systems, and other automotive applications.</li>
-                        <li><strong>Gaming:</strong> Developing video games for various platforms, including mobile, console, and PC.</li>
-                        <li><strong>Government & Defense:</strong> Building secure software solutions for military and government agencies, including classified applications and cybersecurity tools.</li>
-                    </ul>
-            
-                    <p>
-                        Software engineering offers vast career opportunities, and the ability to innovate and solve problems makes it an exciting field. If you're interested in learning more about how to become a software engineer or exploring advanced topics, feel free to ask!
-                    </p>
-            
-                    <div class="post-actions">
-                        <button>READ MORE »</button>
-                        <p>Comments <span>0</span></p>
-                    </div>
-                </div>
-            </div>
-            
-
-            <div class="post">
-                <img src="images/Relationship-between-data-science-artificial-intelligence-and-machine-learning-Diagram.png"
-                    alt="Data Science Ecosystem" class="post-image">
-                <div class="post-content">
-                    <h2>🌐 What is Data Science?</h2>
-                    <p>
-                        <strong>Data Science</strong> is an interdisciplinary field that combines statistics, computer science, mathematics, and domain expertise to extract meaningful insights from structured and unstructured data. It encompasses the entire data lifecycle—from collection and cleaning to analysis, visualization, and decision-making.
-                    </p>
-            
-                    <h3>📚 Major Components of Data Science</h3>
-                    <ul>
-                        <li><strong>Data Collection:</strong> Gathering data from various sources such as databases, APIs, sensors, and web scraping.</li>
-                        <li><strong>Data Cleaning & Preprocessing:</strong> Handling missing values, outliers, and inconsistencies to prepare data for analysis.</li>
-                        <li><strong>Exploratory Data Analysis (EDA):</strong> Using statistical methods and visualization tools to understand data distributions and relationships.</li>
-                        <li><strong>Modeling & Machine Learning:</strong> Applying algorithms to identify patterns and make predictions.</li>
-                        <li><strong>Data Visualization:</strong> Presenting data insights through charts, graphs, and dashboards using tools like Tableau and Matplotlib.</li>
-                        <li><strong>Deployment:</strong> Integrating models into applications or systems for real-world use.</li>
-                        <li><strong>Monitoring & Maintenance:</strong> Continuously evaluating model performance and updating as necessary.</li>
-                    </ul>
-            
-                    <h3>🧠 Key Skills in Data Science</h3>
-                    <ul>
-                        <li><strong>Programming:</strong> Proficiency in languages like Python and R, used for data manipulation, automation, and model development.</li>
-                        <li><strong>Statistics & Mathematics:</strong> Understanding of concepts such as hypothesis testing, distributions, inferential statistics, and matrix operations.</li>
-                        <li><strong>Machine Learning:</strong> Mastery of supervised and unsupervised learning algorithms like decision trees, k-means clustering, and support vector machines.</li>
-                        <li><strong>Data Visualization:</strong> Ability to create informative visual representations of data that enhance storytelling and clarity of insight.</li>
-                        <li><strong>Domain Expertise:</strong> Insight into the specific field of application, such as finance, healthcare, or marketing, enabling better interpretation of data.
-                        </li>
-                        <li><strong>Communication:</strong> Skill to explain technical findings to non-technical stakeholders in a comprehensible manner.</li>
-                        <li><strong>Data Engineering:</strong> Familiarity with building pipelines and managing databases for large-scale data processing.</li>
-                    </ul>
-            
-                    <h3>🏗️ Structure of a Data Science Project</h3>
-                    <ol>
-                        <li><strong>Problem Definition:</strong> Clearly articulating the question or challenge to address, including scope and success criteria.</li>
-                        <li><strong>Data Acquisition:</strong> Collecting relevant data needed to solve the problem, including APIs, web scraping, or third-party datasets.</li>
-                        <li><strong>Data Preparation:</strong> Cleaning and transforming data into a usable format, removing noise and correcting inconsistencies.</li>
-                        <li><strong>Exploratory Analysis:</strong> Investigating data characteristics and initial patterns, testing hypotheses visually and statistically.</li>
-                        <li><strong>Feature Engineering:</strong> Creating new variables from existing data to improve model performance.</li>
-                        <li><strong>Model Building:</strong> Selecting and training appropriate algorithms, performing cross-validation and tuning hyperparameters.</li>
-                        <li><strong>Evaluation:</strong> Assessing model performance using metrics like accuracy, precision, recall, AUC-ROC, and F1-score.</li>
-                        <li><strong>Deployment:</strong> Implementing the model into a production environment via APIs, cloud platforms, or dashboards.</li>
-                        <li><strong>Monitoring:</strong> Tracking model performance over time and making necessary adjustments due to drift or changing conditions.</li>
-                    </ol>
-            
-                    <h3>🔁 Interconnections with Related Fields</h3>
-                    <p>
-                        Data Science is interconnected with several other disciplines, each contributing unique methodologies and perspectives:
-                    </p>
-            
-                    <h4>🤖 Machine Learning (ML)</h4>
-                    <p>
-                        ML is a subset of Data Science focused on developing algorithms that enable computers to learn from data. It's essential for predictive modeling and pattern recognition within Data Science projects.
-                    </p>
-            
-                    <h4>🧠 Deep Learning</h4>
-                    <p>
-                        A specialized area within ML, Deep Learning utilizes neural networks with multiple layers to model complex patterns, particularly in image and speech recognition tasks.
-                    </p>
-            
-                    <h4>⛏️ Data Mining</h4>
-                    <p>
-                        Data Mining involves exploring large datasets to discover hidden patterns and relationships. It's a foundational step in the Data Science process, often preceding modeling efforts.
-                    </p>
-            
-                    <h4>🌐 Big Data Technologies</h4>
-                    <p>
-                        Handling massive volumes of data requires tools like Hadoop and Spark. These technologies enable the storage and processing of big data, facilitating advanced analytics in Data Science.
-                    </p>
-            
-                    <h4>🧬 Artificial Intelligence (AI)</h4>
-                    <p>
-                        AI encompasses the broader goal of creating systems capable of intelligent behavior. Data Science provides the data and models that underpin AI applications, from natural language processing to autonomous vehicles.
-                    </p>
-            
-                    <h4>🔗 Decentralization (Blockchain & Web3)</h4>
-                    <p>
-                        The rise of decentralized technologies introduces new paradigms for data ownership and privacy. Data Science is adapting to analyze and derive insights from decentralized data sources, employing methods like federated learning.
-                    </p>
-            
-                    <h3>📊 Data Science Tools and Technologies</h3>
-                    <ul>
-                        <li><strong>Languages:</strong> Python, R, SQL, Julia</li>
-                        <li><strong>Libraries:</strong> NumPy, Pandas, Scikit-learn, TensorFlow, PyTorch, Keras</li>
-                        <li><strong>Visualization:</strong> Matplotlib, Seaborn, Plotly, Power BI</li>
-                        <li><strong>Big Data:</strong> Apache Hadoop, Spark, Hive, Kafka</li>
-                        <li><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB, Cassandra</li>
-                        <li><strong>Cloud Platforms:</strong> AWS, Azure, Google Cloud</li>
-                    </ul>
-            
-                    <h3>📑 Visual Representation of Relationships</h3>
-                    <pre>
-                        +---------------------------------------------+
-                        |           Artificial Intelligence (AI)      |
-                        |   (Simulating human intelligence)           |
-                        +------------------------+--------------------+
-                                                 |
-                           +---------------------+------------------------+
-                           |          Machine Learning (ML)              |
-                           | (Algorithms that learn from data)           |
-                           +---------------------+------------------------+
-                                                 |
-                                    +------------+------------+
-                                    |    Deep Learning (DL)    |
-                                    | (Neural networks for complex data) |
-                                    +-------------------------+
-            
-                    +-----------------------------+        +---------------------------+
-                    |       Data Mining           |<------>|       Data Science        |
-                    | (Discovering patterns)      |        | (End-to-end data analysis)|
-                    +-----------------------------+        +---------------------------+
-                                 |
-                    +-----------------------------+
-                    |     Big Data Technologies   |
-                    | (Processing large datasets) |
-                    +-----------------------------+
-            
-                    +-----------------------------+
-                    |     Decentralization        |
-                    | (Blockchain, Web3, Edge AI) |
-                    +-----------------------------+
-                    </pre>
-            
-                    <h3>🌟 Importance of Data Science</h3>
-                    <ul>
-                        <li><strong>Informed Decision-Making:</strong> Enables organizations to base decisions on data-driven insights.</li>
-                        <li><strong>Operational Efficiency:</strong> Streamlines processes through automation and predictive analytics.</li>
-                        <li><strong>Personalization:</strong> Enhances customer experiences by tailoring products and services.</li>
-                        <li><strong>Innovation:</strong> Drives the development of new products and solutions across industries.</li>
-                        <li><strong>Competitive Advantage:</strong> Provides a strategic edge by leveraging data effectively.</li>
-                        <li><strong>Risk Management:</strong> Detects anomalies and predicts potential threats in finance, healthcare, and cybersecurity.</li>
-                        <li><strong>Scientific Discovery:</strong> Advances research in genomics, physics, and climate modeling through large-scale data analysis.</li>
-                        <li><strong>Public Policy:</strong> Helps governments analyze trends for better policy decisions, urban planning, and crisis response.</li>
-                    </ul>
-            
-                    <p>
-                        Would you like this content in a PDF format or as a presentation for easier reference and sharing?
-                    </p>
-            
-                    <div class="post-actions">
-                        <button>READ MORE »</button>
-                    </div>
-                </div>
-            </div>
-            
-
-            <div class="post">
-                <img src="images/conceptual-illustration-of-data-analyst-flat-design-vector.jpg"
-                    alt="Data Analyst" class="post-image">
-                <div class="post-content">
-                    <h2>What is a Data Analyst?</h2>
-                    <p>
-                        A <strong>Data Analyst</strong> is a professional who gathers, processes, and analyzes data to help organizations make better decisions. Here's a breakdown of what a data analyst typically does:
-                    </p>
-                    <h3>🔍 What They Do:</h3>
-                    <ul>
-                        <li><strong>Collect Data</strong>: From databases, surveys, web scraping, or other sources.</li>
-                        <li><strong>Clean & Organize</strong>: Ensure data is accurate, complete, and structured properly.</li>
-                        <li><strong>Analyze Data</strong>: Use statistical techniques and software tools (like Excel, SQL, Python, R).</li>
-                        <li><strong>Visualize Results</strong>: Create charts, dashboards, or reports using tools like Tableau, Power BI, or Matplotlib.</li>
-                        <li><strong>Provide Insights</strong>: Explain trends, patterns, or anomalies and suggest business actions.</li>
-                    </ul>
-                    <h3>🧠 Key Skills:</h3>
-                    <ul>
-                        <li><strong>Technical Skills</strong>: SQL, Excel, Python, R, data visualization tools.</li>
-                        <li><strong>Statistical Knowledge</strong>: Mean, median, correlation, regression, etc.</li>
-                        <li><strong>Critical Thinking</strong>: Understanding what data means in a real-world context.</li>
-                        <li><strong>Communication</strong>: Explaining complex data insights to non-technical stakeholders.</li>
-                    </ul>
-                    <h3>📍Where They're Needed:</h3>
-                    <ul>
-                        <li>Business, Finance, Marketing, Healthcare, Technology, Government—you name it!</li>
-                    </ul>
-                    <p>
-                        Would you like to know what a typical data analyst career path looks like, or how to become one?
-                    </p>
-                    <div class="post-actions">
-                        <button>READ MORE »</button>
-                        <p>Comments <span>0</span></p>
-                    </div>
-                </div>
-            </div>
-            
-
-
-            <div class="post">
-                <img src="images/UX.png"
-                    alt="Nature" class="post-image">
-                <div class="post-content">
-                    <h2>Announcing my new Achievement</h2>
-
-                   <p>
-                    🌟 Just earned my User Experience Fundamentals badge from IBM SkillBuild!Excited to strengthen my understanding of UX principles and design thinking to create more intuitive and user-friendly experiences.Grateful for the opportunity to keep growing and learning!
-                   </p>
-                    <div class="post-actions">
-                        <button>READ MORE »</button>
-                        <p>Comments <span>0</span></p>
-                    </div>
-                </div>
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 md:px-6 mt-24 mb-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Blog Posts -->
+            <div class="w-full lg:w-3/4" id="blog-posts">
+                <!-- Posts will be loaded here by JavaScript -->
             </div>
 
-
-            <div class="post">
-                <img src="images/image stack.webp" alt="stack" class="post-image">
-
-                <div class="post-content">
-                    <h2>Understanding 🧠Different Full Stack Stacks 📚: A Comprehensive Guide 📝</h2><br><br>
-
-                    In the ever-evolving landscape of software development, full-stack developers have emerged as the
-                    versatile architects of modern web applications. A full-stack developer possesses the proficiency to
-                    handle both frontend and backend development, ensuring seamless end-to-end application creation.
-                    This article is your compass to navigate through the realm of full-stack development, exploring
-                    various popular full-stack stacks that empower developers to craft robust and dynamic web
-                    applications. Whether you’re embarking on a journey to become... 
-                    
-                    <div class="post-full" style="display: none;">
-                        <!-- Rest of your full content goes here -->
-                    </div>
-
-
-                    a full-stack developer or are curious
-                    about the technology behind it all, this guide will equip you with the essential insights to
-                    navigate the full-stack development landscape.
-
-                    <h3>Prerequisite</h3>
-                    Before we dive into the intricacies of full-stack stacks, it’s vital to have a strong foundation in
-                    the following areas:
-
-                    <h4> Frontend Development: </h4> Acquaintance with HTML, CSS, JavaScript, and a frontend framework
-                    like React,
-                    Angular, or Vue.js.
-                    <h4>Backend Development: </h4> A grasp of server-side programming languages such as Node.js, Python,
-                    Ruby, or
-                    Java.
-                    <h4>Databases: </h4> Basic understanding of databases, including types like SQL and NoSQL, and how
-                    they
-                    interact with backend services. <br>
-                    <h3>Table of Content </h3>
-                    <ul>
-                        <li> MERN Stack (MongoDB, Express.js, React, Node.js)
-                        </li>
-                        <li> MEAN Stack (MongoDB, Express.js, Angular, Node.js)
-                        </li>
-                        <li> LAMP Stack (Linux, Apache, MySQL, PHP/Python/Perl)
-                        </li>
-                        <li> MEVN Stack (MongoDB, Express.js, Vue.js, Node.js)
-                        </li>
-
-
-                    </ul>
-
-                    <h3>MERN Stack (MongoDB, Express.js, React, Node.js)</h3>
-                    The MERN stack represents a dynamic quartet of technologies — MongoDB, Express.js, React, and
-                    Node.js — that together drive the creation of modern, responsive, and feature-rich web applications.
-                    Each component of the MERN stack contributes a distinct role in the development process, harmonizing
-                    to deliver seamless user experiences. Let’s delve deeper into each element of this stack to
-                    understand its significance and how they work in unison.
-
-                    <h4>MongoDB: </h4>
-
-                    Explanation: MongoDB is a NoSQL database that revolutionizes data storage with its flexible,
-                    document-oriented structure. It stores data in JSON-like BSON (Binary JSON) format, making it easy
-                    to manage, query, and scale. <br>
-
-                    Significance:
-
-                    Schema flexibility allows for agile development and adaptation.
-                    High performance in handling large volumes of unstructured or semi-structured data.
-                    Ideal for applications demanding scalability and real-time data updates.
-                    <br>
-                    <h4>Express.js:</h4>
-
-                    Explanation: Express.js is a lightweight backend framework for Node.js, simplifying the creation of
-                    robust APIs and server-side applications. It provides essential tools to manage routes, handle
-                    middleware, and interact with databases. <br>
-
-                    Significance:
-
-                    Streamlines the process of building RESTful APIs and web services.
-                    Middleware support enhances application security, performance, and functionality.
-                    Offers a minimalistic, unopinionated design, allowing developers to structure projects as needed.
-                    <br>
-                    <h4>React:</h4>
-
-                    Explanation: React, developed by Facebook, is a JavaScript library that powers the frontend of web
-                    applications. It facilitates the creation of reusable UI components, enabling the construction of
-                    interactive and dynamic user interfaces. <br>
-
-                    Significance:
-
-                    Component-based architecture promotes modular and maintainable code.
-                    Virtual DOM enhances rendering efficiency, leading to faster updates.
-                    Supports unidirectional data flow, ensuring predictable application behavior. <br>
-                    <h4>Node.js:</h4>
-
-                    Explanation: Node.js is a server-side runtime environment that allows developers to execute
-                    JavaScript code outside of a browser. It’s highly efficient for building scalable network
-                    applications and APIs. <br>
-
-                    Significance:
-
-                    Non-blocking, event-driven architecture ensures optimal performance and responsiveness.
-                    Wide range of libraries and packages available through npm (Node Package Manager).
-                    Enables server-side rendering and real-time applications through WebSocket support. <br>
-
-                    <h4>How They Work Together:</h4>
-
-                    Backend Development: Express.js, running on Node.js, forms the backbone of the application’s
-                    server-side logic. It handles requests, routes, middleware, and interacts with the MongoDB database.
-                    <br>
-                    Frontend Development: React takes the lead in crafting the user interface. It creates reusable
-                    components that manage their state and efficiently update the UI via the virtual DOM. <br>
-                    Data Management: MongoDB serves as the data repository, with Express.js facilitating communication
-                    between the database and frontend. Data flows seamlessly between components. <br>
-                    Seamless Integration: Node.js orchestrates the backend and frontend, enabling a unified, full-stack
-                    application experience. <br>
-                    The MERN stack harmonizes the strengths of MongoDB, Express.js, React, and Node.js to empower
-                    developers to craft captivating and responsive web applications. Understanding the individual
-                    significance of each component and their collective synergy is pivotal for creating modern digital
-                    experiences that seamlessly integrate both frontend and backend functionality.
-
-                    <h3>MEAN Stack (MongoDB, Express.js, Angular, Node.js)</h3>
-                    The MEAN stack, comprising MongoDB, Express.js, Angular, and Node.js, stands as a robust foundation
-                    for building cutting-edge web applications. Each element contributes its unique strengths,
-                    collectively resulting in feature-rich, scalable, and interactive applications. Let’s dive deeper
-                    into each component to understand its role and how they synergize to create the MEAN stack’s
-                    distinctive power.
-
-                    <h4>MongoDB:</h4>
-
-                    Explanation: MongoDB, a NoSQL database, disrupts conventional data storage with its flexible,
-                    document-based architecture. It stores data in BSON format, providing agility in managing, querying,
-                    and scaling data. <br>
-
-                    Significance:
-
-                    Schema-free structure accommodates dynamic data changes without rigid constraints.
-                    Ideal for applications requiring scalability and handling unstructured or semi-structured data.
-                    JSON-like documents simplify data interchange between frontend and backend. <br>
-                    <h4>Express.js:</h4>
-
-                    Explanation: Express.js, a minimalist backend framework for Node.js, streamlines API and server-side
-                    application development. It offers tools for routing, middleware handling, and database interaction.
-                    <br>
-
-                    Significance:
-
-                    Swiftly constructs RESTful APIs and web services.
-                    Middleware support enhances security, performance, and modularity.
-                    Provides flexibility to organize projects based on specific requirements. <br>
-                    <h4>Angular:</h4>
-
-                    Explanation: Angular, Google’s frontend framework, empowers developers to craft interactive and
-                    dynamic user interfaces. It excels in creating single-page applications (SPAs) that enhance user
-                    experiences. <br>
-
-                    Significance:
-
-                    Component-driven architecture encourages modular and reusable UI elements.
-                    Two-way data binding ensures automatic synchronization between model and view.
-                    Powerful dependency injection system for efficient code management. <br>
-                    <h4> Node.js:</h4>
-
-                    Explanation: Node.js is a server-side runtime environment that enables running JavaScript outside
-                    browsers. It’s optimized for building scalable network applications and APIs. <br>
-
-                    Significance:
-
-                    Non-blocking, event-driven architecture guarantees exceptional performance and responsiveness.
-                    Vast library ecosystem available through npm (Node Package Manager).
-                    Facilitates server-side rendering and real-time applications using WebSocket support. <br>
-                    <h4>How They Collaborate:</h4>
-
-                    Backend Development: Express.js, operating atop Node.js, forges the backend foundation. It manages
-                    routing, middleware, and communication with MongoDB. <br>
-                    Frontend Development: Angular takes the lead in crafting engaging user interfaces. Its
-                    component-based architecture facilitates the construction of interactive elements. <br>
-                    Data Management: MongoDB serves as the repository, Express.js bridges frontend-backend
-                    communication, and Angular consumes and displays data. <br>
-                    Seamless Integration: Node.js acts as the glue, seamlessly integrating backend and frontend
-                    components for cohesive full-stack applications. <br>
-                    The MEAN stack’s synergy emanates from the prowess of MongoDB, Express.js, Angular, and Node.js.
-                    Each component plays a pivotal role in creating modern web applications with dynamic interfaces,
-                    scalable backends, and efficient data management. By comprehending the unique attributes of these
-                    components and their combined strength, developers unlock the potential to craft comprehensive
-                    digital experiences.
-
-                    <h3>LAMP Stack (Linux, Apache, MySQL, PHP/Python/Perl)</h3>
-                    The LAMP stack, an enduring archetype in web development, comprises Linux, Apache, MySQL, and a
-                    choice of scripting languages like PHP, Python, or Perl. Together, these components form the
-                    backbone of countless web applications, spanning from dynamic websites to intricate web platforms.
-                    Delving deeper into each constituent of the LAMP stack illuminates its role and collective impact in
-                    the realm of web development. <br>
-
-                    <h4>Linux:</h4>
-
-                    Explanation: Linux serves as the foundational operating system for the LAMP stack. It embodies
-                    open-source principles, offering reliability, security, and adaptability for hosting web
-                    applications. <br>
-
-                    Significance:
-
-                    Robust security mechanisms protect against vulnerabilities and cyber threats.
-                    Efficient memory management ensures optimal performance for web services.
-                    Extensive community support and wide array of available software packages. <br>
-                    <h4>Apache:</h4>
-
-                    Explanation: Apache, the quintessential web server software, handles HTTP requests, routing them to
-                    the appropriate web applications. It plays a pivotal role in serving web content to users’ browsers.
-                    <br>
-
-                    Significance:
-
-                    Efficiently serves static and dynamic content to users.
-                    Offers features like URL rewriting and virtual hosting for customization.
-                    Supports a variety of modules for extending functionality and security. <br>
-                    <h4>MySQL:</h4>
-
-                    Explanation: MySQL is a popular relational database management system (RDBMS) that stores structured
-                    data, providing efficient data retrieval and management. <br>
-
-                    Significance:
-
-                    Supports complex queries, indexing, and transactional operations.
-                    Ensures data integrity and consistency through relational model constraints.
-                    Scalability options for handling large datasets and concurrent connections. <br>
-                    <h4>PHP/Python/Perl:</h4>
-
-                    Explanation: The scripting language chosen (PHP, Python, or Perl) contributes dynamic server-side
-                    functionality to web applications. These languages process requests, interact with databases, and
-                    generate dynamic content. <br>
-
-                    Significance:
-
-                    PHP: Focuses on web development, offering vast libraries and frameworks.
-                    Python: Known for its simplicity and versatility, suitable for various applications.
-                    Perl: Regarded for text processing and manipulation tasks. <br>
-                    <h4> How They Collaborate:
-                    </h4>
-                    Operating System: Linux provides a stable and secure environment for hosting web applications and
-                    services. <br>
-                    Web Server: Apache receives HTTP requests from users’ browsers, handling the routing of requests to
-                    the appropriate applications. <br>
-                    Database: MySQL stores structured data generated by applications and allows for efficient querying
-                    and data manipulation. <br>
-                    Scripting Language: PHP, Python, or Perl dynamically generates content, interacts with databases,
-                    and performs server-side processing. <br>
-                    The LAMP stack’s legacy endures due to the synergy of its components — Linux, Apache, MySQL, and
-                    PHP/Python/Perl. These elements collectively underpin the construction of dynamic and data-driven
-                    web applications. By understanding the pivotal role each component plays, developers gain insights
-                    into how the LAMP stack powers countless web platforms, from personal websites to enterprise
-                    solutions.
-
-                    <h3>MEVN Stack (MongoDB, Express.js, Vue.js, Node.js)</h3>
-                    The MEVN stack, comprised of MongoDB, Express.js, Vue.js, and Node.js, ushers in a new era of modern
-                    web development. This stack seamlessly integrates powerful technologies to enable the creation of
-                    dynamic and interactive web applications. Let’s embark on a deeper exploration of each of these
-                    components to understand their roles and how they collaborate harmoniously to build captivating user
-                    experiences. <br>
-
-                    <h4> MongoDB:
-                    </h4>
-                    Explanation: MongoDB, a NoSQL database, reimagines data storage with its flexible document-oriented
-                    architecture. It employs BSON (Binary JSON) format to house data, offering unparalleled versatility
-                    in managing, querying, and scaling. <br>
-
-                    Significance:
-
-                    Schema flexibility adapts to evolving application needs without rigid constraints.
-                    Ideal for applications demanding scalability and handling unstructured or semi-structured data.
-                    JSON-like documents facilitate smooth data interchange between frontend and backend. <br>
-                    <h4> Express.js:
-                    </h4>
-                    Explanation: Express.js, a lightweight backend framework for Node.js, empowers developers to
-                    construct robust APIs and server-side applications. It streamlines route handling, middleware
-                    management, and interaction with databases. <br>
-
-                    Significance:
-
-                    Simplifies the creation of RESTful APIs and web services.
-                    Middleware support enhances application security, performance, and modularity.
-                    Offers an unopinionated structure, enabling developers to shape projects as required.
-                    <br>
-                    <h4>Vue.js:</h4>
-
-                    Explanation: Vue.js, a progressive JavaScript framework, takes the frontend spotlight by enabling
-                    the creation of dynamic user interfaces. It excels in constructing single-page applications (SPAs)
-                    that enhance user engagement. <br>
-
-                    Significance:
-
-                    Component-driven architecture encourages modular and reusable UI elements.
-                    Reactive data binding ensures efficient synchronization between model and view.
-                    Progressive adoption empowers developers to incorporate Vue.js into existing projects.
-                    <br>
-                    <h4> Node.js:
-                    </h4>
-                    Explanation: Node.js is a runtime environment that executes JavaScript code beyond browsers. It
-                    excels in building scalable network applications and APIs. <br>
-
-                    Significance:
-
-                    Non-blocking, event-driven architecture ensures exceptional performance and responsiveness.
-                    Comprehensive library ecosystem available via npm (Node Package Manager).
-                    Facilitates server-side rendering and real-time applications through WebSocket support. <br>
-                    <h4> How They Collaborate:
-                    </h4>
-                    Backend Development: Express.js, atop Node.js, forms the core of the backend. It manages routes,
-                    middleware, and communication with MongoDB. <br>
-                    Frontend Development: Vue.js commands the frontend realm, crafting interactive and dynamic user
-                    interfaces through components. <br>
-                    Data Management: MongoDB houses data, Express.js mediates frontend-backend communication, and Vue.js
-                    seamlessly displays and manages data. <br>
-                    Coherent Integration: Node.js acts as the glue, unifying backend and frontend components for a
-                    holistic full-stack experience. <br>
-                    The MEVN stack’s essence emerges from the fusion of MongoDB, Express.js, Vue.js, and Node.js. Each
-                    ingredient contributes its distinct flavor to create modern web applications that feature dynamic
-                    interfaces, scalable backends, and efficient data management. By comprehending the individual merits
-                    of these components and their collective synergy, developers unlock the potential to craft
-                    comprehensive digital experiences.
-
-                    <h3>Conclusion:</h3>
-                    The journey through various full-stack stacks empowers developers to meticulously select the optimal
-                    blend of technologies for their projects. Whether your affinity leans towards the versatility of
-                    JavaScript-based stacks or the solidity of conventional options, each stack brings unique
-                    advantages. By harnessing the synergy of frontend and backend technologies, full-stack developers
-                    wield the power to shape the digital realm. <br>
-
-                    <h4>References:</h4>
-                    <ul>
-                        <li> MERN Stack Tutorial by MongoDB
-                        </li>
-                        <li> Angular Official Documentation
-                        </li>
-                        <li> Vue.js Guide
-                        </li>
-                        <li> Ruby on Rails Guides
-                        </li>
-                        <li> Choosing the Right Technology Stack for Web App Development
-                        </li>
-                    </ul>
-                    </p>
-
-                    
-                    <div class="post-actions">
-                        <button>READ MORE »</button>
-                        <p>Comments <span>0</span></p>
+            <!-- Sidebar -->
+            <div class="w-full lg:w-1/4">
+                <!-- About Section -->
+                <div class="glass-card mb-8 overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+                    <img src="images/5.jpg" alt="Avatar" class="w-full h-48 object-cover object-top">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-white mb-4">Moizuddin Mohammad Mujahid Rashid</h2>
+                        <p class="text-gray-300">Just me, myself and I, exploring the universe of uknownment. I have a heart of love and a interest of web development and ui/ux desgin. I want to share my world with you.</p>
                     </div>
                 </div>
-            </div>
 
-
-            <div class="post">
-                <img src="images/DALL·E 2025-03-25 13.13.55 - A 2D scatter plot illustrating the K-Nearest Neighbors (KNN) algorithm. The image shows two distinct clusters of points, one in blue and another in re.webp"
-                    alt="Nature" class="post-image">
-                <div class="post-content">
-                    <h2>K Nearest Neighbors</h2>
-
-                    <p>
-                    <h4>KNN Algorithm Visualization</h4>
-                    Here’s an image of how KNN classifies a new point based on its neighbors.
-
-                    </p>
-                    <p>
-                    <h4> What is K-Nearest Neighbors (KNN)?</h4>
-                    K-Nearest Neighbors (KNN) is a supervised learning algorithm used for classification and
-                    regression tasks. It is a non-parametric and instance-based learning algorithm, meaning it makes
-                    predictions based on similarity between data points rather than learning an explicit model.
-
-                    <h4>How KNN Works?</h4>
-                    Choose a value for K (number of neighbors).
-
-                    Calculate distances between the new data point and all training data points (e.g., Euclidean
-                    distance).
-
-                    Find the K nearest neighbors (smallest distances).
-
-                    Classification: Assign the most common class among the K neighbors.
-                    Regression: Take the average of the K neighbors’ values.
-
-                    <h4>What Type of Dataset Does KNN Need?</h4>
-                    Numerical & Categorical Features (KNN works well with both but requires encoding for categorical
-                    data).
-
-                    Balanced Datasets (It struggles with imbalanced datasets).
-
-                    Low-Dimensional Data (KNN performs poorly in high-dimensional spaces due to the curse of
-                    dimensionality).
-
-                    Small to Medium Dataset Size (Since KNN stores all data points, large datasets make it slow).
-
-
-                    </p>
-                    <div class="post-actions">
-                        <button>READ MORE »</button>
-                        <p>Comments <span>0</span></p>
+                <!-- Popular Posts -->
+                <div class="glass-card mb-8 overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+                    <div class="p-6 border-b border-gray-700">
+                        <h2 class="text-2xl font-bold text-white">Popular Posts</h2>
+                    </div>
+                    <div class="popular-post p-4 flex items-center border-b border-gray-700 transition-colors duration-300 hover:bg-gray-800">
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Workshop" class="w-12 h-12 rounded-full mr-4 object-cover transition-transform duration-300 hover:scale-110">
+                        <div>
+                            <h3 class="text-white font-medium">Contact Me Card</h3>
+                            <p class="text-sm text-gray-400">This post contains a fully responsive and interactive contact form...</p>
+                        </div>
+                    </div>
+                    <div class="popular-post p-4 flex items-center border-b border-gray-700 transition-colors duration-300 hover:bg-gray-800">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Gondol" class="w-12 h-12 rounded-full mr-4 object-cover transition-transform duration-300 hover:scale-110">
+                        <div>
+                            <h3 class="text-white font-medium">Product Card</h3>
+                            <p class="text-sm text-gray-400">This project focused on enhancing my understanding of HTML and CSS...</p>
+                        </div>
+                    </div>
+                    <div class="popular-post p-4 flex items-center transition-colors duration-300 hover:bg-gray-800">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Skies" class="w-12 h-12 rounded-full mr-4 object-cover transition-transform duration-300 hover:scale-110">
+                        <div>
+                            <h3 class="text-white font-medium">My PortFolio</h3>
+                            <p class="text-sm text-gray-400">This contains the code for my personal portfolio website...</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="post">
-                <img src="images/DALL·E 2025-03-25 13.35.42 - An infographic illustrating the structure of full stack development. The image is divided into three main sections_ Frontend, Backend, and Database. _.webp"
-                    alt="Nature" class="post-image">
-                <div class="post-content">
-                    <h2>The Ultimate Guide to Full Stack Development: Understanding the Complete Structure</h2>
-
-                    <p>
-
-                    <h3>Introduction </h3>
-                    Full stack development is one of the most sought-after skills in the tech industry. A full stack
-                    developer is someone who is proficient in both frontend and backend development, along with database
-                    management. But what exactly does full stack development include? In this blog, we will break down
-                    the proper structure of full stack development and explain its key components.
-
-
-                    <h4>1. Understanding Full Stack Development</h4>
-
-                    Full stack development covers three main layers: <br>
-                    1. Frontend (Client-Side Development) – The part users interact with. <br>
-                    2. Backend (Server-Side Development) – The logic and functionality. <br>
-                    3. Database Management – Where data is stored and retrieved. <br>
-
-                    Each of these layers works together to create a fully functional application.
-
-
-                    <h4>2. The Proper Structure of Full Stack Development</h4>
-                    A full stack development structure can be divided into the following sections:
-
-                    <h5>A. Frontend (Client-Side)</h5>
-                    This is the user-facing part of a web application. It includes: <br>
-                    - HTML (HyperText Markup Language): The basic structure of web pages. <br>
-                    - CSS (Cascading Style Sheets): Styling and layout of web pages. <br>
-                    - JavaScript: Adds interactivity to web pages. <br>
-                    - Frameworks/Libraries: React, Angular, or Vue.js for efficient UI development. <br>
-
-                    The frontend is responsible for ensuring that the website is visually appealing, responsive, and
-                    user-friendly.
-
-                    <h5>B. Backend (Server-Side)</h5>
-                    The backend handles the business logic, processes requests, and communicates with the database. It
-                    includes: <br>
-                    - Programming Languages: Node.js, Python, Java, PHP, or Ruby. <br>
-                    - Frameworks: Express.js (Node.js), Django (Python), Spring Boot (Java), Laravel (PHP). <br>
-                    - Authentication & Authorization: JWT, OAuth, and Passport.js for securing user access. <br>
-                    - RESTful APIs & GraphQL: To enable communication between the frontend and backend. <br>
-
-                    The backend ensures that the right data is delivered to the frontend efficiently.
-
-                    <h5>C. Database Management</h5>
-                    Databases store and manage data for applications. There are two main types: <br>
-                    - SQL Databases: MySQL, PostgreSQL, Microsoft SQL Server (structured data storage). <br>
-                    - NoSQL Databases: MongoDB, Firebase (flexible and scalable storage). <br>
-
-                    Database management ensures that the application can handle user data securely and efficiently. <br>
-
-
-
-                    <h4>3. DevOps & Deployment </h4>
-                    A full stack developer should also be familiar with DevOps practices to deploy and maintain
-                    applications. This includes: <br>
-                    - Version Control Systems: Git, GitHub, GitLab. <br>
-                    - Cloud Platforms: AWS, Google Cloud, Azure. <br>
-                    - Containerization & Orchestration:** Docker, Kubernetes. <br>
-                    - CI/CD Pipelines: Jenkins, GitHub Actions, CircleCI. <br>
-
-                    These tools help automate the development, testing, and deployment processes, ensuring that
-                    applications run smoothly in production.
-
-
-
-                    <h4>4. Full Stack Development Workflow </h4>
-                    A typical full stack development workflow looks like this: <br>
-                    1. Design & Plan: UI/UX design, wireframing. <br>
-                    2. Develop Frontend: Build responsive UI components. <br>
-                    3. Develop Backend: Implement business logic and APIs. <br>
-                    4. Connect Database: Store and retrieve data securely. <br>
-                    5. Test & Debug: Ensure application works as expected. <br>
-                    6. Deploy & Maintain: Launch application and continuously update it. <br>
-
-
-
-                    <h4>5. Why Become a Full Stack Developer? </h4>
-                    - High Demand: Companies prefer developers who can handle both frontend and backend. <br>
-                    - Better Pay: Full stack developers earn competitive salaries. <br>
-                    - More Flexibility: You can work on different technologies and projects. <br>
-                    - Entrepreneurial Opportunities: Build your own applications from scratch. <br>
-
-
-                    <h4>Conclusion </h4>
-                    Full stack development is a powerful skill that allows developers to build complete web
-                    applications. By understanding the frontend, backend, and database structure, you can create
-                    scalable and efficient applications. If you’re looking to become a full stack developer, start by
-                    mastering key technologies like React, Node.js, and MongoDB, and keep learning to stay ahead in the
-                    industry! <br>
-
-                    Are you interested in becoming a full stack developer? Let us know your thoughts in the comments
-                    below! 🚀
-
-
-
-                    </p>
-                    <div class="post-actions">
-                        <button>READ MORE »</button>
-                        <p>Comments <span>0</span></p>
+                <!-- Tags Section -->
+                <div class="glass-card overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+                    <div class="p-6 border-b border-gray-700">
+                        <h2 class="text-2xl font-bold text-white">Tags</h2>
                     </div>
-                </div>
-            </div>
-
-
-            <div class="post">
-                <img src="images/Screenshot 2025-02-23 145850.png" alt="Bridge" class="post-image">
-                <div class="post-content">
-                    <h2>SLIDING SIGN UP/IN</h2>
-                    <p class="post-meta"><a href="https://mujahidraj.github.io/Sign-UP-IN-Template/">Go to see...</a>
-                        <span> , April 2, 2024</span>
-                    </p>
-                    <p>This project is a responsive and visually appealing Sign Up and Sign In page template built using
-                        HTML and CSS. It provides a clean, modern, and user-friendly design suitable for authentication
-                        pages in various web applications.
-
-                    </p>
-                    <div class="post-actions">
-                        <button>READ MORE »</button>
-                        <p>Comments <span>2</span></p>
+                    <div class="p-6 flex flex-wrap gap-2">
+                        <span class="btn-neon px-3 py-1 rounded-full text-sm">Web Dev</span>
+                        <span class="btn-neon px-3 py-1 rounded-full text-sm">UI/UX</span>
+                        <span class="btn-neon px-3 py-1 rounded-full text-sm">React</span>
+                        <span class="btn-neon px-3 py-1 rounded-full text-sm">JavaScript</span>
+                        <span class="btn-neon px-3 py-1 rounded-full text-sm">Node.js</span>
+                        <span class="btn-neon px-3 py-1 rounded-full text-sm">MongoDB</span>
+                        <span class="btn-neon px-3 py-1 rounded-full text-sm">Design</span>
+                        <span class="btn-neon px-3 py-1 rounded-full text-sm">DevOps</span>
+                        <span class="btn-neon px-3 py-1 rounded-full text-sm">Python</span>
+                        <span class="btn-neon px-3 py-1 rounded-full text-sm">Data Science</span>
                     </div>
                 </div>
             </div>
         </div>
 
-
-        <div class="sidebar">
-
-            <div class="sidebar-section">
-                <img src="images/3.jpg" alt="Avatar" class="sidebar-image">
-                <div class="sidebar-content">
-                    <h2>Moizuddin Mohammad Mujahid Rashid</h2>
-                    <p>Just me, myself and I, exploring the universe of uknownment. I have a heart of love and a
-                        interest of web development and ui/ux desgin. I want to share my world with you.</p>
-                </div>
-            </div>
-
-
-            <div class="sidebar-section">
-                <h2>Popular Posts</h2>
-                <div class="popular-post">
-                    <img src="images/Screenshot 2025-02-23 150407.png" alt="Workshop" class="popular-post-image">
-                    <div class="popular-post-content">
-                        <h3>Contact Me Card</h3>
-                        <p>This post contains a fully responsive and interactive contact form built using HTML and CS
-                            see more...
-
-                        </p>
-                    </div>
-                </div>
-                <div class="popular-post">
-                    <img src="images/Screenshot 2025-02-23 150632.png" alt="Gondol" class="popular-post-image">
-                    <div class="popular-post-content">
-                        <h3>Product Card</h3>
-                        <p>This project focused on enhancing my understanding of HTML and CSS. The goal of this project
-                            is to build see more...</p>
-                    </div>
-                </div>
-                <div class="popular-post">
-                    <img src="images/Screenshot 2025-02-23 150859.png" alt="Skies" class="popular-post-image">
-                    <div class="popular-post-content">
-                        <h3>My PortFolio</h3>
-                        <p>This contains the code for my personal portfolio website, designed using HTML and CSS see
-                            more...</p>
-                    </div>
-                </div>
-                <div class="popular-post">
-                    <img src="images/Screenshot 2025-02-23 151114.png" alt="Rock" class="popular-post-image">
-                    <div class="popular-post-content">
-                        <h3>Comming Soon</h3>
-                        <p>This repository contains a "Coming Soon" page template built using HTML and CSS. The page
-                            displays a minimalist design see more...</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="sidebar-section">
-                <h2>Tags</h2>
-                <div class="tags">
-                    <span>Travel</span>
-                    <span>New York</span>
-                    <span>London</span>
-                    <span>IKEA</span>
-                    <span>NORWAY</span>
-                    <span>DIY</span>
-                    <span>Ideas</span>
-                    <span>Baby</span>
-                    <span>Family</span>
-                    <span>News</span>
-                    <span>Clothing</span>
-                    <span>Shopping</span>
-                    <span>Sports</span>
-                    <span>Games</span>
-                </div>
+        <!-- Pagination -->
+        <div class="flex justify-center mt-8">
+            <div class="flex space-x-2" id="pagination">
+                <!-- Pagination buttons will be loaded here by JavaScript -->
             </div>
         </div>
     </div>
 
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Information</h3>
-                <p><strong>Address:</strong> Kuril Biswo road ,Kuril , Khilkhet , Dhaka Bangladesh</p>
-                <p><strong>Email:</strong> mujahidraj65@gmail.com</p>
-                <p><strong>Phone:</strong>+8801796059406</p>
+    <!-- Footer -->
+    <footer class="text-center py-10 mt-12 border-t border-gray-700">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-gray-700">
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-4">Contact Information</h3>
+                    <p class="text-gray-300"><strong>Address:</strong> Kuril Biswo road ,Kuril , Khilkhet , Dhaka Bangladesh</p>
+                    <p class="text-gray-300"><strong>Email:</strong> mujahidraj65@gmail.com</p>
+                    <p class="text-gray-300"><strong>Phone:</strong>+8801796059406</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-4">Follow Us</h3>
+                    <p class="text-gray-300"><a href="#" class="text-primary hover:text-white transition-colors"><i class="fa-brands fa-facebook mr-2"></i> Facebook</a></p>
+                    <p class="text-gray-300"><a href="#" class="text-primary hover:text-white transition-colors"><i class="fa-brands fa-twitter mr-2"></i> Twitter</a></p>
+                    <p class="text-gray-300"><a href="#" class="text-primary hover:text-white transition-colors"><i class="fa-brands fa-instagram mr-2"></i> Instagram</a></p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-4">Page Views</h3>
+                    <p class="text-gray-300" id="page-counter">Loading...</p>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <p><a href="#"><i class="fa-brands fa-facebook"> </i> Facebook</a></p>
-                <p><a href="#"><i class="fa-brands fa-twitter"> </i> Twitter</a></p>
-                <p><a href="#"><i class="fa-brands fa-instagram"> </i> Instagram</a></p>
+            <div class="pt-8">
+                <button class="btn-neon px-4 py-2 rounded-full mr-4" id="prev-page">Previous</button>
+                <button class="btn-neon px-4 py-2 rounded-full" id="next-page">Next »</button>
+                <p class="text-gray-300 mt-4">Powered by <a href="#" target="_blank" class="text-primary hover:text-white transition-colors">Mujahid Raj</a></p>
             </div>
-            <div class="footer-section">
-                <h3>Page Views</h3>
-                <p id="page-counter">Loading...</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <button>Previous</button>
-            <button>Next »</button>
-            <p>Powered by <a href="#" target="_blank">Mujahid Raj</a></p>
         </div>
     </footer>
 
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle btn-neon fixed bottom-6 right-6 w-12 h-12 rounded-full flex items-center justify-center z-10" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
 
     <script>
-        let pageViews = localStorage.getItem('pageViews');
-        if (!pageViews) {
-            pageViews = 0;
-        }
-        pageViews++;
-        localStorage.setItem('pageViews', pageViews);
-        document.getElementById('page-counter').textContent = `Page Views: ${pageViews}`;
-
-        const darkModeToggle = document.createElement('button');
-        darkModeToggle.className = 'dark-mode-toggle';
-        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        document.body.appendChild(darkModeToggle);
-
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const icon = darkModeToggle.querySelector('i');
-            if (document.body.classList.contains('dark-mode')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.removeItem('darkMode');
+        // Blog data
+        const blogPosts = [
+            {
+                id: 1,
+                title: "What is Web Development?",
+                date: "April 7, 2024",
+                image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                alt: "Web Development",
+                excerpt: "Web Development is the process of building and maintaining websites or web applications. It involves a wide range of tasks, from designing the structure of a website to coding its functionality and ensuring it works on various devices.",
+                fullContent: "<p><strong>Web Development</strong> is the process of building and maintaining websites or web applications. It involves a wide range of tasks, from designing the structure of a website to coding its functionality and ensuring it works on various devices. Web development is typically divided into three key areas: <strong>front-end</strong>, <strong>back-end</strong>, and <strong>full-stack</strong> development.</p><p class='mt-4'>Front-end development focuses on the user-facing part of a website, including the design, layout, and interactivity. It involves technologies like HTML, CSS, and JavaScript.</p><p class='mt-4'>Back-end development deals with the server-side of web applications, managing databases, user authentication, and application logic. Common back-end technologies include Node.js, Python, Ruby, PHP, and Java.</p><p class='mt-4'>Full-stack developers are proficient in both front-end and back-end development, allowing them to build complete web applications from start to finish.</p>",
+                likes: 15,
+                dislikes: 2,
+                comments: [
+                    {
+                        id: 1,
+                        author: "John Doe",
+                        avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+                        content: "Great explanation! I've been trying to understand the difference between front-end and back-end development for a while.",
+                        date: "April 8, 2024",
+                        replies: [
+                            {
+                                id: 1,
+                                author: "Mujahid Raj",
+                                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+                                content: "Thanks John! I'm glad you found it helpful.",
+                                date: "April 8, 2024"
+                            }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        author: "Sarah Johnson",
+                        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+                        content: "What would you recommend for someone just starting with web development?",
+                        date: "April 9, 2024",
+                        replies: []
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "Difference Between UI and UX Design",
+                date: "April 5, 2024",
+                image: "https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                alt: "UI/UX Design",
+                excerpt: "While UI (User Interface) and UX (User Experience) design are often used interchangeably, they represent distinct aspects of the design process.",
+                fullContent: "<p>While <strong>UI (User Interface)</strong> and <strong>UX (User Experience)</strong> design are often used interchangeably, they represent distinct aspects of the design process. Both are crucial for creating a successful digital product, but they focus on different areas of the user's interaction with the product.</p><p class='mt-4'><strong>UI Design</strong> focuses on the visual aspects of a product - the look and feel, the presentation, and the interactivity of a product. It's about designing the interface that users interact with, including buttons, icons, spacing, typography, color schemes, and responsive design.</p><p class='mt-4'><strong>UX Design</strong> is about the overall experience a user has with a product or service. It focuses on enhancing user satisfaction by improving the usability, accessibility, and pleasure provided in the interaction. UX design involves user research, creating user personas, wireframing, prototyping, and testing.</p><p class='mt-4'>In simple terms, UI is about how a product looks, while UX is about how it feels to use the product. Both are essential for creating successful digital products that users love.</p>",
+                likes: 23,
+                dislikes: 1,
+                comments: [
+                    {
+                        id: 1,
+                        author: "Alex Chen",
+                        avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+                        content: "This is the clearest explanation I've read about UI vs UX. Thanks for sharing!",
+                        date: "April 6, 2024",
+                        replies: []
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title: "What is DevOps?",
+                date: "April 3, 2024",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                alt: "DevOps",
+                excerpt: "DevOps is a set of practices and cultural philosophies that aim to improve the collaboration between software development (Dev) and IT operations (Ops).",
+                fullContent: "<p><strong>DevOps</strong> is a set of practices and cultural philosophies that aim to improve the collaboration between software development (Dev) and IT operations (Ops). It emphasizes automation, continuous integration, continuous delivery, and the monitoring of software applications to deliver high-quality software faster and more efficiently.</p><p class='mt-4'>The main goals of DevOps include:</p><ul class='list-disc pl-5 mt-2'><li>Shortening the development lifecycle</li><li>Increasing deployment frequency</li><li>More dependable releases</li><li>Improving collaboration between teams</li><li>Automating processes wherever possible</li></ul><p class='mt-4'>DevOps practices include Continuous Integration/Continuous Deployment (CI/CD), infrastructure as code, monitoring and logging, and communication and collaboration. Popular DevOps tools include Jenkins, Docker, Kubernetes, Ansible, Terraform, and many others.</p><p class='mt-4'>By adopting DevOps practices, organizations can deliver features, fixes, and updates more frequently and reliably, with better quality and faster time to market.</p>",
+                likes: 18,
+                dislikes: 3,
+                comments: []
+            },
+            {
+                id: 4,
+                title: "Introduction to React.js",
+                date: "April 1, 2024",
+                image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                alt: "React.js",
+                excerpt: "React is a JavaScript library for building user interfaces, particularly web applications.",
+                fullContent: "<p><strong>React</strong> is a JavaScript library for building user interfaces, particularly web applications. It was developed by Facebook and released in 2013. React allows developers to create large web applications that can update and render efficiently in response to data changes.</p><p class='mt-4'>Key features of React include:</p><ul class='list-disc pl-5 mt-2'><li><strong>Components:</strong> React is based on components - reusable, self-contained pieces of code that return HTML via a render function.</li><li><strong>Virtual DOM:</strong> React creates a virtual representation of the DOM in memory, which makes updating the UI more efficient.</li><li><strong>JSX:</strong> A syntax extension that allows you to write HTML-like code in JavaScript.</li><li><strong>Unidirectional Data Flow:</strong> Data in React flows in one direction, making it easier to understand how data changes affect the application.</li><li><strong>React Hooks:</strong> Introduced in React 16.8, hooks allow you to use state and other React features without writing a class.</li></ul><p class='mt-4'>React has become one of the most popular front-end libraries due to its performance, component-based architecture, and strong ecosystem with tools like React Router for routing and Redux for state management.</p>",
+                likes: 27,
+                dislikes: 2,
+                comments: [
+                    {
+                        id: 1,
+                        author: "Mike Thompson",
+                        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+                        content: "I've been learning React for the past month and it's been a game changer for my projects!",
+                        date: "April 2, 2024",
+                        replies: [
+                            {
+                                id: 1,
+                                author: "Mujahid Raj",
+                                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+                                content: "That's great to hear Mike! React definitely has a learning curve but it's worth it.",
+                                date: "April 2, 2024"
+                            }
+                        ]
+                    }
+                ]
             }
-        });
+        ];
 
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-            const icon = darkModeToggle.querySelector('i');
-            icon.classList.replace('fa-moon', 'fa-sun');
+        // Pagination variables
+        let currentPage = 1;
+        const postsPerPage = 2;
+        let totalPages = Math.ceil(blogPosts.length / postsPerPage);
+
+        // DOM elements
+        const blogPostsContainer = document.getElementById('blog-posts');
+        const paginationContainer = document.getElementById('pagination');
+        const prevButton = document.getElementById('prev-page');
+        const nextButton = document.getElementById('next-page');
+
+        // Initialize the blog
+        function initBlog() {
+            renderPosts();
+            renderPagination();
+            setupEventListeners();
+            
+            // Page view counter
+            let pageViews = localStorage.getItem('pageViews');
+            if (!pageViews) {
+                pageViews = 0;
+            }
+            pageViews++;
+            localStorage.setItem('pageViews', pageViews);
+            document.getElementById('page-counter').textContent = `Page Views: ${pageViews}`;
         }
 
+        // Render posts for current page
+        function renderPosts() {
+            blogPostsContainer.innerHTML = '';
+            
+            const startIndex = (currentPage - 1) * postsPerPage;
+            const endIndex = startIndex + postsPerPage;
+            const postsToShow = blogPosts.slice(startIndex, endIndex);
+            
+            postsToShow.forEach(post => {
+                const postElement = createPostElement(post);
+                blogPostsContainer.appendChild(postElement);
+            });
+        }
 
+        // Create post element
+        function createPostElement(post) {
+            const postDiv = document.createElement('div');
+            postDiv.className = 'glass-card mb-8 overflow-hidden transition-transform duration-300 hover:-translate-y-2';
+            postDiv.innerHTML = `
+                <img src="${post.image}" alt="${post.alt}" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">${post.title}</h2>
+                    <p class="text-primary mb-4">${post.date}</p>
+                    <div class="post-excerpt">
+                        <p class="text-gray-300 mb-4">${post.excerpt}</p>
+                    </div>
+                    <div class="post-full-content hidden animate-fadeIn">
+                        ${post.fullContent}
+                    </div>
+                    <div class="flex justify-between items-center mt-6">
+                        <button class="btn-neon read-more px-4 py-2 rounded-full" data-post-id="${post.id}">READ MORE »</button>
+                        <div class="flex items-center">
+                            <button class="reaction-btn like-btn text-gray-400 hover:text-green-400 mx-2 ${isLiked(post.id) ? 'active text-green-400' : ''}" data-post-id="${post.id}" data-type="like">
+                                <i class="fas fa-thumbs-up mr-1"></i> <span>${post.likes + (isLiked(post.id) ? 1 : 0)}</span>
+                            </button>
+                            <button class="reaction-btn dislike-btn text-gray-400 hover:text-red-400 mx-2 ${isDisliked(post.id) ? 'active text-red-400' : ''}" data-post-id="${post.id}" data-type="dislike">
+                                <i class="fas fa-thumbs-down mr-1"></i> <span>${post.dislikes + (isDisliked(post.id) ? 1 : 0)}</span>
+                            </button>
+                            <p class="text-gray-400 ml-4">Comments <span class="bg-primary bg-opacity-30 text-white px-2 py-1 rounded-full">${post.comments.length}</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="comments-section p-6 border-t border-gray-700 hidden animate-fadeIn">
+                    <h3 class="text-xl font-bold text-white mb-4">Comments (${post.comments.length})</h3>
+                    <div class="comments-container">
+                        ${renderComments(post.comments)}
+                    </div>
+                    <div class="add-comment mt-6">
+                        <h4 class="text-lg font-bold text-white mb-3">Add a Comment</h4>
+                        <textarea class="w-full bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg p-3 text-white mb-3" rows="3" placeholder="Your comment..."></textarea>
+                        <button class="btn-neon px-4 py-2 rounded-full add-comment-btn" data-post-id="${post.id}">Submit Comment</button>
+                    </div>
+                </div>
+            `;
+            return postDiv;
+        }
+
+        // Render comments
+        function renderComments(comments) {
+            if (comments.length === 0) {
+                return '<p class="text-gray-400 italic">No comments yet. Be the first to comment!</p>';
+            }
+            
+            return comments.map(comment => `
+                <div class="comment mb-4 p-4 bg-gray-800 bg-opacity-30 rounded-lg">
+                    <div class="flex items-start mb-2">
+                        <img src="${comment.avatar}" alt="${comment.author}" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="text-white font-medium">${comment.author}</h4>
+                            <p class="text-gray-400 text-sm">${comment.date}</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-3">${comment.content}</p>
+                    <button class="reply-btn text-primary text-sm hover:underline" data-comment-id="${comment.id}">Reply</button>
+                    
+                    ${comment.replies && comment.replies.length > 0 ? `
+                        <div class="replies ml-8 mt-3">
+                            ${comment.replies.map(reply => `
+                                <div class="reply mb-3 p-3 bg-gray-800 bg-opacity-20 rounded-lg">
+                                    <div class="flex items-start mb-2">
+                                        <img src="${reply.avatar}" alt="${reply.author}" class="w-8 h-8 rounded-full mr-2">
+                                        <div>
+                                            <h5 class="text-white font-medium">${reply.author}</h5>
+                                            <p class="text-gray-400 text-xs">${reply.date}</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-300 text-sm">${reply.content}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                    
+                    <div class="reply-form hidden mt-3">
+                        <textarea class="w-full bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg p-2 text-white mb-2 text-sm" rows="2" placeholder="Your reply..."></textarea>
+                        <button class="btn-neon px-3 py-1 rounded-full text-sm submit-reply-btn" data-comment-id="${comment.id}">Submit Reply</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render pagination
+        function renderPagination() {
+            paginationContainer.innerHTML = '';
+            
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.className = `btn-neon px-4 py-2 rounded-full ${i === currentPage ? 'bg-primary bg-opacity-20' : ''}`;
+                pageButton.textContent = i;
+                pageButton.addEventListener('click', () => {
+                    currentPage = i;
+                    renderPosts();
+                    renderPagination();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                paginationContainer.appendChild(pageButton);
+            }
+            
+            // Update prev/next button states
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage === totalPages;
+            
+            if (prevButton.disabled) {
+                prevButton.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                prevButton.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+            
+            if (nextButton.disabled) {
+                nextButton.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                nextButton.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Previous page button
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderPosts();
+                    renderPagination();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+            
+            // Next page button
+            nextButton.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderPosts();
+                    renderPagination();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+            
+            // Event delegation for read more buttons
+            blogPostsContainer.addEventListener('click', (e) => {
+                // Read more/read less toggle
+                if (e.target.classList.contains('read-more')) {
+                    const postId = e.target.getAttribute('data-post-id');
+                    const postElement = e.target.closest('.glass-card');
+                    const excerptSection = postElement.querySelector('.post-excerpt');
+                    const fullContentSection = postElement.querySelector('.post-full-content');
+                    const commentsSection = postElement.querySelector('.comments-section');
+                    
+                    if (excerptSection.style.display !== 'none') {
+                        // Show full content and comments
+                        excerptSection.style.display = 'none';
+                        fullContentSection.classList.remove('hidden');
+                        commentsSection.classList.remove('hidden');
+                        e.target.textContent = 'READ LESS »';
+                    } else {
+                        // Show excerpt only
+                        excerptSection.style.display = 'block';
+                        fullContentSection.classList.add('hidden');
+                        commentsSection.classList.add('hidden');
+                        e.target.textContent = 'READ MORE »';
+                    }
+                }
+                
+                // Like buttons
+                if (e.target.classList.contains('like-btn') || e.target.closest('.like-btn')) {
+                    const likeBtn = e.target.classList.contains('like-btn') ? e.target : e.target.closest('.like-btn');
+                    const postId = likeBtn.getAttribute('data-post-id');
+                    toggleReaction(postId, 'like');
+                    renderPosts();
+                }
+                
+                // Dislike buttons
+                if (e.target.classList.contains('dislike-btn') || e.target.closest('.dislike-btn')) {
+                    const dislikeBtn = e.target.classList.contains('dislike-btn') ? e.target : e.target.closest('.dislike-btn');
+                    const postId = dislikeBtn.getAttribute('data-post-id');
+                    toggleReaction(postId, 'dislike');
+                    renderPosts();
+                }
+                
+                // Add comment buttons
+                if (e.target.classList.contains('add-comment-btn')) {
+                    const postId = e.target.getAttribute('data-post-id');
+                    const textarea = e.target.previousElementSibling;
+                    const commentText = textarea.value.trim();
+                    
+                    if (commentText) {
+                        addComment(postId, commentText);
+                        textarea.value = '';
+                        renderPosts();
+                    }
+                }
+                
+                // Reply buttons
+                if (e.target.classList.contains('reply-btn')) {
+                    const commentId = e.target.getAttribute('data-comment-id');
+                    const replyForm = e.target.nextElementSibling.nextElementSibling;
+                    replyForm.classList.toggle('hidden');
+                }
+                
+                // Submit reply buttons
+                if (e.target.classList.contains('submit-reply-btn')) {
+                    const commentId = e.target.getAttribute('data-comment-id');
+                    const textarea = e.target.previousElementSibling;
+                    const replyText = textarea.value.trim();
+                    
+                    if (replyText) {
+                        addReply(commentId, replyText);
+                        renderPosts();
+                    }
+                }
+            });
+            
+            // Dark mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+            
+            darkModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                const icon = darkModeToggle.querySelector('i');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    localStorage.removeItem('darkMode');
+                }
+            });
+        }
+
+        // Check if post is liked
+        function isLiked(postId) {
+            const likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '{}');
+            return likedPosts[postId] === 'like';
+        }
+
+        // Check if post is disliked
+        function isDisliked(postId) {
+            const likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '{}');
+            return likedPosts[postId] === 'dislike';
+        }
+
+        // Toggle like/dislike
+        function toggleReaction(postId, type) {
+            const likedPosts = JSON.parse(localStorage.getItem('likedPosts') || '{}');
+            
+            if (likedPosts[postId] === type) {
+                // If already reacted with the same type, remove the reaction
+                delete likedPosts[postId];
+            } else {
+                // Otherwise set the new reaction
+                likedPosts[postId] = type;
+            }
+            
+            localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
+        }
+
+        // Add a new comment
+        function addComment(postId, content) {
+            const post = blogPosts.find(p => p.id == postId);
+            if (post) {
+                const newComment = {
+                    id: Date.now(),
+                    author: "You",
+                    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+                    content: content,
+                    date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                    replies: []
+                };
+                
+                post.comments.push(newComment);
+            }
+        }
+
+        // Add a reply to a comment
+        function addReply(commentId, content) {
+            for (const post of blogPosts) {
+                const comment = post.comments.find(c => c.id == commentId);
+                if (comment) {
+                    const newReply = {
+                        id: Date.now(),
+                        author: "You",
+                        avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+                        content: content,
+                        date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+                    };
+                    
+                    comment.replies.push(newReply);
+                    break;
+                }
+            }
+        }
+
+        // Initialize the blog when the page loads
+        document.addEventListener('DOMContentLoaded', initBlog);
     </script>
-
 </body>
 
 </html>
