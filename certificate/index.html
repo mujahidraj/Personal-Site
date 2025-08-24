@@ -3,219 +3,586 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificate Showcase</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="responsive.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Certificate Showcase - Glassmorphism Design</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/a2c1bb72d8.js" crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00c3ff',
+                        darkBg: '#0f0c29',
+                        darkBgLight: '#302b63',
+                    },
+                    fontFamily: {
+                        'sans': ['Hind Siliguri', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeIn': 'fadeIn 0.5s ease-in-out',
+                        'slideDown': 'slideDown 0.5s ease-out',
+                        'slideUp': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Glassmorphism styles */
+        .glass-card {
+            background: rgba(15, 12, 41, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 195, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border: 1px solid rgba(0, 195, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+        }
+        
+        .nav-glass {
+            background: rgba(15, 12, 41, 0.7);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(0, 195, 255, 0.4);
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 5px rgba(0, 195, 255, 0.7),
+                         0 0 10px rgba(0, 195, 255, 0.5),
+                         0 0 15px rgba(0, 195, 255, 0.3);
+        }
+        
+        .btn-neon {
+            background: rgba(0, 195, 255, 0.1);
+            border: 1px solid rgba(0, 195, 255, 0.4);
+            color: #00c3ff;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-neon:hover {
+            background: rgba(0, 195, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
+            color: #fff;
+        }
+        
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>My Professional Achievements</h1>
-    </header>
+<body class="font-sans bg-gradient-to-br from-darkBg to-darkBgLight min-h-screen text-gray-200 overflow-x-hidden">
+     <!-- Header with Navigation -->
+<header class="nav-glass fixed w-full z-50">
+    <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3 neon-border">
+                    <span class="text-white font-bold text-lg">
+                        <img class="rounded-[50px]" src="images/Mujahid Raj.png" alt="Mujahid Raj">
+                    </span>
+                </div>
+                <span class="text-xl font-bold neon-text">Mujahid Raj</span>
+            </div>
 
-    <nav class="content-nav">
-        <button class="nav-btn active" data-target="certificates">Certificates</button>
-        <button class="nav-btn" data-target="publications">Publications</button>
-    </nav>
-
-    <main>
-        <section id="certificates" class="content-section active">
-            <div class="certificate-container">
-                <div class="certificate">
-                    <div class="certificate-image">
-                        <img src="images/PMF.png" alt="Certificate 3">
-                    </div>
-                    <div class="certificate-details">
-                        <h2>Project management Fundamental</h2>
-                        <p>Issued by: IBM SkillBuild</p>
-                        <p>Date: March 2025</p>
-                        <p>Description: A course for the Project management Process.</p>
+            <!-- Desktop Navigation -->
+            <nav class="glass-card px-5 py-3 rounded-[50px] hidden md:flex space-x-8">
+                <!-- Home with Dropdown -->
+                <div class="relative group">
+                    <button class=" hover:text-blue-300 transition font-bold flex items-center">
+                        Home
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div class="absolute left-0 mt-2 w-48 glass-card rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <div class="py-2">
+                            <a href="../index.html#skills" class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Skills</a>
+                            <a href="../index.html#services" class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Services</a>
+                            <a href="../index.html#features" class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Features</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="certificate">
-                    <div class="certificate-image">
-                        <img src="images/UX.png" alt="Certificate 3">
-                    </div>
-                    <div class="certificate-details">
-                        <h2>User Experience Fundamental</h2>
-                        <p>Issued by: IBM SkillBuild</p>
-                        <p>Date: April 2025</p>
-                        <p>Description: A course for the UX design.</p>
-                    </div>
-                </div>
-
-                <div class="certificate">
-                    <div class="certificate-image">
-                        <img src="images/Powerpoint.png" alt="Certificate 3">
-                    </div>
-                    <div class="certificate-details">
-                        <h2>Getting Started with Microsoft PowerPoint</h2>
-                        <p>Issued by: Coursera Project Network</p>
-                        <p>Date: February 2023</p>
-                        <p>Description: A course for the absulute beginner of the microsoft powerpoint.</p>
+                <a href="../Portfolio/index.html" class=" hover:text-blue-300 font-bold transition">Portfolio</a>
+                
+                <!-- Achievement with Dropdown -->
+                <div class="relative group">
+                    <button class=" hover:text-blue-300 transition font-bold flex items-center">
+                        Achievement
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div class="absolute left-0 mt-2 w-48 glass-card rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <div class="py-2">
+                            <a href="../certificate/index.html" class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Certifications</a>
+                            <a href="../certificate/index.html" class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Publications</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="certificate">
-                    <div class="certificate-image">
-                        <img src="images/web dev fun.png" alt="Certificate 3">
-                    </div>
-                    <div class="certificate-details">
-                        <h2>Certificate in Web development fundamentals</h2>
-                        <p>Issued by: IBM SkillBuild</p>
-                        <p>Date: December 2025</p>
-                        <p>Description: A course for the fundamental and basic of Web Development.</p>
+                <a href="../My Blogs/index.html" class=" hover:text-blue-300 transition font-bold">Blogs</a>
+                <a href="../contact/index.html" class=" hover:text-blue-300 transition font-bold">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="p-2 rounded-full btn-neon">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <button class="btn-neon px-4 py-2 rounded-full font-semibold">Hire Me</button>
+                <button class="p-2 rounded-full btn-neon">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+            <div class="flex flex-col space-y-4">
+                <!-- Mobile Home Dropdown -->
+                <div>
+                    <button id="mobile-home-dropdown-button" class="hover:text-blue-300 transition py-2 flex items-center w-full justify-between">
+                        <span>Home</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mobile-home-dropdown" class="hidden pl-4 mt-2 space-y-2">
+                        <a href="../index.html#skills" class="block hover:text-blue-300 transition py-1">Skills</a>
+                        <a href="../index.html#services" class="block hover:text-blue-300 transition py-1">Services</a>
+                        <a href="../index.html#features" class="block hover:text-blue-300 transition py-1">Features</a>
                     </div>
                 </div>
 
-                <div class="certificate">
-                    <div class="certificate-image">
-                        <img src="images/Wordpress.png" alt="Certificate 3">
-                    </div>
-                    <div class="certificate-details">
-                        <h2>Build a free website with WordPress</h2>
-                        <p>Issued by: Coursera Project Network</p>
-                        <p>Date: February 2025</p>
-                        <p>Description: A course for the Building a website with wordpress.</p>
-                    </div>
-                </div>
-
-                <div class="certificate">
-                    <div class="certificate-image">
-                        <img src="images/Basic digital marketing.png" alt="Certificate 1">
-                    </div>
-                    <div class="certificate-details">
-                        <h2>Basic of Degital Marketing</h2>
-                        <p>Issued by: Ostad</p>
-                        <p>Date: February 2025</p>
-                        <p>Description: Completed a comprehensive course on basic of Digital Marketing.</p>
+                <a href="../Portfolio/index.html" class="hover:text-blue-300 transition py-2">Portfolio</a>
+                
+                <!-- Mobile Achievement Dropdown -->
+                <div>
+                    <button id="mobile-achievement-dropdown-button" class="hover:text-blue-300 transition py-2 flex items-center w-full justify-between">
+                        <span>Achievement</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mobile-achievement-dropdown" class="hidden pl-4 mt-2 space-y-2">
+                        <a href="../certificate/index.html" class="block hover:text-blue-300 transition py-1">Certifications</a>
+                        <a href="../certificate/index.html" class="block hover:text-blue-300 transition py-1">Publications</a>
                     </div>
                 </div>
 
-                <div class="certificate">
-                    <div class="certificate-image">
-                        <img src="images/computer hardware basic.png" alt="Certificate 2">
-                    </div>
-                    <div class="certificate-details">
-                        <h2>Computer hardware Basics</h2>
-                        <p>Issued by: Cisco Networking Academy</p>
-                        <p>Date: March 2025</p>
-                        <p>Description:Computer Hardware Basics offered by Networking Academy through the Cisco Networking Academy program..</p>
-                    </div>
-                </div>
-
-                <div class="certificate">
-                    <div class="certificate-image">
-                        <img src="images/Data science fundamentals.png" alt="Certificate 3">
-                    </div>
-                    <div class="certificate-details">
-                        <h2>Fundamentals of Data Science</h2>
-                        <p>Issued by: Ostad</p>
-                        <p>Date: June 2022</p>
-                        <p>Description: A complete course on Fundamental of Data Science.</p>
-                    </div>
-                </div>
-
-                <div class="certificate">
-                    <div class="certificate-image">
-                        <img src="images/excel.png" alt="Certificate 3">
-                    </div>
-                    <div class="certificate-details">
-                        <h2>Getting Started with Microsoft Excel</h2>
-                        <p>Issued by: Coursera Project Network</p>
-                        <p>Date: February 2025</p>
-                        <p>Description: A course for the beginner of Microsoft Excel.</p>
-                    </div>
-                </div>
-
-                <div class="certificate">
-                    <div class="certificate-image">
-                        <img src="images/ibm javascript.png" alt="Certificate 3">
-                    </div>
-                    <div class="certificate-details">
-                        <h2>Learn Programming with JavaScript</h2>
-                        <p>Issued by: Openclassrooms</p>
-                        <p>Date: January 2025</p>
-                        <p>Description:the completion of Learn Programming with JavaScript |openclassrooms (URL-11C635813B1A) As indicated by this learner.</p>
-                    </div>
-                </div>
-
-                <div class="certificate">
-                    <div class="certificate-image">
-                        <img src="images/IT Essentials.png" alt="Certificate 3">
-                    </div>
-                    <div class="certificate-details">
-                        <h2>IT Essentials: PC Hardware and Software</h2>
-                        <p>Issued by: Cisco Networking Academy</p>
-                        <p>Date: June 2022</p>
-                        <p>Description: A course for the fundamental and basic of Computer hardware and the Software.</p>
-                    </div>
-                </div>
-
-                <div class="certificate">
-                    <div class="certificate-image">
-                        <img src="images/Javascript.png" alt="Certificate 3">
-                    </div>
-                    <div class="certificate-details">
-                        <h2>JavaScript Workshop for Absolute Beginners</h2>
-                        <p>Issued by: Ostad</p>
-                        <p>Date: February 2025</p>
-                        <p>Description: A course for the JavaScript Workshop for Absolute Beginners.</p>
-                    </div>
+                <a href="../My Blogs/index.html" class="hover:text-blue-300 transition py-2">Blogs</a>
+                <a href="../contact/index.html" class="hover:text-blue-300 transition py-2">Contact</a>
+                <div class="pt-4 flex space-x-4">
+                    <button class="btn-neon px-4 py-2 rounded-full font-semibold w-full">Hire Me</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</header>   
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 text-center">
+        <h1 class="neon-text text-4xl md:text-6xl font-bold mb-6 animate-slideDown">My Certificates and Publications</h1>
+        <p class="text-xl md:text-2xl max-w-3xl mx-auto animate-slideUp">Showcasing my professional achievements, Publications and completed courses</p>
+    </section>
 
-        <section id="publications" class="content-section">
-            <div class="empty-state">
-                <i class="fas fa-book-open"></i>
-                <h2>No Publications Available</h2>
-                <p>Publications will be updated here when available</p>
+    <!-- Content Navigation -->
+    <div class="container mx-auto px-4 md:px-6 mb-12">
+        <div class="glass-card inline-flex rounded-full p-1 mx-auto">
+            <button class="nav-btn px-6 py-2 rounded-full font-medium transition-all duration-300 bg-primary bg-opacity-20 text-white">Certificates</button>
+            <button class="nav-btn px-6 py-2 rounded-full font-medium transition-all duration-300 text-gray-400 hover:text-white">Publications</button>
+        </div>
+    </div>
+
+    <!-- Certificates Grid -->
+    <main class="container mx-auto px-4 md:px-6 pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Certificate 1 -->
+            <div class="glass-card overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/Basic digital marketing.png" alt="Basic Digital Marketing Certificate" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-white mb-2">Basic Digital Marketing</h2>
+                    <p class="text-primary mb-2">Ostad</p>
+                    <p class="text-gray-400 text-sm mb-4">February 2025</p>
+                    <p class="text-gray-300 mb-4">Completed a comprehensive course on basics of Digital Marketing.</p>
+                    <button class="btn-neon w-full py-2 rounded-full view-certificate" data-certificate="Basic digital marketing.png">View Certificate</button>
+                </div>
             </div>
-        </section>
+
+            <!-- Certificate 2 -->
+            <div class="glass-card overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/web dev fun.png" alt="Web Development Certificate" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-white mb-2">Web Development Fundamentals</h2>
+                    <p class="text-primary mb-2">IBM SkillsBuild</p>
+                    <p class="text-gray-400 text-sm mb-4">March 2025</p>
+                    <p class="text-gray-300 mb-4">A course for the fundamental and basics of Web Development.</p>
+                    <button class="btn-neon w-full py-2 rounded-full view-certificate" data-certificate="web development.png">View Certificate</button>
+                </div>
+            </div>
+
+            <!-- Certificate 3 -->
+            <div class="glass-card overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/IT Essentials.png" alt="IT Essentials Certificate" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-white mb-2">IT Essentials: PC Hardware and Software</h2>
+                    <p class="text-primary mb-2">Cisco Networking Academy</p>
+                    <p class="text-gray-400 text-sm mb-4">June 2022</p>
+                    <p class="text-gray-300 mb-4">A course for the fundamental and basics of Computer hardware and Software.</p>
+                    <button class="btn-neon w-full py-2 rounded-full view-certificate" data-certificate="IT Essentials.png">View Certificate</button>
+                </div>
+            </div>
+
+            <!-- Certificate 4 -->
+            <div class="glass-card overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/PMF.png" alt="Project Management Certificate" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-white mb-2">Project Management Fundamentals</h2>
+                    <p class="text-primary mb-2">IBM SkillBuild</p>
+                    <p class="text-gray-400 text-sm mb-4">March 2025</p>
+                    <p class="text-gray-300 mb-4">A course for the Project management Process.</p>
+                    <button class="btn-neon w-full py-2 rounded-full view-certificate" data-certificate="PMF.png">View Certificate</button>
+                </div>
+            </div>
+
+            <!-- Certificate 5 -->
+            <div class="glass-card overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/UX.png" alt="UX Design Certificate" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-white mb-2">User Experience Fundamentals</h2>
+                    <p class="text-primary mb-2">IBM SkillBuild</p>
+                    <p class="text-gray-400 text-sm mb-4">April 2025</p>
+                    <p class="text-gray-300 mb-4">A course for the UX design.</p>
+                    <button class="btn-neon w-full py-2 rounded-full view-certificate" data-certificate="UX.png">View Certificate</button>
+                </div>
+            </div>
+
+            <!-- Certificate 6 -->
+            <div class="glass-card overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/Javascript.png" alt="JavaScript Certificate" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-white mb-2">JavaScript Workshop for Absolute Beginners</h2>
+                    <p class="text-primary mb-2">Ostad</p>
+                    <p class="text-gray-400 text-sm mb-4">February 2025</p>
+                    <p class="text-gray-300 mb-4">A course for the JavaScript Workshop for Absolute Beginners.</p>
+                    <button class="btn-neon w-full py-2 rounded-full view-certificate" data-certificate="Javascript.png">View Certificate</button>
+                </div>
+            </div>
+
+             <!-- Certificate 6 -->
+            <div class="glass-card overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/Powerpoint.png" alt="JavaScript Certificate" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-white mb-2">Getting started with microsoft Powerpoint</h2>
+                    <p class="text-primary mb-2">Coursera</p>
+                    <p class="text-gray-400 text-sm mb-4">February 2025</p>
+                    <p class="text-gray-300 mb-4">A course for the microsoft powerpoint Workshop for Absolute Beginners.</p>
+                    <button class="btn-neon w-full py-2 rounded-full view-certificate" data-certificate="Javascript.png">View Certificate</button>
+                </div>
+            </div>
+
+             <!-- Certificate 6 -->
+            <div class="glass-card overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                <div class="h-48 overflow-hidden">
+                    <img src="images/excel.png" alt="JavaScript Certificate" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-white mb-2">Getting started with microsoft Powerpoint</h2>
+                    <p class="text-primary mb-2">Coursera</p>
+                    <p class="text-gray-400 text-sm mb-4">February 2025</p>
+                    <p class="text-gray-300 mb-4">A course for the microsoft excel Workshop for Absolute Beginners.</p>
+                    <button class="btn-neon w-full py-2 rounded-full view-certificate" data-certificate="Javascript.png">View Certificate</button>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <button id="themeToggle" class="theme-toggle">
-        <i class="fas fa-moon"></i>
-        <i class="fas fa-sun"></i>
+    <!-- Certificate Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden" id="certificate-modal">
+        <div class="glass-card max-w-4xl w-11/12 max-h-[90vh] overflow-hidden">
+            <div class="p-4 flex justify-between items-center border-b border-gray-700">
+                <h3 class="text-xl font-bold text-white" id="modal-title">Certificate</h3>
+                <button class="text-gray-400 hover:text-white text-2xl" id="close-modal">&times;</button>
+            </div>
+            <div class="p-4 overflow-auto max-h-[80vh]">
+                <img src="" alt="Certificate" class="w-full h-auto rounded-lg" id="modal-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-12 bg-blue-900 bg-opacity-30">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 neon-text">Mujahid Raj</h3>
+                    <p>Web Developer & UI/UX Designer creating beautiful, functional digital experiences.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-300 transition">Home</a></li>
+                        <li><a href="#skills" class="hover:text-blue-300 transition">Skills</a></li>
+                        <li><a href="#services" class="hover:text-blue-300 transition">Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-blue-300 transition">Portfolio</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-300 transition">Web Development</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition">UI/UX Design</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition">WordPress</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition">Mobile Apps</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-blue-300"></i>
+                            <span>mujahidraj65@gmail.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-blue-300"></i>
+                            <span>+8801796059406</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-300"></i>
+                            <span>Kuratoli,Kuril,Dhaka</span>
+                        </li>
+                    </ul>
+
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition neon-border">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition neon-border">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition neon-border">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition neon-border">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white border-opacity-20 mt-10 pt-6 text-center">
+                <p>&copy; 2025 Mujahid Raj. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dark Mode Toggle -->
+    <button class="glass-card fixed bottom-6 right-6 w-12 h-12 rounded-full flex items-center justify-center z-10" id="darkModeToggle">
+        <i class="fas fa-moon text-primary"></i>
     </button>
 
-    <script>
-        const themeToggle = document.getElementById('themeToggle');
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-        
-        const currentTheme = localStorage.getItem('theme') || 
-                           (prefersDarkScheme.matches ? 'dark' : 'light');
-        if (currentTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
+    
 
-        themeToggle.addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-            const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', theme);
+    <script>
+
+          // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileHomeDropdownButton = document.getElementById('mobile-home-dropdown-button');
+        const mobileHomeDropdown = document.getElementById('mobile-home-dropdown');
+        const mobileAchievementDropdownButton = document.getElementById('mobile-achievement-dropdown-button');
+        const mobileAchievementDropdown = document.getElementById('mobile-achievement-dropdown');
+
+        mobileMenuButton.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+
+            // Toggle between hamburger and close icon
+            const icon = mobileMenuButton.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
         });
 
-        const navButtons = document.querySelectorAll('.nav-btn');
-        const contentSections = document.querySelectorAll('.content-section');
+        // Mobile home dropdown toggle
+        mobileHomeDropdownButton.addEventListener('click', function () {
+            mobileHomeDropdown.classList.toggle('hidden');
+            
+            // Toggle chevron icon
+            const icon = mobileHomeDropdownButton.querySelector('i');
+            if (icon.classList.contains('fa-chevron-down')) {
+                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            } else {
+                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+            
+            // Close achievement dropdown if open
+            if (!mobileAchievementDropdown.classList.contains('hidden')) {
+                mobileAchievementDropdown.classList.add('hidden');
+                const achievementIcon = mobileAchievementDropdownButton.querySelector('i');
+                achievementIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+        });
+
+        // Mobile achievement dropdown toggle
+        mobileAchievementDropdownButton.addEventListener('click', function () {
+            mobileAchievementDropdown.classList.toggle('hidden');
+            
+            // Toggle chevron icon
+            const icon = mobileAchievementDropdownButton.querySelector('i');
+            if (icon.classList.contains('fa-chevron-down')) {
+                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            } else {
+                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+            
+            // Close home dropdown if open
+            if (!mobileHomeDropdown.classList.contains('hidden')) {
+                mobileHomeDropdown.classList.add('hidden');
+                const homeIcon = mobileHomeDropdownButton.querySelector('i');
+                homeIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+        });
+
+        // Close menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                mobileMenu.classList.add('hidden');
+                mobileHomeDropdown.classList.add('hidden');
+                mobileAchievementDropdown.classList.add('hidden');
+                
+                const menuIcon = mobileMenuButton.querySelector('i');
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+                
+                const homeIcon = mobileHomeDropdownButton.querySelector('i');
+                homeIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                
+                const achievementIcon = mobileAchievementDropdownButton.querySelector('i');
+                achievementIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            });
+        });
+    });
+        // Page view counter
+        let pageViews = localStorage.getItem('pageViews');
+        if (!pageViews) {
+            pageViews = 0;
+        }
+        pageViews++;
+        localStorage.setItem('pageViews', pageViews);
+        document.getElementById('page-counter').textContent = `Page Views: ${pageViews}`;
+
+        // Certificate modal functionality
+        const modal = document.getElementById('certificate-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalTitle = document.getElementById('modal-title');
+        const closeModal = document.getElementById('close-modal');
         
-        navButtons.forEach(button => {
+        document.querySelectorAll('.view-certificate').forEach(button => {
+            button.addEventListener('click', () => {
+                const certificate = button.getAttribute('data-certificate');
+                modalTitle.textContent = button.closest('.glass-card').querySelector('h2').textContent;
+                modalImage.src = certificate;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun text-primary"></i>';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.removeItem('darkMode');
+            }
+        });
+
+        // Navigation buttons
+        document.querySelectorAll('.nav-btn').forEach(button => {
             button.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-target');
-                
-                navButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                contentSections.forEach(section => {
-                    section.classList.remove('active');
-                    if (section.id === targetId) {
-                        section.classList.add('active');
-                    }
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('bg-primary', 'bg-opacity-20', 'text-white');
+                    btn.classList.add('text-gray-400');
                 });
+                
+                this.classList.add('bg-primary', 'bg-opacity-20', 'text-white');
+                this.classList.remove('text-gray-400');
             });
         });
     </script>

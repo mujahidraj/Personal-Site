@@ -15,7 +15,7 @@
     <style>
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background: linear-gradient(360deg, black 50%,   #302b63 100%);
+            background: linear-gradient(360deg,rgb(3, 2, 100) 10%, rgb(0, 0, 0) -25%,  #0b0639 100%);
             min-height: 100vh;
             margin: 0;
             padding: 0;
@@ -166,43 +166,116 @@
     </style>
 </head>
 <body class="text-white">
-    <!-- Header with Navigation -->
-    <header class="nav-glass fixed w-full z-50">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3 neon-border">
-                        <span class="text-white font-bold  text-lg"><img class="rounded-[50px]" src="images/Mujahid Raj.png" alt=""></span>
-                    </div>
-                    <span class="text-xl font-bold neon-text">Mujahid Raj</span>
+      <!-- Header with Navigation -->
+<header class="nav-glass fixed w-full z-50">
+    <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3 neon-border">
+                    <span class="text-white font-bold text-lg">
+                        <img class="rounded-[50px]" src="images/Mujahid Raj.png" alt="Mujahid Raj">
+                    </span>
                 </div>
-                
-                <nav class="hidden md:flex space-x-8">
-                    <a href="../index.html" class="hover:text-blue-300 transition">Home</a>
-                    <a href="../Portfolio/index.html" class="hover:text-blue-300 transition">Portfolio</a>
-                    <a href="../index.html#skills" class="hover:text-blue-300 transition">Skills</a>
-                    <a href="../index.html#services" class="hover:text-blue-300 transition">Services</a>
-                    <a href="../index.html#features" class="hover:text-blue-300 transition">Features</a>
-                    <a href="../My Blogs/index.html" class="hover:text-blue-300 transition">Blogs</a>
-                    <a href="../contact/index.html" class="hover:text-blue-300 transition">Contact</a>
-                </nav>
-                
-                <div class="flex items-center space-x-4">
-                    <button class="btn-neon px-4 py-2 rounded-full font-semibold">Hire Me</button>
-                    <button class="p-2 rounded-full btn-neon" id="themeToggle">
-                        <i class="fas fa-moon"></i>
+                <span class="text-xl font-bold neon-text">Mujahid Raj</span>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="glass-card px-5 py-3 rounded-[50px] hidden md:flex space-x-8">
+                <!-- Home with Dropdown -->
+                <div class="relative group">
+                    <button class=" hover:text-blue-300 transition font-bold flex items-center">
+                        Home
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
+                    <div class="absolute left-0 mt-2 w-48 glass-card rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <div class="py-2">
+                            <a href="../index.html#skills" class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Skills</a>
+                            <a href="../index.html#services" class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Services</a>
+                            <a href="../index.html#features" class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Features</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="../Portfolio/index.html" class=" hover:text-blue-300 font-bold transition">Portfolio</a>
+                
+                <!-- Achievement with Dropdown -->
+                <div class="relative group">
+                    <button class=" hover:text-blue-300 transition font-bold flex items-center">
+                        Achievement
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <div class="absolute left-0 mt-2 w-48 glass-card rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <div class="py-2">
+                            <a href="../certificate/index.html" class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Certifications</a>
+                            <a href="../certificate/index.html" class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Publications</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="../My Blogs/index.html" class=" hover:text-blue-300 transition font-bold">Blogs</a>
+                <a href="../contact/index.html" class=" hover:text-blue-300 transition font-bold">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="p-2 rounded-full btn-neon">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <button class="btn-neon px-4 py-2 rounded-full font-semibold">Hire Me</button>
+                <button class="p-2 rounded-full btn-neon">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+            <div class="flex flex-col space-y-4">
+                <!-- Mobile Home Dropdown -->
+                <div>
+                    <button id="mobile-home-dropdown-button" class="hover:text-blue-300 transition py-2 flex items-center w-full justify-between">
+                        <span>Home</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mobile-home-dropdown" class="hidden pl-4 mt-2 space-y-2">
+                        <a href="../index.html#skills" class="block hover:text-blue-300 transition py-1">Skills</a>
+                        <a href="../index.html#services" class="block hover:text-blue-300 transition py-1">Services</a>
+                        <a href="../index.html#features" class="block hover:text-blue-300 transition py-1">Features</a>
+                    </div>
+                </div>
+
+                <a href="../Portfolio/index.html" class="hover:text-blue-300 transition py-2">Portfolio</a>
+                
+                <!-- Mobile Achievement Dropdown -->
+                <div>
+                    <button id="mobile-achievement-dropdown-button" class="hover:text-blue-300 transition py-2 flex items-center w-full justify-between">
+                        <span>Achievement</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mobile-achievement-dropdown" class="hidden pl-4 mt-2 space-y-2">
+                        <a href="../certificate/index.html" class="block hover:text-blue-300 transition py-1">Certifications</a>
+                        <a href="../certificate/index.html" class="block hover:text-blue-300 transition py-1">Publications</a>
+                    </div>
+                </div>
+
+                <a href="../My Blogs/index.html" class="hover:text-blue-300 transition py-2">Blogs</a>
+                <a href="../contact/index.html" class="hover:text-blue-300 transition py-2">Contact</a>
+                <div class="pt-4 flex space-x-4">
+                    <button class="btn-neon px-4 py-2 rounded-full font-semibold w-full">Hire Me</button>
                 </div>
             </div>
         </div>
-    </header>
-
+    </div>
+</header>
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center pt-16 pb-28 hero-bg">
         <div class="container mx-auto px-4 text-center">
             <div class="glass-card p-8 md:p-10 max-w-3xl mx-auto">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4 neon-text">Mujahid Raj</h1>
-                <p class="text-xl mb-6">Web Developer & UI/UX Designer</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 neon-text">Moizuddin Mohammad Mujahid Rashid</h1>
+                <p class="text-xl mb-6">Full Stack Web Developer (Frontend Focused) & UI/UX Designer</p>
                 <p class="mb-8">I create beautiful, functional digital experiences with modern technologies and innovative design.</p>
                 <div class="flex justify-center space-x-4">
                     <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a href="#portfolio">View My Work</a></button>
@@ -386,26 +459,35 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 bg-blue-900 bg-opacity-30 mt-16">
+  <!-- Footer -->
+    <footer id="contact" class="py-12 bg-blue-900 bg-opacity-30">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-semibold mb-4 neon-text">Mujahid Raj</h3>
                     <p>Web Developer & UI/UX Designer creating beautiful, functional digital experiences.</p>
                 </div>
-                
+
                 <div>
                     <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="#home" class="hover:text-blue-300 transition">Home</a></li>
-                        <li><a href="#about" class="hover:text-blue-300 transition">About</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition">Home</a></li>
                         <li><a href="#skills" class="hover:text-blue-300 transition">Skills</a></li>
-                        <li><a href="#portfolio" class="text-blue-300 transition">Portfolio</a></li>
-                        <li><a href="#contact" class="hover:text-blue-300 transition">Contact</a></li>
+                        <li><a href="#services" class="hover:text-blue-300 transition">Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-blue-300 transition">Portfolio</a></li>
                     </ul>
                 </div>
-                
+
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-300 transition">Web Development</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition">UI/UX Design</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition">WordPress</a></li>
+                        <li><a href="#" class="hover:text-blue-300 transition">Mobile Apps</a></li>
+                    </ul>
+                </div>
+
                 <div>
                     <h3 class="text-xl font-semibold mb-4">Contact</h3>
                     <ul class="space-y-2">
@@ -419,14 +501,33 @@
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-map-marker-alt mr-2 text-blue-300"></i>
-                            <span>Kuratoli, Kuril, Dhaka, Bangladesh</span>
+                            <span>Kuratoli,Kuril,Dhaka</span>
                         </li>
                     </ul>
+
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition neon-border">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition neon-border">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition neon-border">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition neon-border">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            
+
             <div class="border-t border-white border-opacity-20 mt-10 pt-6 text-center">
-                <p>&copy; 2023 Mujahid Raj. All rights reserved.</p>
+                <p>&copy; 2025 Mujahid Raj. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -453,6 +554,87 @@
 
     <!-- JavaScript -->
     <script>
+    
+   // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileHomeDropdownButton = document.getElementById('mobile-home-dropdown-button');
+        const mobileHomeDropdown = document.getElementById('mobile-home-dropdown');
+        const mobileAchievementDropdownButton = document.getElementById('mobile-achievement-dropdown-button');
+        const mobileAchievementDropdown = document.getElementById('mobile-achievement-dropdown');
+
+        mobileMenuButton.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+
+            // Toggle between hamburger and close icon
+            const icon = mobileMenuButton.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+
+        // Mobile home dropdown toggle
+        mobileHomeDropdownButton.addEventListener('click', function () {
+            mobileHomeDropdown.classList.toggle('hidden');
+            
+            // Toggle chevron icon
+            const icon = mobileHomeDropdownButton.querySelector('i');
+            if (icon.classList.contains('fa-chevron-down')) {
+                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            } else {
+                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+            
+            // Close achievement dropdown if open
+            if (!mobileAchievementDropdown.classList.contains('hidden')) {
+                mobileAchievementDropdown.classList.add('hidden');
+                const achievementIcon = mobileAchievementDropdownButton.querySelector('i');
+                achievementIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+        });
+
+        // Mobile achievement dropdown toggle
+        mobileAchievementDropdownButton.addEventListener('click', function () {
+            mobileAchievementDropdown.classList.toggle('hidden');
+            
+            // Toggle chevron icon
+            const icon = mobileAchievementDropdownButton.querySelector('i');
+            if (icon.classList.contains('fa-chevron-down')) {
+                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            } else {
+                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+            
+            // Close home dropdown if open
+            if (!mobileHomeDropdown.classList.contains('hidden')) {
+                mobileHomeDropdown.classList.add('hidden');
+                const homeIcon = mobileHomeDropdownButton.querySelector('i');
+                homeIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            }
+        });
+
+        // Close menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                mobileMenu.classList.add('hidden');
+                mobileHomeDropdown.classList.add('hidden');
+                mobileAchievementDropdown.classList.add('hidden');
+                
+                const menuIcon = mobileMenuButton.querySelector('i');
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+                
+                const homeIcon = mobileHomeDropdownButton.querySelector('i');
+                homeIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                
+                const achievementIcon = mobileAchievementDropdownButton.querySelector('i');
+                achievementIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            });
+        });
+    });
         // Data for the portfolio
         const portfolioData = {
             technicalSkills: [
@@ -579,20 +761,26 @@
             
             testimonials: [
                 {
-                    name: "Sarah Johnson",
-                    role: "Marketing Director",
+                    name: "Nehal Fatin Sohan",
+                    role: "Marketing Director (New Food)",
                     content: "Mujahid delivered an exceptional website for our company. His attention to detail and communication throughout the project was impressive. Would highly recommend!",
                     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
                 },
                 {
-                    name: "Michael Chen",
-                    role: "Startup Founder",
+                    name: "Asmaul Husna Mayad",
+                    role: "Startup Co-Founder (TechWisdom Web Solution LTD)",
                     content: "Working with Mujahid was a great experience. He understood our vision and translated it into a beautiful, functional web application. Will definitely work with him again.",
                     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
                 },
                 {
-                    name: "Emily Rodriguez",
-                    role: "E-commerce Manager",
+                    name: "Fidbi Hasan",
+                    role: "E-commerce Manager (TechWisdom Farm)",
+                    content: "The website Mujahid created for us has significantly improved our conversion rates. His technical skills and design sense are truly top-notch.",
+                    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                },
+                 {
+                    name: "Nadiya Noor",
+                    role: "EdTech Owner (Nadiya Noor)",
                     content: "The website Mujahid created for us has significantly improved our conversion rates. His technical skills and design sense are truly top-notch.",
                     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
                 }

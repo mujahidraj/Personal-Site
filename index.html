@@ -4,9 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mujahid Raj - Homepage</title>
+    <title>Mujahid Raj</title>
 
     <link rel="shortcut icon" href="images/Mujahid Raj.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&display=swap"
+        rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome CDN -->
@@ -17,11 +22,19 @@
     <style>
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background: linear-gradient(360deg, black 50%,   #302b63 100%);
+            background: linear-gradient(360deg,rgb(3, 2, 100) 10%, rgb(0, 0, 0) -25%,  #0b0639 100%);
             min-height: 100vh;
             margin: 0;
             padding: 0;
             color: #e6e6e6;
+        }
+
+
+        .edu-nsw-act-font {
+            font-family: "Edu NSW ACT Cursive", cursive;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
         }
 
         .glass-card {
@@ -103,6 +116,48 @@
             box-shadow: 0 0 15px rgba(0, 195, 255, 0.5);
             color: #fff;
         }
+
+        /* Circular progress bar styles */
+        .progress-circle {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+        .progress-circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .progress-circle-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 8;
+        }
+
+        .progress-circle-progress {
+            fill: none;
+            stroke: #00c3ff;
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 326.56;
+            stroke-dashoffset: 326.56;
+            transition: stroke-dashoffset 1.5s ease-in-out;
+        }
+
+        .progress-circle-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Graph styles */
+        .graph-bar {
+            transition: height 1.5s ease-in-out;
+        }
     </style>
 </head>
 
@@ -113,46 +168,136 @@
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
                     <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3 neon-border">
-                        <span class="text-white font-bold text-lg"><img class="rounded-[50px]"
-                                src="images/Mujahid Raj.png" alt=""></span>
+                        <span class="text-white font-bold text-lg">
+                            <img class="rounded-[50px]" src="images/Mujahid Raj.png" alt="Mujahid Raj">
+                        </span>
                     </div>
                     <span class="text-xl font-bold neon-text">Mujahid Raj</span>
                 </div>
 
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="hover:text-blue-300 transition">Home</a>
-                    <a href="Portfolio/index.html" class="hover:text-blue-300 transition">Portfolio</a>
-                    <a href="#skills" class="hover:text-blue-300 transition">Skills</a>
-                    <a href="#services" class="hover:text-blue-300 transition">Services</a>
-                    <a href="#features" class="hover:text-blue-300 transition">Features</a>
-                    <a href="My Blogs/index.html" class="hover:text-blue-300 transition">Blogs</a>
-                    <a href="contact/index.html" class="hover:text-blue-300 transition">Contact</a>
+                <!-- Desktop Navigation -->
+                <nav class="glass-card px-5 py-3 rounded-[50px] hidden md:flex space-x-8">
+                    <!-- Home with Dropdown -->
+                    <div class="relative group">
+                        <button class=" hover:text-blue-300 transition font-bold flex items-center">
+                            Home
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div
+                            class="absolute left-0 mt-2 w-48 glass-card rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="py-2">
+                                <a href="#experience"
+                                    class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Experience</a>
+                                <a href="#education"
+                                    class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Education</a>
+                                <a href="#skills"
+                                    class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Skills</a>
+                                <a href="#services"
+                                    class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Services</a>
+                                <a href="#features"
+                                    class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Features</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="Portfolio/index.html" class=" hover:text-blue-300 font-bold transition">Portfolio</a>
+
+                    <!-- Achievement with Dropdown -->
+                    <div class="relative group">
+                        <button class=" hover:text-blue-300 transition font-bold flex items-center">
+                            Achievement
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div
+                            class="absolute left-0 mt-2 w-48 glass-card rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="py-2">
+                                <a href="certificate/index.html"
+                                    class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Certifications</a>
+                                <a href="publications/index.html"
+                                    class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-30 hover:text-blue-300 transition">Publications</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="My Blogs/index.html" class=" hover:text-blue-300 transition font-bold">Blogs</a>
+                    <a href="contact/index.html" class=" hover:text-blue-300 transition font-bold">Contact</a>
                 </nav>
 
-                <div class="flex items-center space-x-4">
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="p-2 rounded-full btn-neon">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
                     <button class="btn-neon px-4 py-2 rounded-full font-semibold">Hire Me</button>
                     <button class="p-2 rounded-full btn-neon">
                         <i class="fas fa-moon"></i>
                     </button>
                 </div>
             </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <!-- Mobile Home Dropdown -->
+                    <div>
+                        <button id="mobile-home-dropdown-button"
+                            class="hover:text-blue-300 transition py-2 flex items-center w-full justify-between">
+                            <span>Home</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div id="mobile-home-dropdown" class="hidden pl-4 mt-2 space-y-2">
+                            <a href="#experience" class="block hover:text-blue-300 transition py-1">Experience</a>
+                            <a href="#education" class="block hover:text-blue-300 transition py-1">Education</a>
+                            <a href="#skills" class="block hover:text-blue-300 transition py-1">Skills</a>
+                            <a href="#services" class="block hover:text-blue-300 transition py-1">Services</a>
+                            <a href="#features" class="block hover:text-blue-300 transition py-1">Features</a>
+                        </div>
+                    </div>
+
+                    <a href="Portfolio/index.html" class="hover:text-blue-300 transition py-2">Portfolio</a>
+
+                    <!-- Mobile Achievement Dropdown -->
+                    <div>
+                        <button id="mobile-achievement-dropdown-button"
+                            class="hover:text-blue-300 transition py-2 flex items-center w-full justify-between">
+                            <span>Achievement</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div id="mobile-achievement-dropdown" class="hidden pl-4 mt-2 space-y-2">
+                            <a href="certificate/index.html"
+                                class="block hover:text-blue-300 transition py-1">Certifications</a>
+                            <a href="publications/index.html"
+                                class="block hover:text-blue-300 transition py-1">Publications</a>
+                        </div>
+                    </div>
+
+                    <a href="My Blogs/index.html" class="hover:text-blue-300 transition py-2">Blogs</a>
+                    <a href="contact/index.html" class="hover:text-blue-300 transition py-2">Contact</a>
+                    <div class="pt-4 flex space-x-4">
+                        <button class="btn-neon px-4 py-2 rounded-full font-semibold w-full">Hire Me</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        
     </header>
 
     <!-- Hero Section -->
     <section class="hero-bg min-h-screen flex items-center pt-16 pb-28">
-        
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            
             <div class="md:w-1/2 mb-10 md:mb-0">
                 <div class="glass-card p-8 md:p-10 max-w-lg">
                     <h1 class="text-4xl md:text-5xl font-bold mb-4 neon-text">Web Developer & UI/UX Designer</h1>
-                    <p class="text-xl mb-8">I create beautiful, functional websites and applications with a focus on
+                    <p class="text-lg mb-8"> <span class="edu-nsw-act-font text-xl">I'm Moizuddin Mohammad Mujahid Rashid</span> and i create beautiful, functional
+                        websites and applications with a focus on
                         user experience and modern design.</p>
                     <div class="flex space-x-4">
-                        <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a href="Portfolio/index.html">Portfolio</a></button>
-                        <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a href="contact/index.html">Contact</a></button>
+                        <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a
+                                href="Portfolio/index.html">Portfolio</a></button>
+                        <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a
+                                href="contact/index.html">Contact</a></button>
                     </div>
                 </div>
             </div>
@@ -164,13 +309,98 @@
         </div>
     </section>
 
+    <!-- Experience Section -->
+    <section id="experience" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 neon-text">Work Experience</h2>
+
+            <div class="space-y-8">
+                <!-- Experience 1 -->
+                <div class="glass-card p-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <h3 class="text-xl font-semibold">Full Stack Developer</h3>
+                        <span class="text-blue-300">July 25 - Present</span>
+                    </div>
+                    <p class="text-blue-300 mb-2">TechWisdom Web solution LTD</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Led a team of 5 developers in creating responsive web applications</li>
+                        <li>Implemented modern UI/UX designs that increased user engagement by 40%</li>
+                        <li>Developed and maintained RESTful APIs for various client projects</li>
+                        <li>Optimized website performance, reducing load time by 35%</li>
+                    </ul>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="glass-card p-6">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <h3 class="text-xl font-semibold">Frontend Developer</h3>
+                        <span class="text-blue-300">March 25 - July 25</span>
+                    </div>
+                    <p class="text-blue-300 mb-2">TechWisdom EdTech LTD</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Created interactive user interfaces using React.js</li>
+                        <li>Collaborated with designers to implement pixel-perfect designs</li>
+                        <li>Improved website accessibility following WCAG guidelines</li>
+                        <li>Mentored junior developers on best practices and coding standards</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 glass-card bg-opacity-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 neon-text">Education</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Education 1 -->
+                <div class="glass-card p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold">Bachelor of Computer Science</h3>
+                        <span class="text-blue-300">2022 - 2025</span>
+                    </div>
+                    <p class="text-blue-300 mb-2">American International University -Bangladesh</p>
+                    <p class="mb-4">Computer Science and Engineering</p>
+                    <p class="font-semibold">CGPA: 3.65/4.0</p>
+                </div>
+
+                <!-- Education 2 -->
+                <div class="glass-card p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold">Higher School Certificate</h3>
+                        <span class="text-blue-300">2018 - 2020</span>
+                    </div>
+                    <p class="text-blue-300 mb-2">Cambrian School and College</p>
+                    <p class="mb-4">Department of Science</p>
+                    <p class="font-semibold">GPA: 5.0/5.0</p>
+                </div>
+
+                <!-- Education 3 -->
+                <div class="glass-card p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold">Secondary School Certifcate</h3>
+                        <span class="text-blue-300">2016-2018</span>
+                    </div>
+                    <p class="text-blue-300 mb-2">Cambrian School and college</p>
+                    <p class="mb-4">Department Of Science</p>
+                    <p class="font-semibold">5.00/5.00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Skills Section -->
-    <section id="skills" class=" py-16">
+    <section id="skills" class="py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 neon-text">My Skills</h2>
             <p class="text-center text-xl mb-12 max-w-2xl mx-auto">I offer a wide range of Skills set to help you build
                 your digital presence.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Technical Skills -->
+            <h3 class="text-2xl font-semibold mb-6 neon-text">Technical Skills</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 <div class="glass-card p-6">
                     <div class="flex justify-between mb-2">
                         <span class="font-semibold">HTML</span>
@@ -271,7 +501,111 @@
                     </div>
                 </div>
             </div>
-        </div>
+
+            <!-- Language Skills with Circular Progress -->
+            <h3 class="text-2xl font-semibold mb-6 neon-text">Language Skills</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div class="glass-card p-6 flex flex-col items-center">
+                    <div class="progress-circle mb-4">
+                        <svg viewBox="0 0 120 120">
+                            <circle class="progress-circle-bg" cx="60" cy="60" r="52"></circle>
+                            <circle class="progress-circle-progress" cx="60" cy="60" r="52" data-percentage="95">
+                            </circle>
+                        </svg>
+                        <div class="progress-circle-text">95%</div>
+                    </div>
+                    <h4 class="font-semibold">Bangla</h4>
+                </div>
+
+                <div class="glass-card p-6 flex flex-col items-center">
+                    <div class="progress-circle mb-4">
+                        <svg viewBox="0 0 120 120">
+                            <circle class="progress-circle-bg" cx="60" cy="60" r="52"></circle>
+                            <circle class="progress-circle-progress" cx="60" cy="60" r="52" data-percentage="85">
+                            </circle>
+                        </svg>
+                        <div class="progress-circle-text">85%</div>
+                    </div>
+                    <h4 class="font-semibold">English</h4>
+                </div>
+
+                <div class="glass-card p-6 flex flex-col items-center">
+                    <div class="progress-circle mb-4">
+                        <svg viewBox="0 0 120 120">
+                            <circle class="progress-circle-bg" cx="60" cy="60" r="52"></circle>
+                            <circle class="progress-circle-progress" cx="60" cy="60" r="52" data-percentage="70">
+                            </circle>
+                        </svg>
+                        <div class="progress-circle-text">70%</div>
+                    </div>
+                    <h4 class="font-semibold">Hindi</h4>
+                </div>
+
+                <div class="glass-card p-6 flex flex-col items-center">
+                    <div class="progress-circle mb-4">
+                        <svg viewBox="0 0 120 120">
+                            <circle class="progress-circle-bg" cx="60" cy="60" r="52"></circle>
+                            <circle class="progress-circle-progress" cx="60" cy="60" r="52" data-percentage="70">
+                            </circle>
+                        </svg>
+                        <div class="progress-circle-text">70%</div>
+                    </div>
+                    <h4 class="font-semibold">Urdu</h4>
+                </div>
+            </div>
+
+            <!-- AI Tools Expertise -->
+            <h3 class="text-2xl font-semibold mb-6 neon-text">AI Tools Expertise</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">ChatGPT & GPT-4</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">Midjourney</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">DeepSeek</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">GitHub Copilot</span>
+                        <span>88%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 88%"></div>
+                    </div>
+                </div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">TensorFlow</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 75%"></div>
+                    </div>
+                </div>
+               
+            </div>
+
+            
     </section>
 
     <!-- Features Section -->
@@ -502,8 +836,9 @@
             </div>
 
             <div class="text-center mt-10">
-                <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a href="Portfolio/index.html#portfolio">View All Projects</a></button>
-                
+                <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a
+                        href="Portfolio/index.html#portfolio">View All Projects</a></button>
+
             </div>
         </div>
     </section>
@@ -521,6 +856,8 @@
                     <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="hover:text-blue-300 transition">Home</a></li>
+                        <li><a href="#experience" class="hover:text-blue-300 transition">Experience</a></li>
+                        <li><a href="#education" class="hover:text-blue-300 transition">Education</a></li>
                         <li><a href="#skills" class="hover:text-blue-300 transition">Skills</a></li>
                         <li><a href="#services" class="hover:text-blue-300 transition">Services</a></li>
                         <li><a href="#portfolio" class="hover:text-blue-300 transition">Portfolio</a></li>
@@ -582,8 +919,86 @@
     </footer>
 
     <script>
-        // Simple JavaScript for interactive elements
+        // Mobile menu toggle functionality
         document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileHomeDropdownButton = document.getElementById('mobile-home-dropdown-button');
+            const mobileHomeDropdown = document.getElementById('mobile-home-dropdown');
+            const mobileAchievementDropdownButton = document.getElementById('mobile-achievement-dropdown-button');
+            const mobileAchievementDropdown = document.getElementById('mobile-achievement-dropdown');
+
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+
+                // Toggle between hamburger and close icon
+                const icon = mobileMenuButton.querySelector('i');
+                if (icon.classList.contains('fa-bars')) {
+                    icon.classList.replace('fa-bars', 'fa-times');
+                } else {
+                    icon.classList.replace('fa-times', 'fa-bars');
+                }
+            });
+
+            // Mobile home dropdown toggle
+            mobileHomeDropdownButton.addEventListener('click', function () {
+                mobileHomeDropdown.classList.toggle('hidden');
+
+                // Toggle chevron icon
+                const icon = mobileHomeDropdownButton.querySelector('i');
+                if (icon.classList.contains('fa-chevron-down')) {
+                    icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+                } else {
+                    icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                }
+
+                // Close achievement dropdown if open
+                if (!mobileAchievementDropdown.classList.contains('hidden')) {
+                    mobileAchievementDropdown.classList.add('hidden');
+                    const achievementIcon = mobileAchievementDropdownButton.querySelector('i');
+                    achievementIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                }
+            });
+
+            // Mobile achievement dropdown toggle
+            mobileAchievementDropdownButton.addEventListener('click', function () {
+                mobileAchievementDropdown.classList.toggle('hidden');
+
+                // Toggle chevron icon
+                const icon = mobileAchievementDropdownButton.querySelector('i');
+                if (icon.classList.contains('fa-chevron-down')) {
+                    icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+                } else {
+                    icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                }
+
+                // Close home dropdown if open
+                if (!mobileHomeDropdown.classList.contains('hidden')) {
+                    mobileHomeDropdown.classList.add('hidden');
+                    const homeIcon = mobileHomeDropdownButton.querySelector('i');
+                    homeIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                }
+            });
+
+            // Close menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                    mobileHomeDropdown.classList.add('hidden');
+                    mobileAchievementDropdown.classList.add('hidden');
+
+                    const menuIcon = mobileMenuButton.querySelector('i');
+                    menuIcon.classList.replace('fa-times', 'fa-bars');
+
+                    const homeIcon = mobileHomeDropdownButton.querySelector('i');
+                    homeIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+
+                    const achievementIcon = mobileAchievementDropdownButton.querySelector('i');
+                    achievementIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                });
+            });
+
             // Dark mode toggle
             const darkModeToggle = document.querySelector('.btn-neon');
             if (darkModeToggle) {
@@ -600,19 +1015,55 @@
 
             // Animate skill bars on scroll
             const skillBars = document.querySelectorAll('.skill-bar');
+            const progressCircles = document.querySelectorAll('.progress-circle-progress');
+            const graphBars = document.querySelectorAll('.graph-bar');
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const width = entry.target.style.width;
-                        entry.target.style.width = '0';
-                        setTimeout(() => {
-                            entry.target.style.width = width;
-                        }, 100);
+                        // Animate skill bars
+                        if (entry.target.classList.contains('skill-bar')) {
+                            const width = entry.target.style.width;
+                            entry.target.style.width = '0';
+                            setTimeout(() => {
+                                entry.target.style.width = width;
+                            }, 100);
+                        }
+
+                        // Animate circular progress bars
+                        if (entry.target.classList.contains('progress-circle-progress')) {
+                            const percentage = entry.target.getAttribute('data-percentage');
+                            const radius = 52;
+                            const circumference = 2 * Math.PI * radius;
+                            const offset = circumference - (percentage / 100) * circumference;
+
+                            entry.target.style.strokeDashoffset = circumference;
+                            setTimeout(() => {
+                                entry.target.style.strokeDashoffset = offset;
+                            }, 100);
+                        }
+
+                        // Animate graph bars
+                        if (entry.target.classList.contains('graph-bar')) {
+                            const height = entry.target.style.height;
+                            entry.target.style.height = '0';
+                            setTimeout(() => {
+                                entry.target.style.height = height;
+                            }, 100);
+                        }
                     }
                 });
             }, { threshold: 0.5 });
 
             skillBars.forEach(bar => {
+                observer.observe(bar);
+            });
+
+            progressCircles.forEach(circle => {
+                observer.observe(circle);
+            });
+
+            graphBars.forEach(bar => {
                 observer.observe(bar);
             });
 
