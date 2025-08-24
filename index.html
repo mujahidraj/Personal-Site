@@ -22,7 +22,7 @@
     <style>
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background: linear-gradient(360deg,rgb(3, 2, 100) 10%, rgb(0, 0, 0) -25%,  #0b0639 100%);
+            background: linear-gradient(360deg, rgb(3, 2, 100) 10%, rgb(0, 0, 0) -25%, #0b0639 100%);
             min-height: 100vh;
             margin: 0;
             padding: 0;
@@ -166,14 +166,17 @@
     <header class="nav-glass fixed w-full z-50">
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3 neon-border">
-                        <span class="text-white font-bold text-lg">
-                            <img class="rounded-[50px]" src="images/Mujahid Raj.png" alt="Mujahid Raj">
-                        </span>
+                <a href="index.html">
+                    <div class="flex items-center">
+                        <div
+                            class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3 neon-border">
+                            <span class="text-white font-bold text-lg">
+                                <img class="rounded-[50px]" src="images/Mujahid Raj.png" alt="Mujahid Raj">
+                            </span>
+                        </div>
+                        <span class="text-xl font-bold neon-text">Mujahid Raj</span>
                     </div>
-                    <span class="text-xl font-bold neon-text">Mujahid Raj</span>
-                </div>
+                </a>
 
                 <!-- Desktop Navigation -->
                 <nav class="glass-card px-5 py-3 rounded-[50px] hidden md:flex space-x-8">
@@ -181,7 +184,7 @@
                     <div class="relative group">
                         <button class=" hover:text-blue-300 transition font-bold flex items-center">
                             Home
-                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </i>
                         </button>
                         <div
                             class="absolute left-0 mt-2 w-48 glass-card rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
@@ -206,7 +209,7 @@
                     <div class="relative group">
                         <button class=" hover:text-blue-300 transition font-bold flex items-center">
                             Achievement
-                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+
                         </button>
                         <div
                             class="absolute left-0 mt-2 w-48 glass-card rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
@@ -285,19 +288,41 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-bg min-h-screen flex items-center pt-16 pb-28">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0">
+    <section class="hero-bg min-h-screen flex items-center pt-16  pb-28">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-10 pt-6 md:mb-0">
                 <div class="glass-card p-8 md:p-10 max-w-lg">
                     <h1 class="text-4xl md:text-5xl font-bold mb-4 neon-text">Web Developer & UI/UX Designer</h1>
-                    <p class="text-lg mb-8"> <span class="edu-nsw-act-font text-xl">I'm Moizuddin Mohammad Mujahid Rashid</span> and i create beautiful, functional
+                    <p class="text-lg mb-8"> <span class="edu-nsw-act-font text-xl">I'm Moizuddin Mohammad Mujahid
+                            Rashid</span> and i create beautiful, functional
                         websites and applications with a focus on
                         user experience and modern design.</p>
-                    <div class="flex space-x-4">
+                    <div class="flex space-x-4 mb-4">
                         <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a
                                 href="Portfolio/index.html">Portfolio</a></button>
                         <button class="btn-neon px-6 py-3 rounded-full font-semibold"><a
                                 href="contact/index.html">Contact</a></button>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 mt-6 justify-start">
+                        <a href="https://github.com/mujahidraj" target="_blank"
+                            class="btn-icon glass-card px-3 py-2 rounded-[100px]">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/mujahidraj" target="_blank"
+                            class="btn-icon glass-card px-3 py-2">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://leetcode.com/mujahidraj65" target="_blank"
+                            class="btn-icon glass-card px-3 py-2">
+                            <i class="fas fa-code"></i>
+                        </a>
+                        <a href="mailto:mujahidraj65@gmail.com" class="btn-icon glass-card px-3 py-2">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+8801796059406" class="btn-icon glass-card px-3 py-2">
+                            <i class="fas fa-phone"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -602,10 +627,10 @@
                         <div class="skill-bar h-2.5 rounded-full bg-blue-500" style="width: 75%"></div>
                     </div>
                 </div>
-               
+
             </div>
 
-            
+
     </section>
 
     <!-- Features Section -->
